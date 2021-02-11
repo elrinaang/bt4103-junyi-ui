@@ -2,33 +2,47 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+Run the following commands: 
 
-```bash
-npm run dev
-# or
-yarn dev
+```
+npm run install 
+
+npm run dev 
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## File Structure 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### pages 
+This folder contains the files that define the root of the application. Please do not edit existing files but feel free to add new files to define new routes. 
+```
+pages (Add the main routes here)
+    |
+    |_ _app.tsx **DO NOT EDIT** 
+    |
+    |_ _document.tsx **DO NOT EDIT** 
+    |
+    |_ index.tsx (first page that renders the components)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+``` 
 
-## Learn More
+### src 
+This folder contains multiple sub-folders that contains the main components, functions, theme and API calls for the app 
 
-To learn more about Next.js, take a look at the following resources:
+```
+components (folder that contains main components)
+    |
+    |_ HomePage 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+lib (folder that contains the common functions that span across multipled components)
+    |
+    |_ redirect (directs the routes)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+api (folder that contains the api calls)
+    |
+    |_ 
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+theme (file that defines main theme for the app e.g. colour scheme)
+```
