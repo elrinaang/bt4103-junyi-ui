@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 
-const HomePage: React.FC = () => {
+const StudentList: React.FC = () => {
 
   return (
-    <h1>This is the homepage</h1>
+    <h1>This is the StudentList</h1>
   );
 };
 
-export default HomePage; 
+export default StudentList; 

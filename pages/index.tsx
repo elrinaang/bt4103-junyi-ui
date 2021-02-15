@@ -1,8 +1,9 @@
 import * as React from 'react';
-import HomePage from '../src/components/HomePage';
+import redirect from '../src/lib/redirect';
 
 const Index: React.FC = () => {   
-  return <HomePage />;
+  React.useEffect(() => redirect('/home'));
+  return null;
 }
 
-export default Index
+export default Index;
