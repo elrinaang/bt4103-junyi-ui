@@ -1,5 +1,6 @@
 import { AppProps } from "next/dist/next-server/lib/router/router";
 import * as React from "react"; 
+import CssBaseline from "@material-ui/core/CssBaseline"; 
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
 
@@ -11,7 +12,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     }
   }, []);
 
-  return <Component {...pageProps} />; 
+  return(
+    <>
+      <CssBaseline />
+      <Component {...pageProps} />
+    </>
+  ) 
 
 }
 
