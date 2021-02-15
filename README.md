@@ -5,7 +5,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 Run the following commands: 
 
 ```
-npm run install 
+npm install 
 
 npm run dev 
 ```
