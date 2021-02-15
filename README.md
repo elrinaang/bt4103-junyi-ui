@@ -24,6 +24,12 @@ pages (Add the main routes here)
     |_ _document.tsx **DO NOT EDIT** 
     |
     |_ index.tsx (first page that renders the components)
+    |
+    |_ home.tsx
+    |
+    |_ dashboard.tsx
+    |
+    |_ studentlist.tsx 
 
 ``` 
 
@@ -33,7 +39,15 @@ This folder contains multiple sub-folders that contains the main components, fun
 ```
 components (folder that contains main components)
     |
-    |_ HomePage 
+    |_ Layout (contains overall navbar layout)
+    |
+    |_ LandingPage (acts as the 'router' to display the various pages based on props)
+    |
+    |_ HomePage
+    |
+    |_ Dashboard
+    |
+    |_ StudentList 
 
 lib (folder that contains the common functions that span across multipled components)
     |

@@ -3,7 +3,8 @@ import LandingPage from '../src/components/LandingPage';
 
 const Dashboard: React.FC = () => {  
     const props = {
-        currentPage: 'dashboard'
+        currentPage: 'dashboard',
+        title: 'Dashboard'
     }
   return <LandingPage {...props}/>
 }

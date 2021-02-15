@@ -3,7 +3,8 @@ import LandingPage from '../src/components/LandingPage';
 
 const StudentList: React.FC = () => {  
     const props = {
-        currentPage: 'studentlist'
+        currentPage: 'studentlist',
+        title: 'Student List'
     }
   return <LandingPage {...props}/>
 }

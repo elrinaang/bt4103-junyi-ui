@@ -5,14 +5,15 @@ import Dashboard from './Dashboard';
 import StudentList from './StudentList'; 
 
 interface LandingPageProps{ 
-    currentPage: string; 
+    currentPage: string;
+    title: string; 
 }
 
 const LandingPage: React.FC<LandingPageProps> = (props) => {
-    const { currentPage } = props; 
+    const { currentPage, title } = props; 
 
     return(
-        <Layout>
+        <Layout title={title}>
             {
                 currentPage === 'homepage' &&
                 <HomePage/> 

@@ -15,6 +15,7 @@ import redirect from '../lib/redirect';
 
 interface LayoutProps {
   children?: any; 
+  title: string; 
 }
 
 const drawerWidth = 240;
@@ -50,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const Layout: React.FC<LayoutProps> = (props) => {
-  const { children } = props; 
+  const { children, title } = props; 
   const classes = useStyles();
 
   const handleClickIcon = (route: string) => { 
@@ -62,7 +63,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
       <AppBar position="fixed" className={classes.appBar} elevation={0}>
         <Toolbar>
           <Typography variant="h6" noWrap>
-            Dashboard
+            {title}
           </Typography>
         </Toolbar>
       </AppBar>
