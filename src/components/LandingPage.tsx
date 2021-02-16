@@ -5,32 +5,32 @@ import Dashboard from './Dashboard';
 import StudentList from './StudentList'; 
 
 interface LandingPageProps{ 
-    currentPage: string;
-    title: string; 
+  currentPage: string;
+  title: string; 
 }
 
 const LandingPage: React.FC<LandingPageProps> = (props) => {
-    const { currentPage, title } = props; 
+  const { currentPage, title } = props; 
 
-    return(
-        <Layout title={title}>
-            {
-                currentPage === 'homepage' &&
-                <HomePage/> 
+  return(
+    <Layout title={title}>
+      {
+        currentPage === 'homepage' &&
+        <HomePage/> 
 
-            }
-            {
-                currentPage === 'dashboard' &&
-                <Dashboard/> 
+      }
+      {
+        currentPage === 'dashboard' &&
+        <Dashboard/> 
 
-            }
-            {
-                currentPage === 'studentlist' &&
-                <StudentList/> 
+      }
+      {
+        currentPage === 'studentlist' &&
+        <StudentList/> 
 
-            }
-        </Layout>
-    )
+      }
+    </Layout>
+  )
 };
 
 export default LandingPage; 
