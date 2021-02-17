@@ -1,7 +1,6 @@
 import * as React from 'react'; 
 import Layout from './Layout';
 import HomePage from './HomePage'; 
-import Dashboard from './Dashboard';
 import StudentList from './studentList'; 
 
 interface LandingPageProps{ 
@@ -17,11 +16,6 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
       {
         currentPage === 'homepage' &&
         <HomePage/> 
-
-      }
-      {
-        currentPage === 'dashboard' &&
-        <Dashboard/> 
 
       }
       {

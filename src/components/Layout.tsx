@@ -81,10 +81,6 @@ const Layout: React.FC<LayoutProps> = (props) => {
       <ListItemIcon><HomeIcon style={{fill: "white"}}/></ListItemIcon>
       <ListItemText><b>Home</b></ListItemText>
       </ListItem>
-      <ListItem button onClick={()=>handleClickIcon('/dashboard')}>
-      <ListItemIcon><DashboardIcon style={{fill: "white"}}/></ListItemIcon>
-      <ListItemText><b>Dashboard</b></ListItemText>
-      </ListItem>
       <ListItem button onClick={()=>handleClickIcon('/studentlist')}>
       <ListItemIcon><ViewListIcon style={{fill: "white"}}/></ListItemIcon>
       <ListItemText><b>Student List</b></ListItemText>
