@@ -6,7 +6,7 @@ import axios from "axios";
  * returns studentDetails as a JSON object 
  */
 
-const retrieveFile = async (studentId: string) => {   
+const retrieveStudentDetails = async (studentId: string) => {   
   
   const endPoint = `http://localhost:8080/api/v1/download/${studentId}`
 
@@ -15,4 +15,4 @@ const retrieveFile = async (studentId: string) => {
   return studentDetails.data; 
 }; 
   
-export default retrieveFile;
+export default retrieveStudentDetails;
