@@ -7,6 +7,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import AddStudentModal from './AddStudentModal';
+import FilterClassModal from './FilterClassModal';
 
 const useStyles = makeStyles(theme => ({
   addStudentButton: { 
@@ -46,7 +47,7 @@ const StudentList: React.FC = () => {
   const classes = useStyles();
   const [openSnackBar, handleOpenSnackBar] = React.useState(true);
   const [addStudentModal, handleAddStudentModal] = React.useState(false); 
-  const [filterclassModal, handleFilterClassModal] = React.useState(false); 
+  const [filterClassModal, handleFilterClassModal] = React.useState(false); 
 
   const onSelectStudent = (id: number | string) => { 
     console.log(id);
@@ -59,6 +60,10 @@ const StudentList: React.FC = () => {
   const handleAddStudents = () => { 
     //set the modal to open/close
     handleAddStudentModal(!addStudentModal);
+  };
+
+  const handleFilterClasses = () => { 
+    handleFilterClassModal(!filterClassModal); 
   }
 
   return (
@@ -77,7 +82,7 @@ const StudentList: React.FC = () => {
             variant="contained" 
             color="primary" 
             className={classes.filterClassButton}
-            onClick={handleAddStudents}
+            onClick={handleFilterClasses}
           >
             Filter Class
           </Button>
@@ -121,6 +126,10 @@ const StudentList: React.FC = () => {
       {
         addStudentModal && 
         <AddStudentModal closeAddStudentModal={handleAddStudents} open={addStudentModal}/> 
+      }
+      {
+        filterClassModal && 
+        <FilterClassModal closeFilterClassModal={handleFilterClasses} open={filterClassModal}/> 
       }
     </>
   );

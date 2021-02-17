@@ -54,32 +54,22 @@ const MenuProps = {
   };
   
 
-const AddStudentModal: React.FC<{closeAddStudentModal: () => void, open: boolean}> = (props) => {
-  const { closeAddStudentModal, open } = props; 
+const AddStudentModal: React.FC<{closeFilterClassModal: () => void, open: boolean}> = (props) => {
+  const { closeFilterClassModal, open } = props; 
   const classes = useStyles();
 
   const [personName, setPersonName] = React.useState<string[]>([]);
-
-  const fileRef = React.useRef();
-  const [ file, setFile ] = React.useState(null);
-
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    if (!event.target.files) return;    
-    setFile(event.target.files[0]);      
-    console.log(event.target.files[0])
-  }
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setPersonName(event.target.value as string[]);
   };
 
   return (
-    <Dialog open={open} onClose={closeAddStudentModal} aria-labelledby="form-dialog-title">
-      <DialogTitle id="form-dialog-title">Add New Students</DialogTitle>
+    <Dialog open={open} onClose={closeFilterClassModal} aria-labelledby="form-dialog-title">
+      <DialogTitle id="form-dialog-title">Filter Classes</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          Select the classes to enroll the students into.
+          Select the classes that you are interested in. 
         </DialogContentText>
       <form 
         noValidate 
@@ -90,31 +80,6 @@ const AddStudentModal: React.FC<{closeAddStudentModal: () => void, open: boolean
           spacing={3} 
           direction="row"
         >
-          <Grid item xs={5}>
-            <Input 
-              id="select-file"
-              ref={fileRef}
-              type="file" 
-              inputProps={{accept: "text/plain,.doc,.docx"}}              
-              onChange={handleFileChange}      
-              style={{ display: "none" }}        
-            />
-            <TextField          
-              label="Selected File"                
-              value={file ? file.name : "No file selected"}
-              InputProps={{
-              readOnly: true,
-              }}
-            />            
-          </Grid>
-          <Grid item xs={7}>
-            <InputLabel htmlFor="select-file">
-              <Button variant="contained">
-                Select File
-              </Button>
-            </InputLabel>
-          </Grid>  
-
           <Grid item xs={12}>
             <InputLabel id="demo-mutiple-checkbox-label">Classes</InputLabel>
             <Select
@@ -141,10 +106,10 @@ const AddStudentModal: React.FC<{closeAddStudentModal: () => void, open: boolean
       </form>
       </DialogContent>
       <DialogActions>
-        <Button onClick={closeAddStudentModal} color="primary">
+        <Button onClick={closeFilterClassModal} color="primary">
           Cancel
         </Button>
-        <Button onClick={closeAddStudentModal} color="primary">
+        <Button onClick={closeFilterClassModal} color="primary">
           Confirm
         </Button>
       </DialogActions>
