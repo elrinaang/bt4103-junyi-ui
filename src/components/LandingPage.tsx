@@ -2,6 +2,7 @@ import * as React from 'react';
 import Layout from './Layout';
 import HomePage from './HomePage'; 
 import StudentList from './studentList'; 
+import CreateClass from './CreateClass';
 
 interface LandingPageProps{ 
   currentPage: string;
@@ -21,6 +22,11 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
       {
         currentPage === 'studentlist' &&
         <StudentList/> 
+
+      }
+      {
+        currentPage === 'createclass' &&
+        <CreateClass/> 
 
       }
     </Layout>

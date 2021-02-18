@@ -9,7 +9,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
-import DashboardIcon from '@material-ui/icons/Dashboard';
+import AddBoxIcon from '@material-ui/icons/AddBox';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import redirect from '../lib/redirect';
 
@@ -63,7 +63,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
     <AppBar position="fixed" className={classes.appBar} elevation={0}>
     <Toolbar>
       <Typography variant="h6" noWrap>
-      {title}
+        {title}
       </Typography>
     </Toolbar>
     </AppBar>
@@ -78,12 +78,16 @@ const Layout: React.FC<LayoutProps> = (props) => {
     <div className={classes.toolbar} />
     <List>
       <ListItem button onClick={()=>handleClickIcon('/home')}>
-      <ListItemIcon><HomeIcon style={{fill: "white"}}/></ListItemIcon>
-      <ListItemText><b>Home</b></ListItemText>
+        <ListItemIcon><HomeIcon style={{fill: "white"}}/></ListItemIcon>
+        <ListItemText><b>Home</b></ListItemText>
+      </ListItem>
+      <ListItem button onClick={()=>handleClickIcon('/createclass')}>
+        <ListItemIcon><AddBoxIcon style={{fill: "white"}}/></ListItemIcon>
+        <ListItemText><b>Create Class</b></ListItemText>
       </ListItem>
       <ListItem button onClick={()=>handleClickIcon('/studentlist')}>
-      <ListItemIcon><ViewListIcon style={{fill: "white"}}/></ListItemIcon>
-      <ListItemText><b>Student List</b></ListItemText>
+        <ListItemIcon><ViewListIcon style={{fill: "white"}}/></ListItemIcon>
+        <ListItemText><b>Student List</b></ListItemText>
       </ListItem>
     </List>
     </Drawer>

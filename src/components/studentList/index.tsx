@@ -6,16 +6,11 @@ import { DataGrid, ColDef, RowsProp } from '@material-ui/data-grid';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import AddStudentModal from './AddStudentModal';
 import FilterClassModal from './FilterClassModal';
 
 const useStyles = makeStyles(theme => ({
-  addStudentButton: { 
-    float: 'right'
-  },
   filterClassButton: { 
-    float: 'right',
-    marginRight: theme.spacing(2)
+    float: 'right'
   }
 }));
 
@@ -46,7 +41,6 @@ const StudentList: React.FC = () => {
 
   const classes = useStyles();
   const [openSnackBar, handleOpenSnackBar] = React.useState(true);
-  const [addStudentModal, handleAddStudentModal] = React.useState(false); 
   const [filterClassModal, handleFilterClassModal] = React.useState(false); 
 
   const onSelectStudent = (id: number | string) => { 
@@ -57,11 +51,6 @@ const StudentList: React.FC = () => {
     handleOpenSnackBar(false);
   };
 
-  const handleAddStudents = () => { 
-    //set the modal to open/close
-    handleAddStudentModal(!addStudentModal);
-  };
-
   const handleFilterClasses = () => { 
     handleFilterClassModal(!filterClassModal); 
   }
@@ -70,14 +59,6 @@ const StudentList: React.FC = () => {
     <>
       <Grid container direction="column" spacing={3}>
         <Grid item xs={12}>
-          <Button 
-            color="primary" 
-            className={classes.addStudentButton}
-            onClick={handleAddStudents}
-            variant="contained"
-          >
-            Add New Students
-          </Button>
           <Button 
             variant="contained" 
             color="primary" 
@@ -123,10 +104,6 @@ const StudentList: React.FC = () => {
           </React.Fragment>
         }
       />
-      {
-        addStudentModal && 
-        <AddStudentModal closeAddStudentModal={handleAddStudents} open={addStudentModal}/> 
-      }
       {
         filterClassModal && 
         <FilterClassModal closeFilterClassModal={handleFilterClasses} open={filterClassModal}/> 
