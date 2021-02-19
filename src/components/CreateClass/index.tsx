@@ -10,18 +10,6 @@ import ClassNameField from './ClassNameField';
 import SelectTopicsField from './SelectTopicsField';
 import UploadFileField from './UploadFileField';
 
-const classNames = [
-  'area',
-  'subtraction',
-  'addition',
-  'division',
-  'multiplication',
-  'perimeter',
-  'fractions',
-  'decimals',
-  'percentage'
-];
-
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: 'relative',
@@ -37,11 +25,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
-    //marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      //marginTop: theme.spacing(6),
       marginBottom: theme.spacing(6),
       padding: theme.spacing(3),
     },
@@ -59,51 +45,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const steps = ['Class Name', 'Select Topics', 'Upload File'];
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-    maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP
-    },
-  },
-  };
-
-  const steps = ['Class Name', 'Select Topics', 'Upload File'];
-
-  function getStepContent(step) {
-    switch (step) {
-      case 0:
-        return <ClassNameField />;
-      case 1:
-        return <SelectTopicsField />;
-      case 2:
-        return <UploadFileField />;
-      default:
-        throw new Error('Unknown step');
-    }
+const getStepContent = (step: number) => { 
+  switch (step) {
+    case 0:
+      return <ClassNameField />;
+    case 1:
+      return <SelectTopicsField />;
+    case 2:
+      return <UploadFileField />;
+    default:
+      throw new Error('Unknown step');
   }
+}
 
 const CreateClass: React.FC = () => {
 
   const classes = useStyles();
-
-  const [personName, setPersonName] = React.useState<string[]>([]);
-
-  const fileRef = React.useRef();
-  const [ file, setFile ] = React.useState(null);
-
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    if (!event.target.files) return;    
-    setFile(event.target.files[0]);      
-    console.log(event.target.files[0])
-  }
-
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setPersonName(event.target.value as string[]);
-  };
 
   const [activeStep, setActiveStep] = React.useState(0);
 

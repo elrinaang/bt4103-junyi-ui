@@ -1,17 +1,20 @@
 import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { DataGrid, ColDef, RowsProp } from '@material-ui/data-grid';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import FilterClassModal from './FilterClassModal';
+import SelectClassField from './SelectClassField';
 
 const useStyles = makeStyles(theme => ({
   filterClassButton: { 
     float: 'right'
-  }
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
 }));
 
 const columns: ColDef[] = [
@@ -41,7 +44,6 @@ const StudentList: React.FC = () => {
 
   const classes = useStyles();
   const [openSnackBar, handleOpenSnackBar] = React.useState(true);
-  const [filterClassModal, handleFilterClassModal] = React.useState(false); 
 
   const onSelectStudent = (id: number | string) => { 
     console.log(id);
@@ -51,22 +53,11 @@ const StudentList: React.FC = () => {
     handleOpenSnackBar(false);
   };
 
-  const handleFilterClasses = () => { 
-    handleFilterClassModal(!filterClassModal); 
-  }
-
   return (
-    <>
+    <React.Fragment>
       <Grid container direction="column" spacing={3}>
         <Grid item xs={12}>
-          <Button 
-            variant="contained" 
-            color="primary" 
-            className={classes.filterClassButton}
-            onClick={handleFilterClasses}
-          >
-            Filter Class
-          </Button>
+          <SelectClassField/>
         </Grid> 
 
         <Grid item xs={12}>
@@ -104,11 +95,7 @@ const StudentList: React.FC = () => {
           </React.Fragment>
         }
       />
-      {
-        filterClassModal && 
-        <FilterClassModal closeFilterClassModal={handleFilterClasses} open={filterClassModal}/> 
-      }
-    </>
+    </React.Fragment>
   );
 };
 

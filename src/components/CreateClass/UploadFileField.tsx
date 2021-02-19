@@ -36,10 +36,10 @@ const UploadFileField: React.FC = () => {
           container 
           spacing={1} 
           direction="row"
-          justify="center"
-          alignItems="center"
+          justify="flex-start"
+          alignItems="flex-start"
         >
-          <Grid item xs={3}>
+          <Grid item xs={9}>
             <Input 
               id="select-file"
               ref={fileRef}
@@ -54,6 +54,7 @@ const UploadFileField: React.FC = () => {
               InputProps={{
               readOnly: true,
               }}
+              fullWidth
             />            
           </Grid>
           <Grid item xs={3}>
