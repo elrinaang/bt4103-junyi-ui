@@ -3,6 +3,7 @@ import * as React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline"; 
 import { ThemeProvider } from "@material-ui/core";
 import theme from '../src/theme';
+import StoreProvider from '../src/stores/StoreProvider';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
 
@@ -15,10 +16,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   }, []);
 
   return(
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <StoreProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </StoreProvider>
   ) 
 
 }

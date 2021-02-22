@@ -6,6 +6,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import SelectClassField from './SelectClassField';
+import { useStores } from '../../stores/StoreProvider';
 
 const useStyles = makeStyles(theme => ({
   filterClassButton: { 
@@ -43,6 +44,7 @@ const rows: RowsProp = [
 const StudentList: React.FC = () => {
 
   const classes = useStyles();
+  const { appStore } = useStores();
   const [openSnackBar, handleOpenSnackBar] = React.useState(true);
 
   const onSelectStudent = (id: number | string) => { 
@@ -64,7 +66,7 @@ const StudentList: React.FC = () => {
           <div style={{ display: 'flex', flexGrow: 1 }}>
             <DataGrid 
               rows={rows} 
-              columns={columns} 
+              columns={appStore.studentTableColumns} 
               pageSize={5} 
               autoHeight
               onRowClick={(val) => onSelectStudent(val.row.id)}

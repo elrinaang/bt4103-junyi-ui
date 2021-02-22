@@ -3,7 +3,10 @@ module.exports = (api) => {
     return {
       "env": {
         "development": {
-          "plugins": [["styled-components", { "ssr": true }]]
+          "plugins": [
+            ["styled-components", { "ssr": true }],
+            ["@babel/plugin-proposal-class-properties", { "loose": false }]
+          ]
         }
       },
       presets: ["next/babel"]
