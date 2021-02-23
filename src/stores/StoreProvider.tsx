@@ -1,10 +1,10 @@
 import * as React from "react"; 
-//import UiState from './UiState';
+import UiState from './UiState';
 import AppStore from './AppStore';
 
 export interface StoreContext {
   appStore: AppStore;
-  //uiState: UiState;
+  uiState: UiState;
 };
 
 let stores: StoreContext | null = null;
@@ -13,7 +13,7 @@ const storeContext = React.createContext<StoreContext | null>(stores)
 export const createStores = () => {  
 
   stores = {
-    //uiState: new UiState(),
+    uiState: new UiState(),
     appStore: new AppStore(),
   };
 
