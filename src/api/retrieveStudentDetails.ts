@@ -1,18 +1,21 @@
 import axios from "axios";
+import { environment } from '../environments/environment.development';
+
+const API_ENDPOINT: string = environment.ApiEndpoint;
 
 /**
- * 
- * @param studentId 
- * returns studentDetails as a JSON object 
+ *
+ * @param studentId
+ * returns studentDetails as a JSON object
  */
 
-const retrieveStudentDetails = async (studentId: string) => {   
-  
-  const endPoint = `http://localhost:8080/api/v1/download/${studentId}`
+const retrieveStudentDetails = async (studentId: number) => {
 
-  //make the axios call 
+  const endPoint = `${API_ENDPOINT}/user/${studentId}`
   const studentDetails = await axios.get(endPoint);
-  return studentDetails.data; 
-}; 
-  
+  return studentDetails.data;
+};
+
 export default retrieveStudentDetails;
+
+
