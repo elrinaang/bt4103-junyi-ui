@@ -4,7 +4,7 @@ import { IndivClass } from './AppStore';
 class UiState {
 
   errorMessage: string;  
-  currentClass: IndivClass | null; 
+  currentClass: IndivClass; 
 
   constructor() {
     makeObservable(this, {
@@ -15,7 +15,7 @@ class UiState {
     })
     
     this.errorMessage = '';
-    this.currentClass = null;
+    this.currentClass = {className:''};
   }
 
   setErrorMessage = (message: string) => { 
@@ -24,6 +24,7 @@ class UiState {
 
   setCurrentClass = (selectedClass: IndivClass) => { 
     this.currentClass = selectedClass; 
+    console.log(this.currentClass);
   }
 }
 

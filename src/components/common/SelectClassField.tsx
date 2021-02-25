@@ -30,11 +30,9 @@ const useStyles = makeStyles((theme: Theme) =>
 const SelectClassField: React.FC = () => {
   const classes = useStyles();
   const { appStore, uiState } = useStores();
-  const [selectedClass, setSelectedClass] = React.useState(''); 
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setSelectedClass(event.target.value as string);
-    const currentClass = appStore.classList.find(currClass => currClass.className == selectedClass); 
+    const currentClass = appStore.classList.find(currClass => currClass.className == event.target.value); 
     uiState.setCurrentClass(currentClass);
   };
 
@@ -51,7 +49,7 @@ const SelectClassField: React.FC = () => {
           >
             {
               appStore.classList.map((indivClass) =>
-              <MenuItem key={indivClass.className}>
+              <MenuItem key={indivClass.className} value={indivClass.className}>
                 {indivClass.className}
               </MenuItem>)
             }

@@ -5,7 +5,7 @@ import { DataGrid, ColDef, RowsProp } from '@material-ui/data-grid';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import SelectClassField from './SelectClassField';
+import SelectClassField from '../common/SelectClassField';
 import { useStores } from '../../stores/StoreProvider';
 
 const useStyles = makeStyles(theme => ({
