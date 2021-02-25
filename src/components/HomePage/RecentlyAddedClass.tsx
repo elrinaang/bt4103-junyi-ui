@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { useStores } from '../../stores/StoreProvider';
@@ -14,25 +13,23 @@ import { Observer, observer } from 'mobx-react';
 const useStyles = makeStyles((theme) => ({
   paper:{
     padding: theme.spacing(2),
-    minWidth: '100%'
+    marginTop: theme.spacing(1)
   },
   root: {
-    minWidth: 275,
-    backgroundColor:'#cefaaa'
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
+    minWidth: 180,
+    maxWidth: '70%',
+    //backgroundColor:'#cefaaa',
+    borderColor: theme.palette.secondary.light,
+    borderWidth: 2,
+    padding: theme.spacing(1,0,1)
   },
   cards:{
     marginTop: theme.spacing(2)
+  },
+  cardContent: { 
+    display: 'flex',
+    alignItem: 'center',
+    justifyContent: 'center'
   }
 }));
 
@@ -43,23 +40,20 @@ const RecentlyAddedClass: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Paper className={classes.paper}>
-        <Typography variant="button"><b>Recently Added Class</b></Typography>
-        <Grid container direction="row" spacing={3} className={classes.cards}> 
+      <Typography variant="h6"><b>Recently Added Class</b></Typography>
+      <Paper className={classes.paper} square>
+        <Grid container direction="row" spacing={3}> 
           <Observer render={() =>
           <>
           {
           appStore.recentlyAddedClass.map((newClass: IndivClass) =>
             <Grid item xs={3} key={newClass.className}>
-              <Card className={classes.root}>
-                <CardContent>
-                  <Typography variant="h4">
-                    {newClass.className}
+              <Card variant="outlined" className={classes.root} square>
+                <CardContent className={classes.cardContent}>
+                  <Typography variant="h6">
+                    <b>{newClass.className}</b>
                   </Typography>
                 </CardContent>
-                <CardActions>
-                  <Button size="small">View more details</Button>
-                </CardActions>
               </Card>
             </Grid>)  
           }

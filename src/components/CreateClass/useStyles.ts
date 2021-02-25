@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(2),
       marginRight: theme.spacing(2),
       [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-        width: 600,
+        width: 1000,
         marginLeft: 'auto',
         marginRight: 'auto',
       },
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     stepper: {
-      padding: theme.spacing(3, 0, 5),
+      padding: theme.spacing(3, 20, 5)
     },
     buttons: {
       display: 'flex',
@@ -34,18 +34,18 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(1),
     },
     formControl: {
-        margin: theme.spacing(1),
-        minWidth: '90%',
+      margin: theme.spacing(1),
+      minWidth: '90%',
     },
     chips: {
-        display: 'flex',
-        flexWrap: 'wrap',
+      display: 'flex',
+      flexWrap: 'wrap',
     },
     chip: {
-        margin: 2,
+      margin: 2,
     },
     noLabel: {
-        marginTop: theme.spacing(3),
+      marginTop: theme.spacing(3),
     },
 }));
 

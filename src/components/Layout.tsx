@@ -12,13 +12,15 @@ import HomeIcon from '@material-ui/icons/Home';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import redirect from '../lib/redirect';
+import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
 
 interface LayoutProps {
   children?: any; 
   title: string; 
 }
 
-const drawerWidth = 240;
+const drawerWidth = 210;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
   appBar: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: 'white',
     color: theme.palette.primary.dark
   },
   drawer: {
@@ -40,12 +42,26 @@ const useStyles = makeStyles((theme: Theme) =>
     background: theme.palette.primary.main,
     color: 'white'
   },
+  iconText: { 
+    marginLeft: theme.spacing(-2)
+  },
+  iconPic: { 
+    marginLeft: theme.spacing(1.5)
+  },
+  button: { 
+    margin: theme.spacing(0,3,0),
+    padding: theme.spacing(3,-3,3),
+    backgroundColor: '#9ACD32'
+  },
+  directoryList: { 
+    marginTop: theme.spacing(2)
+  },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
+    padding: theme.spacing(5),
   },
   }),
 );
@@ -63,7 +79,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
     <AppBar position="fixed" className={classes.appBar} elevation={0}>
     <Toolbar>
       <Typography variant="h6" noWrap>
-        {title}
+        <b>{title}</b>
       </Typography>
     </Toolbar>
     </AppBar>
@@ -76,18 +92,24 @@ const Layout: React.FC<LayoutProps> = (props) => {
     anchor="left"
     >
     <div className={classes.toolbar} />
-    <List>
+    <Button 
+      variant="contained" 
+      color="secondary" 
+      className={classes.button} 
+      onClick={()=>handleClickIcon('/createclass')}
+      disableElevation
+    >
+      Create Class
+    </Button>
+    <List className={classes.directoryList}>
       <ListItem button onClick={()=>handleClickIcon('/home')}>
-        <ListItemIcon><HomeIcon style={{fill: "white"}}/></ListItemIcon>
-        <ListItemText><b>Home</b></ListItemText>
+        <ListItemIcon className={classes.iconPic}><HomeIcon style={{fill: "white"}}/></ListItemIcon>
+        <ListItemText className={classes.iconText}>Home</ListItemText>
       </ListItem>
-      <ListItem button onClick={()=>handleClickIcon('/createclass')}>
-        <ListItemIcon><AddBoxIcon style={{fill: "white"}}/></ListItemIcon>
-        <ListItemText><b>Create Class</b></ListItemText>
-      </ListItem>
+      <Divider/>
       <ListItem button onClick={()=>handleClickIcon('/studentlist')}>
-        <ListItemIcon><ViewListIcon style={{fill: "white"}}/></ListItemIcon>
-        <ListItemText><b>Student List</b></ListItemText>
+        <ListItemIcon className={classes.iconPic}><ViewListIcon style={{fill: "white"}}/></ListItemIcon>
+        <ListItemText className={classes.iconText}>Student List</ListItemText>
       </ListItem>
     </List>
     </Drawer>

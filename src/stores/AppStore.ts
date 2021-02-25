@@ -4,7 +4,7 @@ import { DataGrid, ColDef, RowsProp } from '@material-ui/data-grid';
 export type IndivClass = { 
   className: string; 
   nominalRoll?: Blob; 
-  classTopics?: string[];  
+  classModules?: string[];  
 }
 
 class AppStore {
@@ -13,12 +13,12 @@ class AppStore {
   studentTableColumns: ColDef[];
   classList: IndivClass[];
   recentlyAddedClass: IndivClass[];
-  listOfTopics: string[];
+  listOfModules: string[];
   
   //attributes needed to add new class 
   newClass: IndivClass;  
   newClassName: string; 
-  newClassTopics: string[]; 
+  newClassModules: string[]; 
   newClassRoll: Blob; 
 
   constructor() {
@@ -29,13 +29,13 @@ class AppStore {
       recentlyAddedClass: observable,
       newClass: observable,
       newClassName: observable,
-      newClassTopics: observable,
+      newClassModules: observable,
       newClassRoll: observable, 
-      listOfTopics: observable, 
+      listOfModules: observable, 
       addNewClass: action, 
       setNewClass: action,
       setNewClassName: action,
-      setNewClassTopics: action,
+      setNewClassModules: action,
       setNewClassRoll: action
     })
     
@@ -65,7 +65,7 @@ class AppStore {
       {className: 'Class E'}
     ];
 
-    this.listOfTopics = [
+    this.listOfModules = [
       'area',
       'perimeter',
       'division',
@@ -83,7 +83,7 @@ class AppStore {
     
     this.newClassName = '';
 
-    this.newClassTopics = [];
+    this.newClassModules = [];
 
     this.newClassRoll = null; 
   }
@@ -95,7 +95,7 @@ class AppStore {
 
   setNewClass = () => { 
     //create a new class 
-    const newlyCreatedClass: IndivClass = {className: this.newClassName, nominalRoll: this.newClassRoll, classTopics: this.newClassTopics}
+    const newlyCreatedClass: IndivClass = {className: this.newClassName, nominalRoll: this.newClassRoll, classModules: this.newClassModules}
     this.newClass = newlyCreatedClass; 
   };
 
@@ -103,8 +103,8 @@ class AppStore {
     this.newClassName = name; 
   };
 
-  setNewClassTopics = (topics: string[]) => { 
-    this.newClassTopics = topics; 
+  setNewClassModules = (modules: string[]) => { 
+    this.newClassModules = modules; 
   };
 
   setNewClassRoll = (roll:Blob) => { 

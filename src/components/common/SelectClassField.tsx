@@ -12,18 +12,9 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     formControl: {
       marginLeft: theme.spacing(1),
-      minWidth: '18%',
-    },
-    chips: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    chip: {
-      margin: 2,
-    },
-    noLabel: {
-      marginTop: theme.spacing(3),
-    },
+      marginTop: theme.spacing(0.5),
+      minWidth: '10%',
+    }
   }),
 );
 
@@ -39,10 +30,8 @@ const SelectClassField: React.FC = () => {
   return (
     <Grid container direction="row">
         <Typography variant="h6">Class:</Typography>
-        <FormControl variant="outlined" className={classes.formControl}>
+        <FormControl className={classes.formControl}>
           <Select
-            labelId="demo-simple-select-outlined-label"
-            id="demo-simple-select-outlined"
             value={uiState.currentClass ? uiState.currentClass.className : ''}
             onChange={handleChange}
             margin="dense"

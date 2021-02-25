@@ -4,8 +4,12 @@ import Grid from '@material-ui/core/Grid';
 import RecentlyAddedClass from './RecentlyAddedClass';
 import ClassDetails from './ClassDetails';
 import SelectClassField from '../common/SelectClassField';
+import { useStores } from '../../stores/StoreProvider';
+import { observer } from 'mobx-react';
 
 const HomePage: React.FC = () => {
+
+  const { uiState } = useStores(); 
 
   return (
     <Grid container direction="column" spacing={3}> 
@@ -15,11 +19,14 @@ const HomePage: React.FC = () => {
       <Grid item>
         <RecentlyAddedClass/>
       </Grid>
-      <Grid item>
-        <ClassDetails/>
-      </Grid>
+      {
+        uiState.currentClass.className != '' &&
+        <Grid item>
+          <ClassDetails/>
+        </Grid> 
+      }
     </Grid>
   );
 };
 
-export default HomePage; 
+export default observer(HomePage); 

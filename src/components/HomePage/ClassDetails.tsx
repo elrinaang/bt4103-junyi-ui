@@ -3,6 +3,8 @@ import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import { useStores } from '../../stores/StoreProvider';
+import { observer } from 'mobx-react';
 
 const useStyles = makeStyles((theme) => ({
   paper:{
@@ -14,14 +16,18 @@ const useStyles = makeStyles((theme) => ({
 const ClassDetails: React.FC = () => {
 
   const classes = useStyles();
+  const { uiState } = useStores();
 
   return (
-    <Grid container direction="row"> 
-      <Paper className={classes.paper}>
-        <Typography variant="button"><b>Class A</b></Typography>
-      </Paper>
-    </Grid>
+    <React.Fragment>
+      <Typography variant="h6"><b>{uiState.currentClass ? uiState.currentClass.className : 'None Selected'}</b></Typography>
+      <Grid container direction="row"> 
+        <Paper className={classes.paper} square>
+          <h1>Display Clusters</h1>
+        </Paper>
+      </Grid>
+    </React.Fragment>
   );
 };
 
-export default ClassDetails; 
+export default observer(ClassDetails); 

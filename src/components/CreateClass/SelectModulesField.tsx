@@ -10,32 +10,32 @@ import useStyles from './useStyles';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
 
-const SelectTopicsField: React.FC = () => {
+const SelectModulesField: React.FC = () => {
   const classes = useStyles();
   const { appStore } = useStores();
-  const selectedTopics = appStore.newClassTopics;
+  const selectedModules = appStore.newClassModules;
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    appStore.setNewClassTopics(event.target.value as string[]);
+    appStore.setNewClassModules(event.target.value as string[]);
   };
 
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Select Topics
+        Select Modules
       </Typography>
       <FormControl className={classes.formControl}>
         <Select
           multiple
-          value={selectedTopics}
+          value={selectedModules}
           onChange={handleChange}
           input={<Input />}
           renderValue={(selected) => (selected as string[]).join(', ')}
         >
-          {appStore.listOfTopics.map((topic) => (
-            <MenuItem key={topic} value={topic}>
-              <Checkbox checked={selectedTopics.indexOf(topic) > -1} color="primary"/>
-              <ListItemText primary={topic} />
+          {appStore.listOfModules.map((module) => (
+            <MenuItem key={module} value={module}>
+              <Checkbox checked={selectedModules.indexOf(module) > -1} color="primary"/>
+              <ListItemText primary={module} />
             </MenuItem>
           ))}
         </Select>
@@ -44,4 +44,4 @@ const SelectTopicsField: React.FC = () => {
   );
 };
 
-export default observer(SelectTopicsField);
+export default observer(SelectModulesField);

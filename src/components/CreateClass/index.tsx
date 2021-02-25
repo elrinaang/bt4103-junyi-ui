@@ -6,20 +6,20 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import ClassNameField from './ClassNameField';
-import SelectTopicsField from './SelectTopicsField';
+import SelectModulesField from './SelectModulesField';
 import UploadFileField from './UploadFileField';
 import useStyles from './useStyles';
 import { useStores } from '../../stores/StoreProvider';
 import redirect from '../../lib/redirect';
 
-const steps = ['Class Name', 'Select Topics', 'Upload File'];
+const steps = ['Class Name', 'Select Modules', 'Upload File'];
 
 const getStepContent = (step: number) => { 
   switch (step) {
     case 0:
       return <ClassNameField />;
     case 1:
-      return <SelectTopicsField />;
+      return <SelectModulesField />;
     case 2:
       return <UploadFileField />;
     default:
@@ -52,7 +52,7 @@ const CreateClass: React.FC = () => {
     redirect('/home');
     //housekeeping 
     appStore.setNewClassName('');
-    appStore.setNewClassTopics([]);
+    appStore.setNewClassModules([]);
     appStore.setNewClassRoll(null);
   }
 
@@ -78,34 +78,34 @@ const CreateClass: React.FC = () => {
 
   return (
     <React.Fragment>
-    <main className={classes.layout}>
-      <Paper className={classes.paper}>
-        <Typography component="h1" variant="h4" align="center">
-          Create Class
-        </Typography>
-        <Stepper activeStep={activeStep} className={classes.stepper}>
-          {steps.map((label) => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-        <React.Fragment>
-        <React.Fragment>
-          {getStepContent(activeStep)}
-          <div className={classes.buttons}>
-            {activeStep !== 0 && (
-              <Button onClick={handleBack} className={classes.button}>
-                Back
-              </Button>
-            )}
-            {activeStep === steps.length - 1 ? <SubmitButton/> : <NextButton/>}
-          </div>
-        </React.Fragment>
-        </React.Fragment>
-      </Paper>
-    </main>
-  </React.Fragment>
+      <main className={classes.layout}>
+        <Paper className={classes.paper}>
+          <Typography component="h1" variant="h4" align="center">
+            Create Class
+          </Typography>
+          <Stepper activeStep={activeStep} className={classes.stepper}>
+            {steps.map((label) => (
+              <Step key={label}>
+                <StepLabel>{label}</StepLabel>
+              </Step>
+            ))}
+          </Stepper>
+          <React.Fragment>
+          <React.Fragment>
+            {getStepContent(activeStep)}
+            <div className={classes.buttons}>
+              {activeStep !== 0 && (
+                <Button onClick={handleBack} className={classes.button}>
+                  Back
+                </Button>
+              )}
+              {activeStep === steps.length - 1 ? <SubmitButton/> : <NextButton/>}
+            </div>
+          </React.Fragment>
+          </React.Fragment>
+        </Paper>
+      </main>
+    </React.Fragment>
   );
 };
 
