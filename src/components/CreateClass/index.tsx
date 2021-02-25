@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -9,41 +8,9 @@ import StepLabel from '@material-ui/core/StepLabel';
 import ClassNameField from './ClassNameField';
 import SelectTopicsField from './SelectTopicsField';
 import UploadFileField from './UploadFileField';
-
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    position: 'relative',
-  },
-  layout: {
-    width: 'auto',
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-      width: 600,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    },
-  },
-  paper: {
-    marginBottom: theme.spacing(3),
-    padding: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      marginBottom: theme.spacing(6),
-      padding: theme.spacing(3),
-    },
-  },
-  stepper: {
-    padding: theme.spacing(3, 0, 5),
-  },
-  buttons: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
-  button: {
-    marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(1),
-  },
-}));
+import useStyles from './useStyles';
+import { useStores } from '../../stores/StoreProvider';
+import redirect from '../../lib/redirect';
 
 const steps = ['Class Name', 'Select Topics', 'Upload File'];
 
@@ -64,6 +31,8 @@ const CreateClass: React.FC = () => {
 
   const classes = useStyles();
 
+  const { appStore } = useStores();
+
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -73,6 +42,39 @@ const CreateClass: React.FC = () => {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
+  const handleSubmit = () => { 
+    appStore.setNewClass();
+    appStore.addNewClass(appStore.newClass);
+    //TODO: send to the BE
+
+    //redirect to home page 
+    redirect('/home');
+    //housekeeping 
+    appStore.setNewClassName('');
+    appStore.setNewClassTopics([]);
+    appStore.setNewClassRoll(null);
+  }
+
+  const NextButton = () => 
+    <Button
+      variant="contained"
+      color="primary"
+      onClick={handleNext}
+      className={classes.button}
+    > 
+      Next
+    </Button> 
+
+  const SubmitButton = () => 
+    <Button
+      variant="contained"
+      color="primary"
+      onClick={handleSubmit}
+      className={classes.button}
+    > 
+      Create Class
+    </Button> 
 
   return (
     <React.Fragment>
@@ -97,14 +99,7 @@ const CreateClass: React.FC = () => {
                 Back
               </Button>
             )}
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleNext}
-              className={classes.button}
-            >
-              {activeStep === steps.length - 1 ? 'Create Class' : 'Next'}
-            </Button>
+            {activeStep === steps.length - 1 ? <SubmitButton/> : <NextButton/>}
           </div>
         </React.Fragment>
         </React.Fragment>

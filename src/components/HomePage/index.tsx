@@ -3,14 +3,14 @@ import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import RecentlyAddedClass from './RecentlyAddedClass';
 import ClassDetails from './ClassDetails';
-import SearchClassField from './SearchClassField';
+import SelectClassField from '../studentList/SelectClassField';
 
 const HomePage: React.FC = () => {
 
   return (
     <Grid container direction="column" spacing={3}> 
       <Grid item>
-        <SearchClassField/>
+        <SelectClassField/>
       </Grid>
       <Grid item>
         <RecentlyAddedClass/>

@@ -5,22 +5,20 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+import { useStores } from '../../stores/StoreProvider';
 
 const UploadFileField: React.FC = () => {
 
   const fileRef = React.useRef();
+  const { appStore } = useStores();
   const [ file, setFile ] = React.useState(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     if (!event.target.files) return;    
     setFile(event.target.files[0]);      
-    console.log(event.target.files[0])
+    appStore.setNewClassRoll(event.target.files[0]);
   };
-
-  const handleFileUpload = () => { 
-    console.log('file uploaded');
-  }  
 
   return (
     <React.Fragment>
@@ -28,7 +26,6 @@ const UploadFileField: React.FC = () => {
         Upload File
       </Typography>
       <form 
-        onSubmit={handleFileUpload}
         noValidate 
         autoComplete="off" 
       >

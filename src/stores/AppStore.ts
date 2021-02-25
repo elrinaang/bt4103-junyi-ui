@@ -13,6 +13,7 @@ class AppStore {
   studentTableColumns: ColDef[];
   classList: IndivClass[];
   recentlyAddedClass: IndivClass[];
+  listOfTopics: string[];
   
   //attributes needed to add new class 
   newClass: IndivClass;  
@@ -30,6 +31,7 @@ class AppStore {
       newClassName: observable,
       newClassTopics: observable,
       newClassRoll: observable, 
+      listOfTopics: observable, 
       addNewClass: action, 
       setNewClass: action,
       setNewClassName: action,
@@ -61,6 +63,18 @@ class AppStore {
       {className: 'Class C'},
       {className: 'Class D'},
       {className: 'Class E'}
+    ];
+
+    this.listOfTopics = [
+      'area',
+      'perimeter',
+      'division',
+      'subtraction',
+      'addition',
+      'multiplication',
+      'fractions',
+      'percentage',
+      'decimals'
     ];
 
     this.recentlyAddedClass = [{className: 'New Class A'}];

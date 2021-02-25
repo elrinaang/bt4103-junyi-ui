@@ -6,6 +6,7 @@ import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { useStores } from '../../stores/StoreProvider';
+import { observer } from 'mobx-react';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,11 +29,13 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const SelectClassField: React.FC = () => {
   const classes = useStyles();
-  const { appStore } = useStores();
-  const [age, setAge] = React.useState('');
+  const { appStore, uiState } = useStores();
+  const [selectedClass, setSelectedClass] = React.useState(''); 
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setAge(event.target.value as string);
+    setSelectedClass(event.target.value as string);
+    const currentClass = appStore.classList.find(currClass => currClass.className == selectedClass); 
+    uiState.setCurrentClass(currentClass);
   };
 
   return (
@@ -42,14 +45,14 @@ const SelectClassField: React.FC = () => {
           <Select
             labelId="demo-simple-select-outlined-label"
             id="demo-simple-select-outlined"
-            value={age}
+            value={uiState.currentClass ? uiState.currentClass.className : ''}
             onChange={handleChange}
             margin="dense"
           >
             {
-              appStore.classList.map((selectedClass) =>
-              <MenuItem key={selectedClass.className}>
-                {selectedClass.className}
+              appStore.classList.map((indivClass) =>
+              <MenuItem key={indivClass.className}>
+                {indivClass.className}
               </MenuItem>)
             }
           </Select>
@@ -58,4 +61,4 @@ const SelectClassField: React.FC = () => {
   );
 };
 
-export default SelectClassField;
+export default observer(SelectClassField);

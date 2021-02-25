@@ -1,50 +1,22 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Input from '@material-ui/core/Input';
-import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: '90%',
-    },
-    chips: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    chip: {
-      margin: 2,
-    },
-    noLabel: {
-      marginTop: theme.spacing(3),
-    },
-  }),
-);
-
-const topics = [
-  'area',
-  'perimeter',
-  'division',
-  'subtraction',
-  'addition',
-  'multiplication',
-  'fractions',
-  'percentage',
-  'decimals'
-];
+import useStyles from './useStyles';
+import { useStores } from '../../stores/StoreProvider';
+import { observer } from 'mobx-react';
 
 const SelectTopicsField: React.FC = () => {
   const classes = useStyles();
-  const [personName, setPersonName] = React.useState<string[]>([]);
+  const { appStore } = useStores();
+  const selectedTopics = appStore.newClassTopics;
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setPersonName(event.target.value as string[]);
+    appStore.setNewClassTopics(event.target.value as string[]);
   };
 
   return (
@@ -55,15 +27,15 @@ const SelectTopicsField: React.FC = () => {
       <FormControl className={classes.formControl}>
         <Select
           multiple
-          value={personName}
+          value={selectedTopics}
           onChange={handleChange}
           input={<Input />}
           renderValue={(selected) => (selected as string[]).join(', ')}
         >
-          {topics.map((name) => (
-            <MenuItem key={name} value={name}>
-              <Checkbox checked={personName.indexOf(name) > -1} color="primary"/>
-              <ListItemText primary={name} />
+          {appStore.listOfTopics.map((topic) => (
+            <MenuItem key={topic} value={topic}>
+              <Checkbox checked={selectedTopics.indexOf(topic) > -1} color="primary"/>
+              <ListItemText primary={topic} />
             </MenuItem>
           ))}
         </Select>
@@ -72,4 +44,4 @@ const SelectTopicsField: React.FC = () => {
   );
 };
 
-export default SelectTopicsField;
+export default observer(SelectTopicsField);
