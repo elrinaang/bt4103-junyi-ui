@@ -11,6 +11,7 @@ import UploadFileField from './UploadFileField';
 import useStyles from './useStyles';
 import { useStores } from '../../stores/StoreProvider';
 import redirect from '../../lib/redirect';
+import Papa from 'papaparse';
 
 const steps = ['Group Name', 'Select Modules', 'Upload File'];
 
@@ -43,9 +44,22 @@ const CreateGroup: React.FC = () => {
     setActiveStep(activeStep - 1);
   };
 
+  const parseFile = async() => { 
+    Papa.parse(appStore.newGroupRoll,{
+      header: true,
+        download: true,
+        skipEmptyLines: true,
+        complete: function(results) {
+          appStore.addNewStudents(results.data);
+        }
+    })
+  }
+
   const handleSubmit = () => { 
     appStore.setNewClass();
     appStore.addNewClass(appStore.newGroup);
+    //TODO: use papaparse to read the file to put in student list 
+    parseFile();
     //TODO: send to the BE
 
     //redirect to home page 

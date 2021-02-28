@@ -40,21 +40,23 @@ class AppStore {
     })
     
     this.studentList = [
-      { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-      { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-      { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-      { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
+      { id: 1, name:'Adam', gender:'Male', points: 150, badges_cnt: 100 },
+      { id: 2, name:'Betty', gender:'Female', points: 120, badges_cnt: 80 },
+      { id: 3, name:'Charlie', gender:'Male', points: 60, badges_cnt: 120 },
+      { id: 4, name:'David', gender:'Male', points: 200, badges_cnt: 200 },
+      { id: 5, name:'Evan', gender:'Male', points: 100, badges_cnt: 100 }
     ];; 
 
     this.studentTableColumns = [
-      { field: 'id', headerName: 'ID', width: 70 },
-      { field: 'firstName', headerName: 'First name', width: 130 },
-      { field: 'lastName', headerName: 'Last name', width: 130 },
+      { field: 'id', headerName: 'ID', type: 'number', width: 70 },
+      { field: 'name', headerName: 'Name', width: 130 },
+      { field: 'gender', headerName: 'Gender', width: 100 },
+      { field: 'points', headerName: 'Points', type:'number', width: 100 },
       {
-        field: 'age',
-        headerName: 'Age',
+        field: 'badges_cnt',
+        headerName: 'No.of Badges',
         type: 'number',
-        width: 90,
+        width: 100,
       }
     ];
 
@@ -109,6 +111,10 @@ class AppStore {
 
   setNewGroupRoll = (roll:Blob) => { 
     this.newGroupRoll = roll; 
+  }; 
+
+  addNewStudents = (newStudents: ColDef[]) => { 
+    this.studentList = newStudents; 
   }
 }
 

@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import SelectGroupField from '../common/SelectGroupField';
 import { useStores } from '../../stores/StoreProvider';
+import { observer } from 'mobx-react';
 
 const useStyles = makeStyles(theme => ({
   filterClassButton: { 
@@ -78,4 +79,4 @@ const StudentList: React.FC = () => {
   );
 };
 
-export default StudentList; 
+export default observer(StudentList); 
