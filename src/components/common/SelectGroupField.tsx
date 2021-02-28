@@ -18,28 +18,28 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const SelectClassField: React.FC = () => {
+const SelectGroupField: React.FC = () => {
   const classes = useStyles();
   const { appStore, uiState } = useStores();
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    const currentClass = appStore.classList.find(currClass => currClass.className == event.target.value); 
-    uiState.setCurrentClass(currentClass);
+    const currentGroup = appStore.groupList.find(currGroup => currGroup.groupName == event.target.value); 
+    uiState.setCurrentGroup(currentGroup);
   };
 
   return (
     <Grid container direction="row">
-        <Typography variant="h6">Class:</Typography>
+        <Typography variant="h6">Group:</Typography>
         <FormControl className={classes.formControl}>
           <Select
-            value={uiState.currentClass ? uiState.currentClass.className : ''}
+            value={uiState.currentGroup ? uiState.currentGroup.groupName : ''}
             onChange={handleChange}
             margin="dense"
           >
             {
-              appStore.classList.map((indivClass) =>
-              <MenuItem key={indivClass.className} value={indivClass.className}>
-                {indivClass.className}
+              appStore.groupList.map((group) =>
+              <MenuItem key={group.groupName} value={group.groupName}>
+                {group.groupName}
               </MenuItem>)
             }
           </Select>
@@ -48,4 +48,4 @@ const SelectClassField: React.FC = () => {
   );
 };
 
-export default observer(SelectClassField);
+export default observer(SelectGroupField);

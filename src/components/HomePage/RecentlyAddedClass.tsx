@@ -7,7 +7,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { useStores } from '../../stores/StoreProvider';
-import { IndivClass } from '../../stores/AppStore';
+import { IndivGroup } from '../../stores/AppStore';
 import { Observer, observer } from 'mobx-react';
 
 const useStyles = makeStyles((theme) => ({
@@ -40,18 +40,18 @@ const RecentlyAddedClass: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Typography variant="h6"><b>Recently Added Class</b></Typography>
+      <Typography variant="h6"><b>Recently Added Groups</b></Typography>
       <Paper className={classes.paper} square>
         <Grid container direction="row" spacing={3}> 
           <Observer render={() =>
           <>
           {
-          appStore.recentlyAddedClass.map((newClass: IndivClass) =>
-            <Grid item xs={3} key={newClass.className}>
+          appStore.recentlyAddedGroups.map((newGroup: IndivGroup) =>
+            <Grid item xs={3} key={newGroup.groupName}>
               <Card variant="outlined" className={classes.root} square>
                 <CardContent className={classes.cardContent}>
                   <Typography variant="h6">
-                    <b>{newClass.className}</b>
+                    <b>{newGroup.groupName}</b>
                   </Typography>
                 </CardContent>
               </Card>

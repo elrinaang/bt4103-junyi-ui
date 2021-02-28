@@ -17,7 +17,7 @@ const UploadFileField: React.FC = () => {
     event.preventDefault();
     if (!event.target.files) return;    
     setFile(event.target.files[0]);      
-    appStore.setNewClassRoll(event.target.files[0]);
+    appStore.setNewGroupRoll(event.target.files[0]);
   };
 
   return (

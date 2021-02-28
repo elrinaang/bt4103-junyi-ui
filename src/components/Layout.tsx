@@ -96,10 +96,10 @@ const Layout: React.FC<LayoutProps> = (props) => {
       variant="contained" 
       color="secondary" 
       className={classes.button} 
-      onClick={()=>handleClickIcon('/createclass')}
+      onClick={()=>handleClickIcon('/creategroup')}
       disableElevation
     >
-      Create Class
+      Create Group
     </Button>
     <List className={classes.directoryList}>
       <ListItem button onClick={()=>handleClickIcon('/home')}>

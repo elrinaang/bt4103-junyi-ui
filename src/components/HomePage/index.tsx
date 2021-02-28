@@ -3,7 +3,7 @@ import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import RecentlyAddedClass from './RecentlyAddedClass';
 import ClassDetails from './ClassDetails';
-import SelectClassField from '../common/SelectClassField';
+import SelectGroupField from '../common/SelectGroupField';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
 
@@ -14,13 +14,13 @@ const HomePage: React.FC = () => {
   return (
     <Grid container direction="column" spacing={3}> 
       <Grid item>
-        <SelectClassField/>
+        <SelectGroupField/>
       </Grid>
       <Grid item>
         <RecentlyAddedClass/>
       </Grid>
       {
-        uiState.currentClass.className != '' &&
+        uiState.currentGroup.groupName != '' &&
         <Grid item>
           <ClassDetails/>
         </Grid> 

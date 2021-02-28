@@ -13,10 +13,10 @@ import { observer } from 'mobx-react';
 const SelectModulesField: React.FC = () => {
   const classes = useStyles();
   const { appStore } = useStores();
-  const selectedModules = appStore.newClassModules;
+  const selectedModules = appStore.newGroupModules;
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    appStore.setNewClassModules(event.target.value as string[]);
+    appStore.setNewGroupModules(event.target.value as string[]);
   };
 
   return (

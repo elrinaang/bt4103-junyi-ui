@@ -5,19 +5,19 @@ import Typography from '@material-ui/core/Typography';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import ClassNameField from './ClassNameField';
+import GroupNameField from './GroupNameField';
 import SelectModulesField from './SelectModulesField';
 import UploadFileField from './UploadFileField';
 import useStyles from './useStyles';
 import { useStores } from '../../stores/StoreProvider';
 import redirect from '../../lib/redirect';
 
-const steps = ['Class Name', 'Select Modules', 'Upload File'];
+const steps = ['Group Name', 'Select Modules', 'Upload File'];
 
 const getStepContent = (step: number) => { 
   switch (step) {
     case 0:
-      return <ClassNameField />;
+      return <GroupNameField />;
     case 1:
       return <SelectModulesField />;
     case 2:
@@ -27,7 +27,7 @@ const getStepContent = (step: number) => {
   }
 }
 
-const CreateClass: React.FC = () => {
+const CreateGroup: React.FC = () => {
 
   const classes = useStyles();
 
@@ -45,15 +45,15 @@ const CreateClass: React.FC = () => {
 
   const handleSubmit = () => { 
     appStore.setNewClass();
-    appStore.addNewClass(appStore.newClass);
+    appStore.addNewClass(appStore.newGroup);
     //TODO: send to the BE
 
     //redirect to home page 
     redirect('/home');
     //housekeeping 
-    appStore.setNewClassName('');
-    appStore.setNewClassModules([]);
-    appStore.setNewClassRoll(null);
+    appStore.setNewGroupName('');
+    appStore.setNewGroupModules([]);
+    appStore.setNewGroupRoll(null);
   }
 
   const NextButton = () => 
@@ -73,7 +73,7 @@ const CreateClass: React.FC = () => {
       onClick={handleSubmit}
       className={classes.button}
     > 
-      Create Class
+      Create Group
     </Button> 
 
   return (
@@ -81,7 +81,7 @@ const CreateClass: React.FC = () => {
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
-            Create Class
+            Create New Group
           </Typography>
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (
@@ -109,4 +109,4 @@ const CreateClass: React.FC = () => {
   );
 };
 
-export default CreateClass; 
+export default CreateGroup; 

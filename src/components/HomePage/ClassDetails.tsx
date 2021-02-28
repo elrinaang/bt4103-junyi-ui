@@ -20,7 +20,7 @@ const ClassDetails: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Typography variant="h6"><b>{uiState.currentClass ? uiState.currentClass.className : 'None Selected'}</b></Typography>
+      <Typography variant="h6"><b>{uiState.currentGroup ? uiState.currentGroup.groupName : 'None Selected'}</b></Typography>
       <Grid container direction="row"> 
         <Paper className={classes.paper} square>
           <h1>Display Clusters</h1>

@@ -2,7 +2,7 @@ import * as React from 'react';
 import Layout from './Layout';
 import HomePage from './HomePage'; 
 import StudentList from './studentList'; 
-import CreateClass from './CreateClass';
+import CreateGroup from './CreateGroup';
 
 interface LandingPageProps{ 
   currentPage: string;
@@ -25,8 +25,8 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
 
       }
       {
-        currentPage === 'createclass' &&
-        <CreateClass/> 
+        currentPage === 'creategroup' &&
+        <CreateGroup/> 
 
       }
     </Layout>

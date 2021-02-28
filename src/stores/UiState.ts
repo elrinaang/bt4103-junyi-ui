@@ -1,30 +1,30 @@
 import { observable, action, computed, makeObservable} from 'mobx';
-import { IndivClass } from './AppStore';
+import { IndivGroup } from './AppStore';
 
 class UiState {
 
   errorMessage: string;  
-  currentClass: IndivClass; 
+  currentGroup: IndivGroup; 
 
   constructor() {
     makeObservable(this, {
       errorMessage: observable,
-      currentClass: observable,  
+      currentGroup: observable,  
       setErrorMessage: action,
-      setCurrentClass: action
+      setCurrentGroup: action
     })
     
     this.errorMessage = '';
-    this.currentClass = {className:''};
+    this.currentGroup = {groupName:''};
   }
 
   setErrorMessage = (message: string) => { 
     this.errorMessage = message; 
   };
 
-  setCurrentClass = (selectedClass: IndivClass) => { 
-    this.currentClass = selectedClass; 
-    console.log(this.currentClass);
+  setCurrentGroup = (selectedGroup: IndivGroup) => { 
+    this.currentGroup = selectedGroup; 
+    console.log(this.currentGroup);
   }
 }
 

@@ -1,42 +1,42 @@
 import { observable, action, computed, makeObservable} from 'mobx';
 import { DataGrid, ColDef, RowsProp } from '@material-ui/data-grid';
 
-export type IndivClass = { 
-  className: string; 
+export type IndivGroup = { 
+  groupName: string; 
   nominalRoll?: Blob; 
-  classModules?: string[];  
+  groupModules?: string[];  
 }
 
 class AppStore {
 
   studentList: RowsProp; 
   studentTableColumns: ColDef[];
-  classList: IndivClass[];
-  recentlyAddedClass: IndivClass[];
+  groupList: IndivGroup[];
+  recentlyAddedGroups: IndivGroup[];
   listOfModules: string[];
   
   //attributes needed to add new class 
-  newClass: IndivClass;  
-  newClassName: string; 
-  newClassModules: string[]; 
-  newClassRoll: Blob; 
+  newGroup: IndivGroup;  
+  newGroupName: string; 
+  newGroupModules: string[]; 
+  newGroupRoll: Blob; 
 
   constructor() {
     makeObservable(this, {
       studentList: observable,
       studentTableColumns: observable,  
-      classList: observable,
-      recentlyAddedClass: observable,
-      newClass: observable,
-      newClassName: observable,
-      newClassModules: observable,
-      newClassRoll: observable, 
+      groupList: observable,
+      recentlyAddedGroups: observable,
+      newGroup: observable,
+      newGroupName: observable,
+      newGroupModules: observable,
+      newGroupRoll: observable, 
       listOfModules: observable, 
       addNewClass: action, 
       setNewClass: action,
-      setNewClassName: action,
-      setNewClassModules: action,
-      setNewClassRoll: action
+      setNewGroupName: action,
+      setNewGroupModules: action,
+      setNewGroupRoll: action
     })
     
     this.studentList = [
@@ -58,11 +58,11 @@ class AppStore {
       }
     ];
 
-    this.classList = [{className: 'Class A'},
-      {className: 'Class B'},
-      {className: 'Class C'},
-      {className: 'Class D'},
-      {className: 'Class E'}
+    this.groupList = [{groupName: 'Group A'},
+      {groupName: 'Group B'},
+      {groupName: 'Group C'},
+      {groupName: 'Group D'},
+      {groupName: 'Group E'}
     ];
 
     this.listOfModules = [
@@ -77,38 +77,38 @@ class AppStore {
       'decimals'
     ];
 
-    this.recentlyAddedClass = [{className: 'New Class A'}];
+    this.recentlyAddedGroups = [{groupName: 'New Group A'}];
 
-    this.newClass = null; 
+    this.newGroup = null; 
     
-    this.newClassName = '';
+    this.newGroupName = '';
 
-    this.newClassModules = [];
+    this.newGroupModules = [];
 
-    this.newClassRoll = null; 
+    this.newGroupRoll = null; 
   }
 
-  addNewClass = (newClass: IndivClass) => { 
-    this.classList.push(newClass);
-    this.recentlyAddedClass.push(newClass); 
+  addNewClass = (newGroup: IndivGroup) => { 
+    this.groupList.push(newGroup);
+    this.recentlyAddedGroups.push(newGroup); 
   }; 
 
   setNewClass = () => { 
     //create a new class 
-    const newlyCreatedClass: IndivClass = {className: this.newClassName, nominalRoll: this.newClassRoll, classModules: this.newClassModules}
-    this.newClass = newlyCreatedClass; 
+    const newlyCreatedClass: IndivGroup = {groupName: this.newGroupName, nominalRoll: this.newGroupRoll, groupModules: this.newGroupModules}
+    this.newGroup = newlyCreatedClass; 
   };
 
-  setNewClassName = (name: string) => { 
-    this.newClassName = name; 
+  setNewGroupName = (name: string) => { 
+    this.newGroupName = name; 
   };
 
-  setNewClassModules = (modules: string[]) => { 
-    this.newClassModules = modules; 
+  setNewGroupModules = (modules: string[]) => { 
+    this.newGroupModules = modules; 
   };
 
-  setNewClassRoll = (roll:Blob) => { 
-    this.newClassRoll = roll; 
+  setNewGroupRoll = (roll:Blob) => { 
+    this.newGroupRoll = roll; 
   }
 }
 

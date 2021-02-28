@@ -1,12 +1,12 @@
 import * as React from 'react';
 import LandingPage from '../src/components/LandingPage';
 
-const CreateClass: React.FC = () => {  
+const CreateGroup: React.FC = () => {  
     const props = {
-      currentPage: 'createclass',
-      title: 'Create Class'
+      currentPage: 'creategroup',
+      title: 'Create Group'
     }
   return <LandingPage {...props}/>
 }
 
-export default CreateClass; 
+export default CreateGroup; 

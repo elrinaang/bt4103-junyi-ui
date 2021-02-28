@@ -5,7 +5,7 @@ import { DataGrid, ColDef, RowsProp } from '@material-ui/data-grid';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import SelectClassField from '../common/SelectClassField';
+import SelectGroupField from '../common/SelectGroupField';
 import { useStores } from '../../stores/StoreProvider';
 
 const useStyles = makeStyles(theme => ({
@@ -36,7 +36,7 @@ const StudentList: React.FC = () => {
     <React.Fragment>
       <Grid container direction="column" spacing={3}>
         <Grid item xs={12}>
-          <SelectClassField/>
+          <SelectGroupField/>
         </Grid> 
 
         <Grid item xs={12}>
