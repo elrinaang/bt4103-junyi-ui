@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
+import Alert from '@material-ui/lab/Alert';
 import { useStores } from '../../stores/StoreProvider';
 import { IndivGroup } from '../../stores/AppStore';
 import { Observer, observer } from 'mobx-react';
@@ -30,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItem: 'center',
     justifyContent: 'center'
+  },
+  infoMsg: {
+    marginBottom: theme.spacing(2)
   }
 }));
 
@@ -42,27 +45,24 @@ const RecentlyAddedClass: React.FC = () => {
     <React.Fragment>
       <Typography variant="h6"><b>Recently Added Groups</b></Typography>
       <Paper className={classes.paper} square>
+        <Alert severity="info" className={classes.infoMsg}>Click on each group to view more details</Alert>
         <Grid container direction="row" spacing={3}> 
-          <Observer render={() =>
-          <>
-          {
+        {
           appStore.recentlyAddedGroups.map((newGroup: IndivGroup) =>
-            <Grid item xs={3} key={newGroup.groupName}>
-              <Card variant="outlined" className={classes.root} square>
-                <CardContent className={classes.cardContent}>
-                  <Typography variant="h6">
-                    <b>{newGroup.groupName}</b>
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>)  
-          }
-          </>
-          }/>
+          <Grid item xs={3} key={newGroup.groupName}>
+            <Card variant="outlined" className={classes.root} square>
+              <CardContent className={classes.cardContent}>
+                <Typography variant="h6">
+                  <b>{newGroup.groupName}</b>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>) 
+        }
         </Grid>
       </Paper>
     </React.Fragment>
   );
 };
 
-export default RecentlyAddedClass; 
+export default observer(RecentlyAddedClass); 

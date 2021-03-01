@@ -52,29 +52,31 @@ const StudentList: React.FC = () => {
           </div>
         </Grid>
       </Grid>
-
-      <Snackbar
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
-        open={openSnackBar}
-        autoHideDuration={6000}
-        onClose={handleCloseSnackBar}
-        message="Click on individual student to view more details"
-        action={
-          <React.Fragment>
-            <IconButton 
-              size="small" 
-              aria-label="close" 
-              color="inherit" 
-              onClick={handleCloseSnackBar}
-            >
-              <CloseIcon fontSize="small" />
-            </IconButton>
-          </React.Fragment>
-        }
-      />
+      {
+        appStore.groupList.length > 0 &&
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+          open={openSnackBar}
+          autoHideDuration={6000}
+          onClose={handleCloseSnackBar}
+          message="Click on individual student to view more details"
+          action={
+            <React.Fragment>
+              <IconButton 
+                size="small" 
+                aria-label="close" 
+                color="inherit" 
+                onClick={handleCloseSnackBar}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </React.Fragment>
+          }
+        /> 
+      }
     </React.Fragment>
   );
 };

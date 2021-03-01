@@ -9,16 +9,19 @@ import { observer } from 'mobx-react';
 
 const HomePage: React.FC = () => {
 
-  const { uiState } = useStores(); 
+  const { uiState, appStore } = useStores(); 
 
   return (
     <Grid container direction="column" spacing={3}> 
       <Grid item>
         <SelectGroupField/>
       </Grid>
-      <Grid item>
-        <RecentlyAddedClass/>
-      </Grid>
+      {
+        appStore.recentlyAddedGroups.length > 0 && 
+        <Grid item>
+          <RecentlyAddedClass/>
+        </Grid>
+      }
       {
         uiState.currentGroup.groupName != '' &&
         <Grid item>

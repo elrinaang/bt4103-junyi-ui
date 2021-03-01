@@ -23,7 +23,7 @@ const UploadFileField: React.FC = () => {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Upload File
+        Upload File (*in CSV format)
       </Typography>
       <form 
         noValidate 

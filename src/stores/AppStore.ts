@@ -39,13 +39,7 @@ class AppStore {
       setNewGroupRoll: action
     })
     
-    this.studentList = [
-      { id: 1, name:'Adam', gender:'Male', points: 150, badges_cnt: 100 },
-      { id: 2, name:'Betty', gender:'Female', points: 120, badges_cnt: 80 },
-      { id: 3, name:'Charlie', gender:'Male', points: 60, badges_cnt: 120 },
-      { id: 4, name:'David', gender:'Male', points: 200, badges_cnt: 200 },
-      { id: 5, name:'Evan', gender:'Male', points: 100, badges_cnt: 100 }
-    ];; 
+    this.studentList = []; 
 
     this.studentTableColumns = [
       { field: 'id', headerName: 'ID', type: 'number', width: 70 },
@@ -60,12 +54,7 @@ class AppStore {
       }
     ];
 
-    this.groupList = [{groupName: 'Group A'},
-      {groupName: 'Group B'},
-      {groupName: 'Group C'},
-      {groupName: 'Group D'},
-      {groupName: 'Group E'}
-    ];
+    this.groupList = [];
 
     this.listOfModules = [
       'area',
@@ -79,7 +68,7 @@ class AppStore {
       'decimals'
     ];
 
-    this.recentlyAddedGroups = [{groupName: 'New Group A'}];
+    this.recentlyAddedGroups = [];
 
     this.newGroup = null; 
     

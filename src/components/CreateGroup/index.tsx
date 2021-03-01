@@ -44,7 +44,7 @@ const CreateGroup: React.FC = () => {
     setActiveStep(activeStep - 1);
   };
 
-  const parseFile = async() => { 
+  const parseFile = () => { 
     Papa.parse(appStore.newGroupRoll,{
       header: true,
         download: true,
