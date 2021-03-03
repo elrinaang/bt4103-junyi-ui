@@ -16,18 +16,17 @@ const HomePage: React.FC = () => {
       <Grid item>
         <SelectGroupField/>
       </Grid>
+      {/* 
       {
         appStore.recentlyAddedGroups.length > 0 && 
         <Grid item>
           <RecentlyAddedClass/>
         </Grid>
       }
-      {
-        uiState.currentGroup.groupName != '' &&
-        <Grid item>
-          <ClassDetails/>
-        </Grid> 
-      }
+      */}
+      <Grid item>
+        <ClassDetails/>
+      </Grid> 
     </Grid>
   );
 };

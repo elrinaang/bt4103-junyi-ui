@@ -1,31 +1,62 @@
 import * as React from 'react';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
+import { IndivGroup } from '../../stores/AppStore';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 const useStyles = makeStyles((theme) => ({
   paper:{
     padding: theme.spacing(2),
     minWidth: '100%'
+  },
+  root: {
+    minWidth: 180,
+    maxWidth: '70%',
+    //backgroundColor:'#cefaaa',
+    padding: theme.spacing(1,0,1),
+    marginTop: theme.spacing(1)
+  },
+  cards:{
+    marginTop: theme.spacing(2)
+  },
+  cardContent: { 
+    display: 'flex',
+    alignItem: 'center',
+    justifyContent: 'center'
+  },
+  indivGroup: { 
+    marginBottom: theme.spacing(4)
   }
 }));
 
 const ClassDetails: React.FC = () => {
 
   const classes = useStyles();
-  const { uiState } = useStores();
+  const { appStore } = useStores();
 
   return (
     <React.Fragment>
-      <Typography variant="h6"><b>{uiState.currentGroup ? uiState.currentGroup.groupName : 'None Selected'}</b></Typography>
-      <Grid container direction="row"> 
-        <Paper className={classes.paper} square>
-          <h1>Display Clusters</h1>
-        </Paper>
-      </Grid>
+      {
+        appStore.groupList.map((newGroup: IndivGroup) =>
+        <div className={classes.indivGroup}>
+        <Typography variant="h6"><b>{newGroup.groupName}</b></Typography>
+        <Grid container direction="row"> 
+          <Grid item xs={3} key={newGroup.groupName}>
+              <Card className={classes.root} square variant="outlined">
+                <CardContent className={classes.cardContent}>
+                  <Typography variant="h6">
+                    <b>Indiv Cluster</b>
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+        </Grid>
+        </div>) 
+        }
     </React.Fragment>
   );
 };

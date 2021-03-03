@@ -19,9 +19,8 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 180,
     maxWidth: '70%',
     //backgroundColor:'#cefaaa',
-    borderColor: theme.palette.secondary.light,
-    borderWidth: 2,
-    padding: theme.spacing(1,0,1)
+    padding: theme.spacing(1,0,1),
+    marginTop: theme.spacing(1)
   },
   cards:{
     marginTop: theme.spacing(2)
@@ -44,13 +43,12 @@ const RecentlyAddedClass: React.FC = () => {
   return (
     <React.Fragment>
       <Typography variant="h6"><b>Recently Added Groups</b></Typography>
-      <Paper className={classes.paper} square>
-        <Alert severity="info" className={classes.infoMsg}>Click on each group to view more details</Alert>
+        <Typography variant="caption">Click on each group to view more details</Typography>
         <Grid container direction="row" spacing={3}> 
         {
           appStore.recentlyAddedGroups.map((newGroup: IndivGroup) =>
           <Grid item xs={3} key={newGroup.groupName}>
-            <Card variant="outlined" className={classes.root} square>
+            <Card className={classes.root} square variant="outlined">
               <CardContent className={classes.cardContent}>
                 <Typography variant="h6">
                   <b>{newGroup.groupName}</b>
@@ -60,7 +58,6 @@ const RecentlyAddedClass: React.FC = () => {
           </Grid>) 
         }
         </Grid>
-      </Paper>
     </React.Fragment>
   );
 };

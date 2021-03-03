@@ -13,6 +13,8 @@ const UploadFileField: React.FC = () => {
   const { appStore } = useStores();
   const [ file, setFile ] = React.useState(null);
 
+  React.useEffect(() => appStore.setNewGroupRoll(null),[]); 
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     if (!event.target.files) return;    

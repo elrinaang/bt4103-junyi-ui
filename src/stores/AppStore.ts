@@ -5,11 +5,13 @@ export type IndivGroup = {
   groupName: string; 
   nominalRoll?: Blob; 
   groupModules?: string[];  
+  groupStudents?: any;
 }
 
 class AppStore {
 
   studentList: RowsProp; 
+  filteredStudentList: RowsProp; 
   studentTableColumns: ColDef[];
   groupList: IndivGroup[];
   recentlyAddedGroups: IndivGroup[];
@@ -20,10 +22,12 @@ class AppStore {
   newGroupName: string; 
   newGroupModules: string[]; 
   newGroupRoll: Blob; 
+  newGroupStudents: any; 
 
   constructor() {
     makeObservable(this, {
       studentList: observable,
+      filteredStudentList: observable, 
       studentTableColumns: observable,  
       groupList: observable,
       recentlyAddedGroups: observable,
@@ -31,15 +35,20 @@ class AppStore {
       newGroupName: observable,
       newGroupModules: observable,
       newGroupRoll: observable, 
+      newGroupStudents: observable, 
       listOfModules: observable, 
-      addNewClass: action, 
+      addNewGroup: action, 
       setNewClass: action,
       setNewGroupName: action,
       setNewGroupModules: action,
-      setNewGroupRoll: action
+      setNewGroupRoll: action,
+      setNewGroupStudents: action,
+      setFilteredStudentList: action 
     })
     
     this.studentList = []; 
+    
+    this.filteredStudentList = this.studentList; 
 
     this.studentTableColumns = [
       { field: 'id', headerName: 'ID', type: 'number', width: 70 },
@@ -77,11 +86,20 @@ class AppStore {
     this.newGroupModules = [];
 
     this.newGroupRoll = null; 
+    
+    this.newGroupStudents = []; 
   }
 
-  addNewClass = (newGroup: IndivGroup) => { 
-    this.groupList.push(newGroup);
-    this.recentlyAddedGroups.push(newGroup); 
+  addNewGroup = () => { 
+    const newlyCreatedGroup: IndivGroup = {
+      groupName: this.newGroupName, 
+      nominalRoll: this.newGroupRoll, 
+      groupModules: this.newGroupModules,
+      groupStudents: this.newGroupStudents
+    }
+    this.groupList.push(newlyCreatedGroup);
+    this.recentlyAddedGroups.push(newlyCreatedGroup); 
+    console.log(newlyCreatedGroup);
   }; 
 
   setNewClass = () => { 
@@ -102,9 +120,19 @@ class AppStore {
     this.newGroupRoll = roll; 
   }; 
 
+  setNewGroupStudents = (students: any) => { 
+    this.newGroupStudents = students; 
+  };
+
+  setFilteredStudentList = (selectedGroup: IndivGroup) => {
+    //put the students in this class as the rowsprops 
+    this.filteredStudentList = selectedGroup.groupStudents; 
+  };
+
   addNewStudents = (newStudents: ColDef[]) => { 
     this.studentList = newStudents; 
-  }
+  }; 
+
 }
 
 export default AppStore;

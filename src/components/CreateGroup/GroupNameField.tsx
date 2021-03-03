@@ -10,6 +10,8 @@ const GroupNameField: React.FC = () => {
   const { appStore } = useStores(); 
   const selectedGroupName = appStore.newGroupName; 
 
+  React.useEffect(() => appStore.setNewGroupName(''),[]); 
+
   const handleGroupNameChange = (event: React.ChangeEvent) => { 
     const { value } =  event.target as HTMLInputElement;
     appStore.setNewGroupName(value);

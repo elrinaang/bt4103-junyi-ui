@@ -43,7 +43,7 @@ const StudentList: React.FC = () => {
         <Grid item xs={12}>
           <div style={{ display: 'flex', flexGrow: 1 }}>
             <DataGrid 
-              rows={appStore.studentList} 
+              rows={appStore.filteredStudentList.length > 0 ? appStore.filteredStudentList : appStore.studentList} 
               columns={appStore.studentTableColumns} 
               pageSize={5} 
               autoHeight

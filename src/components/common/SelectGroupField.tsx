@@ -25,6 +25,7 @@ const SelectGroupField: React.FC = () => {
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     const currentGroup = appStore.groupList.find(currGroup => currGroup.groupName == event.target.value); 
     uiState.setCurrentGroup(currentGroup);
+    appStore.setFilteredStudentList(currentGroup);
   };
 
   return (

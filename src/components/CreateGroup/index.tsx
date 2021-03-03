@@ -50,24 +50,21 @@ const CreateGroup: React.FC = () => {
         download: true,
         skipEmptyLines: true,
         complete: function(results) {
+          //add to total students and also add to individual class objects 
           appStore.addNewStudents(results.data);
+          appStore.setNewGroupStudents(results.data);
+          appStore.addNewGroup();
         }
     })
   }
 
   const handleSubmit = () => { 
-    appStore.setNewClass();
-    appStore.addNewClass(appStore.newGroup);
-    //TODO: use papaparse to read the file to put in student list 
+    //use papaparse to read the file to put in student list
     parseFile();
     //TODO: send to the BE
 
     //redirect to home page 
     redirect('/home');
-    //housekeeping 
-    appStore.setNewGroupName('');
-    appStore.setNewGroupModules([]);
-    appStore.setNewGroupRoll(null);
   }
 
   const NextButton = () => 

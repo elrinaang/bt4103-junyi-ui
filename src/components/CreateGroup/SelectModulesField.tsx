@@ -15,6 +15,8 @@ const SelectModulesField: React.FC = () => {
   const { appStore } = useStores();
   const selectedModules = appStore.newGroupModules;
 
+  React.useEffect(() => appStore.setNewGroupModules([]),[]); 
+
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     appStore.setNewGroupModules(event.target.value as string[]);
   };
