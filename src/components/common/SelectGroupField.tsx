@@ -30,21 +30,21 @@ const SelectGroupField: React.FC = () => {
 
   return (
     <Grid container direction="row">
-        <Typography variant="h6">Group:</Typography>
-        <FormControl className={classes.formControl}>
-          <Select
-            value={uiState.currentGroup ? uiState.currentGroup.groupName : ''}
-            onChange={handleChange}
-            margin="dense"
-          >
-            {
-              appStore.groupList.map((group) =>
-              <MenuItem key={group.groupName} value={group.groupName}>
-                {group.groupName}
-              </MenuItem>)
-            }
-          </Select>
-        </FormControl>
+      <Typography variant="h6">Group:</Typography>
+      <FormControl className={classes.formControl}>
+        <Select
+          value={uiState.currentGroup ? uiState.currentGroup.groupName : ''}
+          onChange={handleChange}
+          margin="dense"
+        >
+          {
+            appStore.groupList.map((group) =>
+            <MenuItem key={group.groupName} value={group.groupName}>
+              {group.groupName}
+            </MenuItem>)
+          }
+        </Select>
+      </FormControl>
     </Grid>
   );
 };

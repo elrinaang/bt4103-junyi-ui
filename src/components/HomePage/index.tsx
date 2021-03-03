@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import RecentlyAddedClass from './RecentlyAddedClass';
 import ClassDetails from './ClassDetails';
 import SelectGroupField from '../common/SelectGroupField';
+import SearchGroupField from '../common/SearchGroupField';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
 
@@ -14,7 +15,7 @@ const HomePage: React.FC = () => {
   return (
     <Grid container direction="column" spacing={3}> 
       <Grid item>
-        <SelectGroupField/>
+        <SearchGroupField/>
       </Grid>
       {/* 
       {

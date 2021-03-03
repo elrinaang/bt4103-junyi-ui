@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
   appBar: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: '#333366',
     color: 'white'
   },
   drawer: {
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme: Theme) =>
   button: { 
     margin: theme.spacing(0,3,0),
     padding: theme.spacing(3,-3,3),
-    backgroundColor: '#9ACD32'
+    backgroundColor: '#FF9933'
   },
   directoryList: { 
     marginTop: theme.spacing(2)
