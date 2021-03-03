@@ -20,18 +20,22 @@ interface LayoutProps {
   title: string; 
 }
 
-const drawerWidth = 210;
+const drawerWidth = 80;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
   root: {
     display: 'flex',
+    flexGrow:1
+  },
+  title:{ 
+    flexGrow: 1
   },
   appBar: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
-    backgroundColor: 'white',
-    color: theme.palette.primary.dark
+    backgroundColor: theme.palette.primary.main,
+    color: 'white'
   },
   drawer: {
     width: drawerWidth,
@@ -42,11 +46,9 @@ const useStyles = makeStyles((theme: Theme) =>
     background: theme.palette.primary.main,
     color: 'white'
   },
-  iconText: { 
-    marginLeft: theme.spacing(-2)
-  },
   iconPic: { 
-    marginLeft: theme.spacing(1.5)
+    paddingLeft: theme.spacing(1.5),
+    paddingBottom: theme.spacing(1)
   },
   button: { 
     margin: theme.spacing(0,3,0),
@@ -78,38 +80,36 @@ const Layout: React.FC<LayoutProps> = (props) => {
   <div className={classes.root}>
     <AppBar position="fixed" className={classes.appBar} elevation={0}>
     <Toolbar>
-      <Typography variant="h6" noWrap>
+      <Typography variant="h6" className={classes.title}>
         <b>{title}</b>
       </Typography>
+      <Button 
+        variant="contained" 
+        color="secondary" 
+        className={classes.button} 
+        onClick={()=>handleClickIcon('/creategroup')}
+        disableElevation
+      >
+      Create Group
+    </Button>
     </Toolbar>
     </AppBar>
     <Drawer
-    className={classes.drawer}
-    variant="permanent"
-    classes={{
-      paper: classes.drawerPaper,
-    }}
-    anchor="left"
+      className={classes.drawer}
+      variant="permanent"
+      classes={{
+        paper: classes.drawerPaper,
+      }}
+      anchor="left"
     >
     <div className={classes.toolbar} />
-    <Button 
-      variant="contained" 
-      color="secondary" 
-      className={classes.button} 
-      onClick={()=>handleClickIcon('/creategroup')}
-      disableElevation
-    >
-      Create Group
-    </Button>
     <List className={classes.directoryList}>
       <ListItem button onClick={()=>handleClickIcon('/home')}>
         <ListItemIcon className={classes.iconPic}><HomeIcon style={{fill: "white"}}/></ListItemIcon>
-        <ListItemText className={classes.iconText}>Home</ListItemText>
       </ListItem>
       <Divider/>
       <ListItem button onClick={()=>handleClickIcon('/studentlist')}>
         <ListItemIcon className={classes.iconPic}><ViewListIcon style={{fill: "white"}}/></ListItemIcon>
-        <ListItemText className={classes.iconText}>Student List</ListItemText>
       </ListItem>
     </List>
     </Drawer>
@@ -121,4 +121,4 @@ const Layout: React.FC<LayoutProps> = (props) => {
   );
 };
 
-export default Layout; 
+export default Layout;
