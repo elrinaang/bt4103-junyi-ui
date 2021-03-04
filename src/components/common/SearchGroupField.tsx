@@ -13,11 +13,15 @@ import Box from '@material-ui/core/Box';
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
-            padding: theme.spacing(2,2,2),
-            marginBottom: theme.spacing(2)
+          padding: theme.spacing(2,2,2),
+          marginBottom: theme.spacing(2),
+          minWidth: '80%'
         },
         textField:{
-            width:'190'
+          minWidth: '100%'
+        },
+        form: { 
+          minWidth: '100%'
         }
   }),
 );
@@ -34,16 +38,26 @@ const SearchGroupField: React.FC = () => {
 
   return (
     <Paper elevation={0}>
-        <Box display="flex" justifyContent="center" alignItems="center" className={classes.root}>
-            <Box m={1}>
-                <form noValidate autoComplete="off">
-                    <TextField  className={classes.textField} id="outlined-basic" label="Enter Group Name" variant="outlined" margin="dense"/>
-                </form>
-            </Box>
-            <Box m={1}>
-            <Button variant="contained">Search</Button>
-            </Box>
-        </Box>
+      <Grid container alignItems="center" spacing={2} className={classes.root}>
+        <Grid item xs={3}>
+          <></>
+        </Grid>
+        <Grid item xs={4}>
+          <form noValidate autoComplete="off" className={classes.form}>
+            <TextField 
+              //className={classes.textField} 
+              id="outlined-basic" 
+              label="Enter Group Name" 
+              variant="outlined" 
+              margin="dense"
+              fullWidth
+            />
+          </form>
+        </Grid>
+        <Grid item xs={3}>
+          <Button variant="contained">Search</Button>
+        </Grid>
+      </Grid>
     </Paper>
   );
 };

@@ -10,7 +10,7 @@ const theme = createMuiTheme({
       dark: '#000000'
     },
     secondary: {
-      main: '#37474f',
+      main: '#333366',
       dark: '#102027',
       light: '#62727b'
     },
@@ -20,6 +20,9 @@ const theme = createMuiTheme({
     background: {
       default: '#F8F8F8',
     },
+    info: { 
+      main: '#FF9933'
+    }
   },
   typography: {
     fontFamily: ['"Montserrat"', 'Open Sans'].join(',')

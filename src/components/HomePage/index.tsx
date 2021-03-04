@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import RecentlyAddedClass from './RecentlyAddedClass';
 import ClassDetails from './ClassDetails';
 import SelectGroupField from '../common/SelectGroupField';
@@ -26,7 +27,11 @@ const HomePage: React.FC = () => {
       }
       */}
       <Grid item>
-        <ClassDetails/>
+        {
+          appStore.groupList.length > 0 
+          ? <ClassDetails/>
+          : <Typography variant="body1">No Groups Added</Typography>
+        }
       </Grid> 
     </Grid>
   );
