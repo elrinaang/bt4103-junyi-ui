@@ -50,17 +50,17 @@ class AppStore {
 
     this.studentTableColumns = [
       { field: 'id', headerName: 'ID', type: 'number', width: 70 },
-      { field: 'name', headerName: 'Name', width: 130 },
-      { field: 'gender', headerName: 'Gender', width: 100 },
+      { field: 'name', headerName: 'Name', width: 150 },
+      { field: 'gender', headerName: 'Gender', width: 120 },
       { field: 'points', headerName: 'Points', type:'number', width: 100 },
       {
         field: 'badges_cnt',
         headerName: 'No.of Badges',
         type: 'number',
-        width: 100,
+        width: 120,
       },
-      { field: 'first_login_date_TW', headerName: 'First Login Date', width: 100 },
-      { field: 'user_grade', headerName: 'User Grade', width: 70},
+      { field: 'first_login_date_TW', headerName: 'First Login Date', width: 150 },
+      { field: 'user_grade', headerName: 'Grade', width: 100},
       { field: 'user_city', headerName: 'City', width: 100 }
     ];
 

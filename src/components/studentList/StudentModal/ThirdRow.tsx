@@ -27,19 +27,19 @@ const ThirdRow: React.FC = () => {
     <Grid container spacing={5} className={classes.root}>
       <Grid item xs={4}>
         <Paper elevation={0} className={classes.indivStat}>
-          <Typography variant="h3">5</Typography>  
-          <Typography variant="subtitle1">No.of hints Used</Typography>
+          <Typography variant="h3">{currentStudent.avg_hint_per_attempt}</Typography>  
+          <Typography variant="subtitle1">Average Number of Hints Used</Typography>
         </Paper>
       </Grid> 
       <Grid item xs={4}> 
         <Paper elevation={0} className={classes.indivStat}>
-          <Typography variant="h3">3</Typography>  
+          <Typography variant="h3">{currentStudent.no_upgrades}</Typography>  
           <Typography variant="subtitle1">No.of Upgrades</Typography>
         </Paper>
       </Grid>
       <Grid item xs={4}>
         <Paper elevation={0} className={classes.indivStat}>
-          <Typography variant="h3">2</Typography>  
+          <Typography variant="h3">{currentStudent.no_downgrades}</Typography>  
           <Typography variant="subtitle1">No.of Downgrades</Typography>
         </Paper>
       </Grid> 

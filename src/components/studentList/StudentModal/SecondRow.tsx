@@ -17,6 +17,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const getTimeAsMins = (seconds: number) => { 
+  return Math.floor(seconds / 60);
+}
+
 
 const SecondRow: React.FC = () => {
 
@@ -28,13 +32,13 @@ const SecondRow: React.FC = () => {
     <Grid container spacing={5} className={classes.root}>
       <Grid item xs={6}>
         <Paper elevation={0} className={classes.indivStat}>
-          <Typography variant="h3">2.5 mins</Typography>  
+          <Typography variant="h3">{`${getTimeAsMins(currentStudent.avg_time_per_exercise)} mins`}</Typography>  
           <Typography variant="subtitle1">Average Time taken for each problem</Typography>
         </Paper>
       </Grid> 
       <Grid item xs={6}>
         <Paper elevation={0} className={classes.indivStat}>
-          <Typography variant="h3">6 mins</Typography>  
+          <Typography variant="h3">{`${getTimeAsMins(currentStudent.avg_time_btw_problem)} mins`}</Typography>  
           <Typography variant="subtitle1">Average time taken between each exercise</Typography>
         </Paper>
       </Grid>

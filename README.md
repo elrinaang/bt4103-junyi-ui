@@ -59,3 +59,27 @@ api (folder that contains the api calls)
 
 theme (file that defines main theme for the app e.g. colour scheme)
 ```
+
+### Objects 
+#### Student: 
+avg_accuracy 
+avg_hint_per_attempt
+avg_time_btw_problem
+avg_time_per_exercise
+badges_cnt
+belongs_to_class_cnt
+exercises_attempted
+first_login_date_TW
+gender
+has_class_cnt
+has_student_cnt
+has_teacher_cnt 
+id
+is_self_coach 
+name
+no_downgrades
+no_upgrades
+points
+prolems_attempted 
+user_city 
+user_grade 

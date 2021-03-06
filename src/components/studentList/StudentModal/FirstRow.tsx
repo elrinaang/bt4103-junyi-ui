@@ -17,6 +17,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const getAccuracyasPercentage = (rawNumber: number) => { 
+  return rawNumber * 100; 
+}
+
 
 const FirstRow: React.FC = () => {
 
@@ -28,20 +32,20 @@ const FirstRow: React.FC = () => {
     <Grid container spacing={5} className={classes.root}>
       <Grid item xs={6}>
         <Paper elevation={0} className={classes.indivStat}>
-          <Typography variant="h3">85.5%</Typography>  
+          <Typography variant="h3">{`${getAccuracyasPercentage(currentStudent.avg_accuracy)}%`}</Typography>  
           <Typography variant="subtitle1">Average Accuarcy</Typography>
         </Paper>
       </Grid> 
       <Grid item xs={3}> 
         <Paper elevation={0} className={classes.indivStat}>
-          <Typography variant="h3">16</Typography>  
-          <Typography variant="subtitle1">No.of Exercises</Typography>
+          <Typography variant="h3">{currentStudent.exercises_attempted}</Typography>  
+          <Typography variant="subtitle1">No.of Exercises Attempted</Typography>
         </Paper>
       </Grid>
       <Grid item xs={3}>
         <Paper elevation={0} className={classes.indivStat}>
-          <Typography variant="h3">54</Typography>  
-          <Typography variant="subtitle1">No.of Problems</Typography>
+          <Typography variant="h3">{currentStudent.problems_attempted}</Typography>  
+          <Typography variant="subtitle1">No.of Problems Attempted</Typography>
         </Paper>
       </Grid> 
     </Grid>
