@@ -5,8 +5,8 @@ import { DataGrid, ColDef, RowsProp } from '@material-ui/data-grid';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import SelectGroupField from '../common/SelectGroupField';
-import SearchGroupField from '../common/SearchGroupField';
+import SelectGroupField from './SelectGroupField';
+import StudentModal from './StudentModal';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
 
@@ -23,11 +23,12 @@ const useStyles = makeStyles(theme => ({
 const StudentList: React.FC = () => {
 
   const classes = useStyles();
-  const { appStore } = useStores();
+  const { appStore, uiState } = useStores();
   const [openSnackBar, handleOpenSnackBar] = React.useState(true);
 
   const onSelectStudent = (id: number | string) => { 
-    console.log(id);
+    const student = appStore.studentList.find(student => student.id == id); 
+    uiState.setCurrentStudent(student);
   };
 
   const handleCloseSnackBar = () => { 
@@ -77,6 +78,9 @@ const StudentList: React.FC = () => {
             </React.Fragment>
           }
         /> 
+      }
+      {
+        uiState.currentStudent && <StudentModal/>
       }
     </React.Fragment>
   );

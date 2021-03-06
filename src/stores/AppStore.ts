@@ -14,7 +14,6 @@ class AppStore {
   filteredStudentList: RowsProp; 
   studentTableColumns: ColDef[];
   groupList: IndivGroup[];
-  recentlyAddedGroups: IndivGroup[];
   listOfModules: string[];
   
   //attributes needed to add new class 
@@ -30,7 +29,6 @@ class AppStore {
       filteredStudentList: observable, 
       studentTableColumns: observable,  
       groupList: observable,
-      recentlyAddedGroups: observable,
       newGroup: observable,
       newGroupName: observable,
       newGroupModules: observable,
@@ -60,7 +58,10 @@ class AppStore {
         headerName: 'No.of Badges',
         type: 'number',
         width: 100,
-      }
+      },
+      { field: 'first_login_date_TW', headerName: 'First Login Date', width: 100 },
+      { field: 'user_grade', headerName: 'User Grade', width: 70},
+      { field: 'user_city', headerName: 'City', width: 100 }
     ];
 
     this.groupList = [];
@@ -76,8 +77,6 @@ class AppStore {
       'percentage',
       'decimals'
     ];
-
-    this.recentlyAddedGroups = [];
 
     this.newGroup = null; 
     
@@ -98,7 +97,6 @@ class AppStore {
       groupStudents: this.newGroupStudents
     }
     this.groupList.push(newlyCreatedGroup);
-    this.recentlyAddedGroups.push(newlyCreatedGroup); 
     console.log(newlyCreatedGroup);
   }; 
 

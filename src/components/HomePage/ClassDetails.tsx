@@ -42,10 +42,10 @@ const ClassDetails: React.FC = () => {
     <React.Fragment>
       {
         appStore.groupList.map((newGroup: IndivGroup) =>
-        <div className={classes.indivGroup}>
-        <Typography variant="h6"><b>{newGroup.groupName}</b></Typography>
-        <Grid container direction="row"> 
-          <Grid item xs={3} key={newGroup.groupName}>
+        <div className={classes.indivGroup} key={newGroup.groupName}>
+          <Typography variant="h6"><b>{newGroup.groupName}</b></Typography>
+          <Grid container direction="row"> 
+            <Grid item xs={3} key={newGroup.groupName}>
               <Card className={classes.root} square variant="outlined">
                 <CardContent className={classes.cardContent}>
                   <Typography variant="h6">
@@ -54,7 +54,7 @@ const ClassDetails: React.FC = () => {
                 </CardContent>
               </Card>
             </Grid>
-        </Grid>
+          </Grid>
         </div>) 
         }
     </React.Fragment>
