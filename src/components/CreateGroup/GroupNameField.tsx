@@ -5,7 +5,11 @@ import TextField from '@material-ui/core/TextField';
 import { observer } from 'mobx-react';
 import { useStores } from '../../stores/StoreProvider';
 
-const GroupNameField: React.FC = () => {
+export interface CreateGroupProps{ 
+  handleNextStep: () => void
+}
+
+const GroupNameField: React.FC<CreateGroupProps> = (props) => {
 
   const { appStore } = useStores(); 
   const selectedGroupName = appStore.newGroupName; 
@@ -17,6 +21,11 @@ const GroupNameField: React.FC = () => {
     appStore.setNewGroupName(value);
   };
 
+  const handleSubmit = (event: React.FormEvent) => { 
+    event.preventDefault(); 
+    props.handleNextStep();
+  }
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -24,7 +33,7 @@ const GroupNameField: React.FC = () => {
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <form noValidate autoComplete="off">
+          <form noValidate autoComplete="off" onSubmit={handleSubmit}>
             <TextField
               required
               id="address1"

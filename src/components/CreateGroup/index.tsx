@@ -15,19 +15,6 @@ import Papa from 'papaparse';
 
 const steps = ['Group Name', 'Select Modules', 'Upload File'];
 
-const getStepContent = (step: number) => { 
-  switch (step) {
-    case 0:
-      return <GroupNameField />;
-    case 1:
-      return <SelectModulesField />;
-    case 2:
-      return <UploadFileField />;
-    default:
-      throw new Error('Unknown step');
-  }
-}
-
 const CreateGroup: React.FC = () => {
 
   const classes = useStyles();
@@ -35,6 +22,19 @@ const CreateGroup: React.FC = () => {
   const { appStore } = useStores();
 
   const [activeStep, setActiveStep] = React.useState(0);
+
+  const getStepContent = (step: number) => { 
+    switch (step) {
+      case 0:
+        return <GroupNameField handleNextStep={handleNext}/>;
+      case 1:
+        return <SelectModulesField />;
+      case 2:
+        return <UploadFileField />;
+      default:
+        throw new Error('Unknown step');
+    }
+  }
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
