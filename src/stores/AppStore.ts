@@ -2,11 +2,12 @@ import { observable, action, computed, makeObservable} from 'mobx';
 import { DataGrid, ColDef, RowsProp } from '@material-ui/data-grid';
 
 export type IndivGroup = { 
+  id: number;
   groupName: string; 
   nominalRoll?: Blob; 
   groupModules?: string[];  
   groupStudents?: any;
-}
+}; 
 
 class AppStore {
 
@@ -35,8 +36,7 @@ class AppStore {
       newGroupRoll: observable, 
       newGroupStudents: observable, 
       listOfModules: observable, 
-      addNewGroup: action, 
-      setNewClass: action,
+      setGroups: action, 
       setNewGroupName: action,
       setNewGroupModules: action,
       setNewGroupRoll: action,
@@ -44,7 +44,7 @@ class AppStore {
       setFilteredStudentList: action 
     })
     
-    this.studentList = []; 
+    this.studentList = [{id: 5, name: 'test name 1'},{id:3,name:'test name 2'}]; 
     
     this.filteredStudentList = this.studentList; 
 
@@ -89,22 +89,9 @@ class AppStore {
     this.newGroupStudents = []; 
   }
 
-  addNewGroup = () => { 
-    const newlyCreatedGroup: IndivGroup = {
-      groupName: this.newGroupName, 
-      nominalRoll: this.newGroupRoll, 
-      groupModules: this.newGroupModules,
-      groupStudents: this.newGroupStudents
-    }
-    this.groupList.push(newlyCreatedGroup);
-    console.log(newlyCreatedGroup);
+  setGroups = (retrievedGroup: IndivGroup[]) => { 
+    this.groupList = retrievedGroup; 
   }; 
-
-  setNewClass = () => { 
-    //create a new class 
-    const newlyCreatedClass: IndivGroup = {groupName: this.newGroupName, nominalRoll: this.newGroupRoll, groupModules: this.newGroupModules}
-    this.newGroup = newlyCreatedClass; 
-  };
 
   setNewGroupName = (name: string) => { 
     this.newGroupName = name; 
@@ -126,11 +113,6 @@ class AppStore {
     //put the students in this class as the rowsprops 
     this.filteredStudentList = selectedGroup.groupStudents; 
   };
-
-  addNewStudents = (newStudents: ColDef[]) => { 
-    this.studentList = newStudents; 
-  }; 
-
 }
 
 export default AppStore;

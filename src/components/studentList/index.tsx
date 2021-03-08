@@ -9,6 +9,8 @@ import SelectGroupField from './SelectGroupField';
 import StudentModal from './StudentModal';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
+import { getStudents, getStudentDetail } from '../../api/studentService';
+import { getGroups } from '../../api/groupService';
 
 const useStyles = makeStyles(theme => ({
   filterClassButton: { 
@@ -26,8 +28,20 @@ const StudentList: React.FC = () => {
   const { appStore, uiState } = useStores();
   const [openSnackBar, handleOpenSnackBar] = React.useState(true);
 
-  const onSelectStudent = (id: number | string) => { 
-    const student = appStore.studentList.find(student => student.id == id); 
+  React.useEffect(() => {
+    async function fetchStudents() {
+      let students = await getStudents();
+      let groups = await getGroups();
+      appStore.studentList = students;
+      appStore.setGroups(groups); 
+    }
+
+    fetchStudents();
+  }, []); 
+
+  const onSelectStudent = async (studentId: any) => { 
+    //get the student detail from the backend 
+    const student = await getStudentDetail(studentId); 
     uiState.setCurrentStudent(student);
   };
 

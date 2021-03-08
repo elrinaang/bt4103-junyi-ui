@@ -6,10 +6,21 @@ import ClassDetails from './ClassDetails';
 import SearchGroupField from './SearchGroupField';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
+import { getGroups } from '../../api/groupService';
 
 const HomePage: React.FC = () => {
 
   const { uiState, appStore } = useStores(); 
+
+  //Retrieve groups; TODO: set an awaiting circle when the groups are still retrieving 
+  React.useEffect(() => {
+    async function fetchGroups() {
+      let groups = await getGroups();
+      appStore.setGroups(groups);
+    }
+
+    fetchGroups();
+  }, []);
 
   return (
     <Grid container direction="column" spacing={3}> 

@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
+import { getStudentsByGroup } from '../../api/studentService';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,10 +27,9 @@ const SelectGroupField: React.FC = () => {
   const classes = useStyles();
   const { appStore, uiState } = useStores();
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    const currentGroup = appStore.groupList.find(currGroup => currGroup.groupName == event.target.value); 
-    uiState.setCurrentGroup(currentGroup);
-    appStore.setFilteredStudentList(currentGroup);
+  const handleChange =  async(event: React.ChangeEvent<{ value: number }>) => {
+    const currentGroupStudents = await getStudentsByGroup(event.target.value);
+    appStore.setFilteredStudentList(currentGroupStudents);
   };
 
   return (
