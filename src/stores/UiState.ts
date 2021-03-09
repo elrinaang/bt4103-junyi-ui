@@ -18,7 +18,7 @@ class UiState {
     })
     
     this.errorMessage = '';
-    this.currentGroup = {groupName:''};
+    this.currentGroup = {name:''};
     this.currentStudent = null; 
   }
 

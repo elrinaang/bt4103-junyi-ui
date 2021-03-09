@@ -31,7 +31,7 @@ const SearchGroupField: React.FC = () => {
   const { appStore, uiState } = useStores();
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    const currentGroup = appStore.groupList.find(currGroup => currGroup.groupName == event.target.value); 
+    const currentGroup = appStore.groupList.find(currGroup => currGroup.name == event.target.value); 
     uiState.setCurrentGroup(currentGroup);
     appStore.setFilteredStudentList(currentGroup);
   };

@@ -52,7 +52,10 @@ const CreateGroup: React.FC = () => {
         skipEmptyLines: true,
         complete: function(results) {
           //send to the BE 
-          createGroup(appStore.newGroupName,results.data,appStore.newGroupModules); 
+          const res = results.data.map((item) => {
+            return item.id
+          });
+          createGroup(appStore.newGroupName,res, ["1", "2"]); 
         }
     })
   }

@@ -3,7 +3,7 @@ import { DataGrid, ColDef, RowsProp } from '@material-ui/data-grid';
 
 export type IndivGroup = { 
   id: number;
-  groupName: string; 
+  name: string; 
   nominalRoll?: Blob; 
   groupModules?: string[];  
   groupStudents?: any;
@@ -44,7 +44,7 @@ class AppStore {
       setFilteredStudentList: action 
     })
     
-    this.studentList = [{id: 5, name: 'test name 1'},{id:3,name:'test name 2'}]; 
+    this.studentList = []; 
     
     this.filteredStudentList = this.studentList; 
 

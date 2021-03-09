@@ -38,15 +38,15 @@ const SelectGroupField: React.FC = () => {
       <Typography variant="h6">Group:</Typography>
       <FormControl className={classes.formControl}>
         <Select
-          value={uiState.currentGroup ? uiState.currentGroup.groupName : ''}
+          value={uiState.currentGroup ? uiState.currentGroup.name : ''}
           onChange={handleChange}
           margin="dense"
           variant="outlined"
         >
           {
             appStore.groupList.map((group) =>
-            <MenuItem key={group.groupName} value={group.groupName}>
-              {group.groupName}
+            <MenuItem key={group.name} value={group.name}>
+              {group.name}
             </MenuItem>)
           }
         </Select>
