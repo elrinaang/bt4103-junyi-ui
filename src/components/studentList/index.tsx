@@ -13,7 +13,7 @@ import { getStudents, getStudentDetail } from '../../api/studentService';
 import { getGroups } from '../../api/groupService';
 
 const useStyles = makeStyles(theme => ({
-  filterClassButton: { 
+  filterClassButton: {
     float: 'right'
   },
   formControl: {
@@ -33,19 +33,19 @@ const StudentList: React.FC = () => {
       let students = await getStudents();
       let groups = await getGroups();
       appStore.studentList = students;
-      appStore.setGroups(groups); 
+      appStore.setGroups(groups);
     }
 
     fetchStudents();
-  }, []); 
+  }, []);
 
-  const onSelectStudent = async (studentId: any) => { 
-    //get the student detail from the backend 
-    const student = await getStudentDetail(studentId); 
+  const onSelectStudent = async (studentId: any) => {
+    //get the student detail from the backend
+    const student = await getStudentDetail(studentId);
     uiState.setCurrentStudent(student);
   };
 
-  const handleCloseSnackBar = () => { 
+  const handleCloseSnackBar = () => {
     handleOpenSnackBar(false);
   };
 
@@ -54,14 +54,14 @@ const StudentList: React.FC = () => {
       <Grid container direction="column" spacing={3}>
         <Grid item xs={12}>
           <SelectGroupField/>
-        </Grid> 
+        </Grid>
 
         <Grid item xs={12}>
           <div style={{ display: 'flex', flexGrow: 1 }}>
-            <DataGrid 
-              rows={appStore.filteredStudentList.length > 0 ? appStore.filteredStudentList : appStore.studentList} 
-              columns={appStore.studentTableColumns} 
-              pageSize={5} 
+            <DataGrid
+              rows={appStore.filteredStudentList?.length > 0 ? appStore.filteredStudentList : appStore.studentList}
+              columns={appStore.studentTableColumns}
+              pageSize={5}
               autoHeight
               onRowClick={(val) => onSelectStudent(val.row.id)}
             />
@@ -81,17 +81,17 @@ const StudentList: React.FC = () => {
           message="Click on individual student to view more details"
           action={
             <React.Fragment>
-              <IconButton 
-                size="small" 
-                aria-label="close" 
-                color="inherit" 
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
                 onClick={handleCloseSnackBar}
               >
                 <CloseIcon fontSize="small" />
               </IconButton>
             </React.Fragment>
           }
-        /> 
+        />
       }
       {
         uiState.currentStudent && <StudentModal/>
@@ -100,4 +100,4 @@ const StudentList: React.FC = () => {
   );
 };
 
-export default observer(StudentList); 
+export default observer(StudentList);

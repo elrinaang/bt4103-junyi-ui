@@ -1,52 +1,52 @@
 import { observable, action, computed, makeObservable} from 'mobx';
 import { DataGrid, ColDef, RowsProp } from '@material-ui/data-grid';
 
-export type IndivGroup = { 
+export type IndivGroup = {
   id: number;
-  name: string; 
-  nominalRoll?: Blob; 
-  groupModules?: string[];  
+  name: string;
+  nominalRoll?: Blob;
+  groupModules?: string[];
   groupStudents?: any;
-}; 
+};
 
 class AppStore {
 
-  studentList: RowsProp; 
-  filteredStudentList: RowsProp; 
+  studentList: RowsProp;
+  filteredStudentList: RowsProp;
   studentTableColumns: ColDef[];
   groupList: IndivGroup[];
   listOfModules: string[];
-  
-  //attributes needed to add new class 
-  newGroup: IndivGroup;  
-  newGroupName: string; 
-  newGroupModules: string[]; 
-  newGroupRoll: Blob; 
-  newGroupStudents: any; 
+
+  //attributes needed to add new class
+  newGroup: IndivGroup;
+  newGroupName: string;
+  newGroupModules: string[];
+  newGroupRoll: Blob;
+  newGroupStudents: any;
 
   constructor() {
     makeObservable(this, {
       studentList: observable,
-      filteredStudentList: observable, 
-      studentTableColumns: observable,  
+      filteredStudentList: observable,
+      studentTableColumns: observable,
       groupList: observable,
       newGroup: observable,
       newGroupName: observable,
       newGroupModules: observable,
-      newGroupRoll: observable, 
-      newGroupStudents: observable, 
-      listOfModules: observable, 
-      setGroups: action, 
+      newGroupRoll: observable,
+      newGroupStudents: observable,
+      listOfModules: observable,
+      setGroups: action,
       setNewGroupName: action,
       setNewGroupModules: action,
       setNewGroupRoll: action,
       setNewGroupStudents: action,
-      setFilteredStudentList: action 
+      setFilteredStudentList: action
     })
-    
-    this.studentList = []; 
-    
-    this.filteredStudentList = this.studentList; 
+
+    this.studentList = [];
+
+    this.filteredStudentList = this.studentList;
 
     this.studentTableColumns = [
       { field: 'id', headerName: 'ID', type: 'number', width: 70 },
@@ -78,40 +78,42 @@ class AppStore {
       'decimals'
     ];
 
-    this.newGroup = null; 
-    
+    this.newGroup = null;
+
     this.newGroupName = '';
 
     this.newGroupModules = [];
 
-    this.newGroupRoll = null; 
-    
-    this.newGroupStudents = []; 
+    this.newGroupRoll = null;
+
+    this.newGroupStudents = [];
   }
 
-  setGroups = (retrievedGroup: IndivGroup[]) => { 
-    this.groupList = retrievedGroup; 
-  }; 
-
-  setNewGroupName = (name: string) => { 
-    this.newGroupName = name; 
+  setGroups = (retrievedGroup: IndivGroup[]) => {
+    this.groupList = retrievedGroup;
   };
 
-  setNewGroupModules = (modules: string[]) => { 
-    this.newGroupModules = modules; 
+  setNewGroupName = (name: string) => {
+    this.newGroupName = name;
   };
 
-  setNewGroupRoll = (roll:Blob) => { 
-    this.newGroupRoll = roll; 
-  }; 
-
-  setNewGroupStudents = (students: any) => { 
-    this.newGroupStudents = students; 
+  setNewGroupModules = (modules: string[]) => {
+    this.newGroupModules = modules;
   };
 
-  setFilteredStudentList = (selectedGroup: IndivGroup) => {
-    //put the students in this class as the rowsprops 
-    this.filteredStudentList = selectedGroup.groupStudents; 
+  setNewGroupRoll = (roll:Blob) => {
+    this.newGroupRoll = roll;
+  };
+
+  setNewGroupStudents = (students: any) => {
+    this.newGroupStudents = students;
+  };
+
+  setFilteredStudentList = (selectedGroup: any) => {
+    console.log(selectedGroup);
+    //put the students in this class as the rowsprops
+    this.filteredStudentList = selectedGroup;
+    console.log(this.filteredStudentList)
   };
 }
 

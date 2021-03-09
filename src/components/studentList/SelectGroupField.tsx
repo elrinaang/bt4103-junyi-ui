@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
       //marginTop: theme.spacing(0.5),
       minWidth: '20%',
     },
-    root: { 
+    root: {
       padding: theme.spacing(3,3,3)
     }
   }),
@@ -29,6 +29,7 @@ const SelectGroupField: React.FC = () => {
 
   const handleChange =  async(event: React.ChangeEvent<{ value: number }>) => {
     const currentGroupStudents = await getStudentsByGroup(event.target.value);
+    console.log(currentGroupStudents)
     appStore.setFilteredStudentList(currentGroupStudents);
   };
 
@@ -45,7 +46,7 @@ const SelectGroupField: React.FC = () => {
         >
           {
             appStore.groupList.map((group) =>
-            <MenuItem key={group.name} value={group.name}>
+            <MenuItem key={group.id} value={group.id}>
               {group.name}
             </MenuItem>)
           }
