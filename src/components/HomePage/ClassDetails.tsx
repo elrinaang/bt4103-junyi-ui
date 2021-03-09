@@ -33,6 +33,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const clusters = ['cluster 1', 'cluster 2', 'cluster 3', 'cluster 4', 'cluster 5', 'cluster 6'];
+
 const ClassDetails: React.FC = () => {
 
   const classes = useStyles();
@@ -45,15 +47,18 @@ const ClassDetails: React.FC = () => {
         <div className={classes.indivGroup} key={newGroup.id}>
           <Typography variant="h6"><b>{newGroup.name}</b></Typography>
           <Grid container direction="row"> 
-            <Grid item xs={3} key={newGroup.name}>
-              <Card className={classes.root} square variant="outlined">
-                <CardContent className={classes.cardContent}>
-                  <Typography variant="h6">
-                    <b>Indiv Cluster</b>
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
+          {
+            clusters.map((cluster: string) => 
+              <Grid item xs={3} key={cluster}>
+                <Card className={classes.root} square variant="outlined">
+                  <CardContent className={classes.cardContent}>
+                    <Typography variant="h6">
+                      {cluster}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+          )}
           </Grid>
         </div>) 
         }
