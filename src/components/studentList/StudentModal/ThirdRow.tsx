@@ -7,10 +7,10 @@ import Paper from '@material-ui/core/Paper';
 import { observer } from 'mobx-react';
 
 const useStyles = makeStyles(theme => ({
-  root:{ 
+  root:{
     padding: theme.spacing(0,5,0)
   },
-  indivStat: { 
+  indivStat: {
     textAlign: 'center',
     padding: theme.spacing(2,0,2)
   }
@@ -19,32 +19,32 @@ const useStyles = makeStyles(theme => ({
 
 const ThirdRow: React.FC = () => {
 
-  const { uiState, appStore } = useStores(); 
+  const { uiState, appStore } = useStores();
   const classes = useStyles();
   const currentStudent = uiState.currentStudent;
-  
+
   return (
     <Grid container spacing={5} className={classes.root}>
       <Grid item xs={4}>
         <Paper elevation={0} className={classes.indivStat}>
-          <Typography variant="h3">{currentStudent.avg_hint_per_attempt}</Typography>  
+          <Typography variant="h3">{Math.round((+currentStudent.avg_hint_per_attempt + Number.EPSILON) * 100) / 100}</Typography>
           <Typography variant="subtitle1">Average Number of Hints Used</Typography>
         </Paper>
-      </Grid> 
-      <Grid item xs={4}> 
+      </Grid>
+      <Grid item xs={4}>
         <Paper elevation={0} className={classes.indivStat}>
-          <Typography variant="h3">{currentStudent.no_upgrades}</Typography>  
+          <Typography variant="h3">{currentStudent.no_upgrades}</Typography>
           <Typography variant="subtitle1">No.of Upgrades</Typography>
         </Paper>
       </Grid>
       <Grid item xs={4}>
         <Paper elevation={0} className={classes.indivStat}>
-          <Typography variant="h3">{currentStudent.no_downgrades}</Typography>  
+          <Typography variant="h3">{currentStudent.no_downgrades}</Typography>
           <Typography variant="subtitle1">No.of Downgrades</Typography>
         </Paper>
-      </Grid> 
+      </Grid>
     </Grid>
   );
 };
 
-export default observer(ThirdRow); 
+export default observer(ThirdRow);
