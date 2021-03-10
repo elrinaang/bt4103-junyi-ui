@@ -27,10 +27,11 @@ const SelectGroupField: React.FC = () => {
   const classes = useStyles();
   const { appStore, uiState } = useStores();
 
-  const handleChange =  async(event: React.ChangeEvent<{ value: number }>) => {
-    const currentGroup = appStore.groupList.find(group => group.id == event.target.value); 
+  const handleChange =  async(event: React.ChangeEvent<{ value: string }>) => {
+      console.log(appStore.groupList);
+    const currentGroup = appStore.groupList.find(group => group.name == event.target.value);
     console.log(currentGroup);
-    const currentGroupStudents = await getStudentsByGroup(event.target.value);
+    const currentGroupStudents = await getStudentsByGroup(currentGroup.id);
     uiState.setCurrentGroup(currentGroup.name);
     appStore.setFilteredStudentList(currentGroupStudents);
   };
@@ -48,7 +49,7 @@ const SelectGroupField: React.FC = () => {
         >
           {
             appStore.groupList.map((group) =>
-            <MenuItem key={group.id} value={group.id}>
+            <MenuItem key={group.id} value={group.name}>
               {group.name}
             </MenuItem>)
           }

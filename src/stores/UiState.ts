@@ -3,35 +3,36 @@ import { IndivGroup } from './AppStore';
 
 class UiState {
 
-  errorMessage: string;  
-  currentGroup: string; 
-  currentStudent: any; 
+  errorMessage: string;
+  currentGroup: string;
+  currentStudent: any;
 
   constructor() {
     makeObservable(this, {
       errorMessage: observable,
       currentGroup: observable,
-      currentStudent: observable,  
+      currentStudent: observable,
       setErrorMessage: action,
       setCurrentGroup: action,
       setCurrentStudent: action
     })
-    
+
     this.errorMessage = '';
     this.currentGroup = '';
-    this.currentStudent = null; 
+    this.currentStudent = null;
   }
 
-  setErrorMessage = (message: string) => { 
-    this.errorMessage = message; 
+  setErrorMessage = (message: string) => {
+    this.errorMessage = message;
   };
 
-  setCurrentGroup = (groupName: string) => { 
-    this.currentGroup = groupName; 
+  setCurrentGroup = (groupName: string) => {
+    this.currentGroup = groupName;
+    console.log(this.currentGroup);
   };
 
-  setCurrentStudent = (student: any) => { 
-    this.currentStudent = student; 
+  setCurrentStudent = (student: any) => {
+    this.currentStudent = student;
     console.log(this.currentStudent);
   }
 }
