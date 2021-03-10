@@ -28,8 +28,10 @@ const SelectGroupField: React.FC = () => {
   const { appStore, uiState } = useStores();
 
   const handleChange =  async(event: React.ChangeEvent<{ value: number }>) => {
+    const currentGroup = appStore.groupList.find(group => group.id == event.target.value); 
+    console.log(currentGroup);
     const currentGroupStudents = await getStudentsByGroup(event.target.value);
-    console.log(currentGroupStudents)
+    uiState.setCurrentGroup(currentGroup.name);
     appStore.setFilteredStudentList(currentGroupStudents);
   };
 
@@ -39,7 +41,7 @@ const SelectGroupField: React.FC = () => {
       <Typography variant="h6">Group:</Typography>
       <FormControl className={classes.formControl}>
         <Select
-          value={uiState.currentGroup ? uiState.currentGroup.name : ''}
+          value={uiState.currentGroup}
           onChange={handleChange}
           margin="dense"
           variant="outlined"

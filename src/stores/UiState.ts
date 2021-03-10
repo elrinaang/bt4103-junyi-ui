@@ -4,7 +4,7 @@ import { IndivGroup } from './AppStore';
 class UiState {
 
   errorMessage: string;  
-  currentGroup: IndivGroup; 
+  currentGroup: string; 
   currentStudent: any; 
 
   constructor() {
@@ -18,7 +18,7 @@ class UiState {
     })
     
     this.errorMessage = '';
-    this.currentGroup = {name:''};
+    this.currentGroup = '';
     this.currentStudent = null; 
   }
 
@@ -26,9 +26,8 @@ class UiState {
     this.errorMessage = message; 
   };
 
-  setCurrentGroup = (selectedGroup: IndivGroup) => { 
-    this.currentGroup = selectedGroup; 
-    console.log(this.currentGroup);
+  setCurrentGroup = (groupName: string) => { 
+    this.currentGroup = groupName; 
   };
 
   setCurrentStudent = (student: any) => { 
