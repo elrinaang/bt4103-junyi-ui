@@ -33,7 +33,7 @@ const FirstRow: React.FC = () => {
       <Grid item xs={6}>
         <Paper elevation={0} className={classes.indivStat}>
           <Typography variant="h3">{`${getAccuracyasPercentage(currentStudent.avg_accuracy)}%`}</Typography>
-          <Typography variant="subtitle1">Average Accuarcy</Typography>
+          <Typography variant="subtitle1">Average Accuracy</Typography>
         </Paper>
       </Grid>
       <Grid item xs={3}>
