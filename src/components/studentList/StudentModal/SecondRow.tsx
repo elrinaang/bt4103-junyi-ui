@@ -49,13 +49,13 @@ const SecondRow: React.FC = () => {
         <Grid item xs={6}>
         <Paper elevation={0} className={classes.indivStat}>
           <Typography variant="h3" className={classes.text}>{`${getTimeAsMins(currentStudent.avg_time_per_exercise)} mins`}</Typography>  
-          <Typography variant="subtitle1" color="secondary"><b>to solve each problem</b></Typography>
+          <Typography variant="subtitle1" color="secondary"><b>to Solve Each Problem</b></Typography>
         </Paper>
         </Grid> 
         <Grid item xs={6}>
           <Paper elevation={0} className={classes.indivStat}>
             <Typography variant="h3" className={classes.text}>{`${getTimeAsMins(currentStudent.avg_time_btw_problem)} mins`}</Typography>  
-            <Typography variant="subtitle1" color="secondary"><b>between each exercise</b></Typography>
+            <Typography variant="subtitle1" color="secondary"><b>between Each Exercise</b></Typography>
           </Paper>
         </Grid>
       </Grid>

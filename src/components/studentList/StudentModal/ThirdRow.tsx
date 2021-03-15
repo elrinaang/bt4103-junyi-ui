@@ -13,7 +13,7 @@ import { observer } from 'mobx-react';
 const useStyles = makeStyles(theme => ({
   root:{ 
     padding: theme.spacing(0,5,0),
-    marginBottom: theme.spacing(1)
+    marginBottom: theme.spacing(1.5)
   },
   indivStat: { 
     textAlign: 'center',
@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
-    marginBottom: theme.spacing(0.5)
+    margin: theme.spacing(0.5,0,0.5)
  },
  headerContainer: { 
    marginBottom: theme.spacing(1)
