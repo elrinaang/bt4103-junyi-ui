@@ -1,24 +1,30 @@
 import { observable, action, computed, makeObservable} from 'mobx';
 import { IndivGroup } from './AppStore';
 
+export type AppStatus = 'RETRIEVING_INFORMATION' | 'RETRIEVED_INFORMATION' | 'NOT_APPLICABLE'
+
 class UiState {
 
   errorMessage: string;  
   currentGroup: string; 
   currentStudent: any; 
+  appStatus: AppStatus;
 
   constructor() {
     makeObservable(this, {
       errorMessage: observable,
       currentGroup: observable,
       currentStudent: observable,  
+      appStatus: observable,
       setErrorMessage: action,
       setCurrentGroup: action,
-      setCurrentStudent: action
+      setCurrentStudent: action,
+      setAppStatus: action 
     })
     
     this.errorMessage = '';
     this.currentGroup = '';
+    this.appStatus = 'RETRIEVING_INFORMATION';
     this.currentStudent = null; 
   }
 
@@ -33,6 +39,11 @@ class UiState {
   setCurrentStudent = (student: any) => { 
     this.currentStudent = student; 
     console.log(this.currentStudent);
+  };
+
+  setAppStatus = (status: AppStatus) => { 
+    this.appStatus = status; 
+    console.log(this.appStatus);
   }
 }
 

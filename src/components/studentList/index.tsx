@@ -2,6 +2,7 @@ import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { DataGrid, ColDef, RowsProp } from '@material-ui/data-grid';
+import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
@@ -9,17 +10,17 @@ import SelectGroupField from './SelectGroupField';
 import StudentModal from './StudentModal';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
+import RetrievingInfo from '../common/RetrievingInfo';
 import { getStudents, getStudentDetail } from '../../api/studentService';
 import { getGroups } from '../../api/groupService';
 
 const useStyles = makeStyles(theme => ({
-  filterClassButton: {
-    float: 'right'
+  retrievingInfo: { 
+    marginTop: theme.spacing(2)
   },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
+  circularInfo: {
+    marginTop: theme.spacing(1)
+  }
 }));
 
 const StudentList: React.FC = () => {
@@ -30,10 +31,12 @@ const StudentList: React.FC = () => {
 
   React.useEffect(() => {
     async function fetchStudents() {
+      uiState.setAppStatus('RETRIEVING_INFORMATION');
       let students = await getStudents();
       let groups = await getGroups();
       appStore.studentList = students;
       appStore.setGroups(groups);
+      uiState.setAppStatus('RETRIEVED_INFORMATION');
     }
 
     fetchStudents();
@@ -55,18 +58,21 @@ const StudentList: React.FC = () => {
         <Grid item xs={12}>
           <SelectGroupField/>
         </Grid>
-
-        <Grid item xs={12}>
-          <div style={{ display: 'flex', flexGrow: 1 }}>
-            <DataGrid
-              rows={appStore.filteredStudentList?.length > 0 ? appStore.filteredStudentList : appStore.studentList}
-              columns={appStore.studentTableColumns}
-              pageSize={5}
-              autoHeight
-              onRowClick={(val) => onSelectStudent(val.row.id)}
-            />
-          </div>
-        </Grid>
+        {
+          uiState.appStatus == 'RETRIEVING_INFORMATION'
+          ? <RetrievingInfo/>
+          : <Grid item xs={12}>
+              <div style={{ display: 'flex', flexGrow: 1 }}>
+                <DataGrid
+                  rows={appStore.filteredStudentList?.length > 0 ? appStore.filteredStudentList : appStore.studentList}
+                  columns={appStore.studentTableColumns}
+                  pageSize={5}
+                  autoHeight
+                  onRowClick={(val) => onSelectStudent(val.row.id)}
+                />
+              </div>
+            </Grid>
+        }
       </Grid>
       {
         appStore.groupList.length > 0 &&
