@@ -9,16 +9,21 @@ import { observer } from 'mobx-react';
 const useStyles = makeStyles(theme => ({
   root:{ 
     padding: theme.spacing(0,5,0),
-    marginBottom: theme.spacing(1)
+    marginBottom: theme.spacing(1),
+    marginTop: theme.spacing(2)
   },
   indivStat: { 
     textAlign: 'center',
     padding: theme.spacing(2,0,2)
+  },
+  text: { 
+    color: theme.palette.info.main
   }
 }));
 
 const getAccuracyasPercentage = (rawNumber: number) => { 
-  return rawNumber * 100; 
+  const percent = rawNumber * 100; 
+  return Math.round(percent * 100)/100; 
 }
 
 
@@ -29,23 +34,23 @@ const FirstRow: React.FC = () => {
   const currentStudent = uiState.currentStudent;
   
   return (
-    <Grid container spacing={5} className={classes.root}>
+    <Grid container spacing={1} className={classes.root}>
       <Grid item xs={6}>
         <Paper elevation={0} className={classes.indivStat}>
-          <Typography variant="h3">{`${getAccuracyasPercentage(currentStudent.avg_accuracy)}%`}</Typography>  
-          <Typography variant="subtitle1">Average Accuarcy</Typography>
+          <Typography variant="h3" className={classes.text}>{`${getAccuracyasPercentage(currentStudent.avg_accuracy)}%`}</Typography>  
+          <Typography variant="subtitle1" color="secondary"><b>Average Accuarcy</b></Typography>
         </Paper>
       </Grid> 
       <Grid item xs={3}> 
         <Paper elevation={0} className={classes.indivStat}>
-          <Typography variant="h3">{currentStudent.exercises_attempted}</Typography>  
-          <Typography variant="subtitle1">No.of Exercises Attempted</Typography>
+          <Typography variant="h3" className={classes.text}>{currentStudent.exercises_attempted}</Typography>  
+          <Typography variant="subtitle1" color="secondary"><b>No.of Exercises Attempted</b></Typography>
         </Paper>
       </Grid>
       <Grid item xs={3}>
         <Paper elevation={0} className={classes.indivStat}>
-          <Typography variant="h3">{currentStudent.problems_attempted}</Typography>  
-          <Typography variant="subtitle1">No.of Problems Attempted</Typography>
+          <Typography variant="h3" className={classes.text}>{currentStudent.problems_attempted}</Typography>  
+          <Typography variant="subtitle1" color="secondary"><b>No.of Problems Attempted</b></Typography>
         </Paper>
       </Grid> 
     </Grid>

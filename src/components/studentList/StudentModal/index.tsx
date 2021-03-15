@@ -12,10 +12,14 @@ import ThirdRow from './ThirdRow';
 
 const useStyles = makeStyles(theme => ({
   root:{ 
-    padding: theme.spacing(0,5,0)
+    padding: theme.spacing(0,5,3)
   },
   indivStat: { 
     backgroundColor: 'white'
+  },
+  nameHeader: { 
+    backgroundColor: theme.palette.primary.main,
+    color: 'white'
   }
 }));
 
@@ -39,7 +43,7 @@ const StudentModal: React.FC = () => {
       PaperProps={{style:{backgroundColor: '#F8F8F8'}}} 
       className={classes.root}
     >
-      <DialogTitle id="simple-dialog-title"><Typography variant="h5"><b>Student Name: </b>{currentStudent.name}</Typography></DialogTitle>
+      <DialogTitle id="simple-dialog-title" className={classes.nameHeader}><b>Student Name: </b>{currentStudent.name}</DialogTitle>
         <FirstRow/>
         <SecondRow/>
         <ThirdRow/>
