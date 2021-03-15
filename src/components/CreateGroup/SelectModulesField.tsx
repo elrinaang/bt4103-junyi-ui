@@ -33,6 +33,9 @@ const SelectModulesField: React.FC = () => {
           onChange={handleChange}
           input={<Input />}
           renderValue={(selected) => (selected as string[]).join(', ')}
+          MenuProps={{
+            getContentAnchorEl: () => null,
+          }}
         >
           {appStore.listOfModules.map((module) => (
             <MenuItem key={module} value={module}>
