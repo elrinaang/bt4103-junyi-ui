@@ -55,7 +55,7 @@ const ThirdRow: React.FC = () => {
       <Grid container direction="column" className={classes.headerContainer}>
         <Grid item xs={12}>
           <Paper elevation={0} className={classes.header}>
-            <Typography variant="h6"><b>General Problem Statistics:</b></Typography>
+            <Typography variant="h6"><b>Past Exercise Statistics:</b></Typography>
           </Paper>
         </Grid>
       </Grid> 

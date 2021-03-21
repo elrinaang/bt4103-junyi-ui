@@ -12,7 +12,7 @@ import useStyles from './useStyles';
 import { useStores } from '../../stores/StoreProvider';
 import redirect from '../../lib/redirect';
 import Papa from 'papaparse';
-import { createGroup } from '../../api/groupService';
+import { createGroup, getGroups } from '../../api/groupService';
 
 const steps = ['Group Name', 'Select Modules', 'Upload File'];
 
@@ -60,9 +60,12 @@ const CreateGroup: React.FC = () => {
     })
   }
 
-  const handleSubmit = () => { 
+  const handleSubmit = async () => { 
     //use papaparse to read the file to put in student list
     parseFile();
+    //get the new group of students 
+    let groups = await getGroups();
+    appStore.setGroups(groups);
     //redirect to home page 
     redirect('/home');
   }
