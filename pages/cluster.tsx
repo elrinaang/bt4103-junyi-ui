@@ -2,7 +2,7 @@ import * as React from 'react';
 import LandingPage from '../src/components/LandingPage';
 import { useStores } from '../src/stores/StoreProvider';
 
-const Home: React.FC = () => {  
+const Cluster: React.FC = () => {  
     const { uiState } = useStores(); 
     const props = {
       currentPage: 'cluster',
@@ -11,4 +11,4 @@ const Home: React.FC = () => {
   return <LandingPage {...props}/>
 }
 
-export default Home; 
+export default Cluster; 
