@@ -3,6 +3,7 @@ import Layout from './Layout';
 import HomePage from './HomePage'; 
 import StudentList from './studentList'; 
 import CreateGroup from './CreateGroup';
+import IndividualCluster from './IndividualCluster'; 
 
 interface LandingPageProps{ 
   currentPage: string;
@@ -28,6 +29,10 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
         currentPage === 'creategroup' &&
         <CreateGroup/> 
 
+      }
+      {
+        currentPage === 'cluster' && 
+        <IndividualCluster/>
       }
     </Layout>
   )

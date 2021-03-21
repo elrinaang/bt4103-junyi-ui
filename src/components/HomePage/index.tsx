@@ -2,7 +2,6 @@ import * as React from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import RetrievingInfo from '../common/RetrievingInfo';
 import ClassDetails from './ClassDetails';
 import SearchGroupField from './SearchGroupField';
