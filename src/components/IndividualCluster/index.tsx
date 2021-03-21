@@ -7,14 +7,21 @@ import { useStores } from '../../stores/StoreProvider';
 import Button from '@material-ui/core/Button';
 import { observer } from 'mobx-react';
 import redirect from '../../lib/redirect';
+import MainDashboard from './MainDashboard';
 
 const useStyles = makeStyles(theme => ({
   clusterName: { 
-    padding: theme.spacing(1,2,1),
-    maringTop: theme.spacing(1)
+    padding: theme.spacing(0.25,2,0.25),
+    maringTop: theme.spacing(1),
+    //backgroundColor: theme.palette.info.main,
+    //color: 'white'
   },
   indivGrid: { 
     marginBottom: theme.spacing(2)
+  },
+  nameHeader: { 
+    backgroundColor: theme.palette.primary.main,
+    color: 'white'
   }
 }));
 
@@ -32,22 +39,22 @@ const IndividualCluster: React.FC = () => {
   return (
     <Grid direction="column" spacing={2}>
         <Grid item className={classes.indivGrid}>
-            <Button
-                variant="outlined"
-                color="primary"
-                onClick={() => redirect('/home')}
-                size="large"
-            >
-                Back
-            </Button>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => redirect('/home')}
+            size="large"
+          >
+            Back
+          </Button>
         </Grid>
         <Grid item className={classes.indivGrid}>
-            <Paper elevation={0} className={classes.clusterName}>
-                <h1>{currentCluster}</h1>
-            </Paper>
+          <Paper elevation={0} className={classes.clusterName}>
+            <h1>{currentCluster}</h1>
+          </Paper>
         </Grid>
         <Grid item>
-            <h1>Main dashboard layout</h1>
+          <MainDashboard/>
         </Grid>
     </Grid>
   );

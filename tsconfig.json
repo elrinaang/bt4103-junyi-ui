@@ -36,5 +36,5 @@
     "components/*": [
       "src/components/*"
     ]
-  }
+  },
 }
