@@ -3,41 +3,44 @@ import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import PersonIcon from '@material-ui/icons/Person';
-import ShowChartIcon from '@material-ui/icons/ShowChart';
-import Avatar from '@material-ui/core/Avatar';
-import TrendingDownIcon from '@material-ui/icons/TrendingDown';
-import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TablePagination from '@material-ui/core/TablePagination';
+import TableRow from '@material-ui/core/TableRow';
 import { useStores } from '../../../stores/StoreProvider';
 import { observer } from 'mobx-react';
 
+function createData(name: string, score: string) {
+    return { name, score };
+}
+  
+const rows = [
+    createData('Jane Lim', '85.3%'),
+    createData('Marcus Tan', '77%'),
+    createData('Dominic Lee', '98%'),
+    createData('Jane Lim', '85.3%'),
+    createData('Marcus Tan', '77%'),
+    createData('Dominic Lee', '98%'),
+    createData('Jane Lim', '85.3%'),
+    createData('Marcus Tan', '77%'),
+];
 
 const useStyles = makeStyles(theme => ({
-    root:{ 
-        padding: theme.spacing(0,5,0),
-        marginBottom: theme.spacing(1.5)
+    root: { 
+        padding: theme.spacing(0,2,0),
+        width: '100%',
+        minHeight: '530px'
+    },
+    headerName: { 
+        marginLeft: theme.spacing(2),
+        paddingTop: theme.spacing(3)
+    },
+    container: {
+        maxHeight: 440,
       },
-      indivStat: { 
-        textAlign: 'center',
-        alignSelf: 'center',
-        padding: theme.spacing(2,0,2)
-      },
-      text: { 
-        color: theme.palette.info.main
-      },
-      header: { 
-        color: theme.palette.primary.main,
-        padding: theme.spacing(1,2,1)
-      },
-      avatar: {
-        display: 'flex',
-        alignItems: 'center',
-        flexDirection: 'column',
-        margin: theme.spacing(0.5,0,0.5)
-     },
-     headerContainer: { 
-       marginBottom: theme.spacing(1)
-     }
 }));
 
 
@@ -47,7 +50,23 @@ const SecondRowStudentAccuarcy: React.FC = () => {
   const classes = useStyles();
 
   return (
-    <Paper elevation={0}><h1>Student Accuracy</h1></Paper>
+    <Paper elevation={0} className={classes.root}>
+        <h2 className={classes.headerName}>Individual Student Scores</h2>
+        <TableContainer>
+            <Table>
+                <TableBody>
+                {rows.map((row) => (
+                    <TableRow key={row.name}>
+                    <TableCell component="th" scope="row">
+                        <b>{row.name}</b>
+                    </TableCell>
+                    <TableCell align="right"><b>{row.score}</b></TableCell>
+                    </TableRow>
+                ))}
+                </TableBody>
+            </Table>
+        </TableContainer>
+    </Paper>
   );
 };
 

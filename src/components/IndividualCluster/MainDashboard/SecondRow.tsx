@@ -53,7 +53,7 @@ const SecondRow: React.FC = () => {
         <Grid item xs={12} xl={6}>
           <SecondRowLearningPath/>
         </Grid> 
-        <Grid item xs={12} xl={6}>
+        <Grid item xs={6} xl={3}>
             <SecondRowStudentAccuarcy/>
         </Grid>
       </Grid>
