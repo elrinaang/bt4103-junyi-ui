@@ -1,46 +1,75 @@
 import * as React from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import RetrievingInfo from '../common/RetrievingInfo';
-import ClassDetails from './ClassDetails';
-import SearchGroupField from './SearchGroupField';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
-import { getGroups } from '../../api/groupService';
+import redirect from '../../lib/redirect';
+import Image from 'next/image';
+
+const useStyles = makeStyles((theme) => ({
+  bannerContainer: {
+    position: 'relative',
+    textAlign: 'center',
+    color: 'white',
+  },
+  groupButton: { 
+    backgroundColor: theme.palette.info.main,
+    color: 'white'
+  },
+  studentButton: { 
+    backgroundColor: theme.palette.info.main,
+    color: 'white',
+    marginLeft: theme.spacing(4)
+  },
+  buttons: { 
+    position: 'absolute',
+    top: '75%',
+    left: '50%',
+    display: 'inline-block',
+    transform: 'translate(-50%, -50%)'
+  }
+}));
 
 const HomePage: React.FC = () => {
 
   const { uiState, appStore } = useStores(); 
+  const classes = useStyles();
 
-  //Retrieve groups; TODO: set an awaiting circle when the groups are still retrieving 
-  React.useEffect(() => {
-    async function fetchGroups() {
-      let groups = await getGroups();
-      appStore.setGroups(groups);
-      uiState.setAppStatus('RETRIEVED_INFORMATION');
-    }
+  const handleClickGroups = () => { 
+    redirect('/groupList');
+  }
 
-    fetchGroups();
-  }, []);
+  const handleClickStudents = () => { 
+    redirect('/studentlist');
+  }
 
   return (
-    <Grid container direction="column" spacing={3}> 
-      <Grid item>
-        <SearchGroupField/>
-      </Grid>
-      {
-        uiState.appStatus == 'RETRIEVING_INFORMATION' 
-        ? <RetrievingInfo/>
-        : <Grid item>
-            {
-              appStore.groupList.length > 0 
-              ? <ClassDetails/>
-              : <Typography variant="body1">No Groups Added</Typography>
-            }
-          </Grid> 
-      }
-    </Grid>
+    <React.Fragment>
+      <div className={classes.bannerContainer}>
+        <Image src="/banner.jpg" width="5000" height="1700"/>
+        <div className={classes.buttons}>
+          <Button 
+            className={classes.groupButton}
+            variant="contained"
+            size="large"
+            onClick={handleClickGroups}
+          >
+            View Groups
+          </Button>
+          <Button 
+            className={classes.studentButton}
+            variant="contained"
+            size="large"
+            onClick={handleClickStudents}
+          >
+            View Students
+          </Button>
+        </div>
+      </div>
+    </React.Fragment>
   );
 };
 

@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
 const IndividualCluster: React.FC = () => {
 
     //FOR DEV PURPOSES 
-    React.useEffect(() => { uiState.setCurrentCluster('Test Group 1')}, []);
+    React.useEffect(() => { uiState.setCurrentCluster('Cluster 1')}, []);
     
 
   const { uiState, appStore } = useStores(); 

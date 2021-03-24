@@ -7,9 +7,8 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+import GroupWorkIcon from '@material-ui/icons/GroupWork';
 import HomeIcon from '@material-ui/icons/Home';
-import AddBoxIcon from '@material-ui/icons/AddBox';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import redirect from '../lib/redirect';
 import Divider from '@material-ui/core/Divider';
@@ -63,7 +62,7 @@ const useStyles = makeStyles((theme: Theme) =>
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(5),
+    //padding: theme.spacing(5),
   },
   }),
 );
@@ -106,6 +105,10 @@ const Layout: React.FC<LayoutProps> = (props) => {
     <List className={classes.directoryList}>
       <ListItem button onClick={()=>handleClickIcon('/home')}>
         <ListItemIcon className={classes.iconPic}><HomeIcon style={{fill: "white"}}/></ListItemIcon>
+      </ListItem>
+      <Divider/>
+      <ListItem button onClick={()=>handleClickIcon('/groupList')}>
+        <ListItemIcon className={classes.iconPic}><GroupWorkIcon style={{fill: "white"}}/></ListItemIcon>
       </ListItem>
       <Divider/>
       <ListItem button onClick={()=>handleClickIcon('/studentlist')}>
