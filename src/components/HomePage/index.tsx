@@ -3,10 +3,10 @@ import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
 import redirect from '../../lib/redirect';
+import GeneralInfo from './GeneralInfo';
 import Image from 'next/image';
 
 const useStyles = makeStyles((theme) => ({
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   studentButton: { 
     backgroundColor: theme.palette.info.main,
     color: 'white',
-    marginLeft: theme.spacing(4)
+    marginLeft: theme.spacing(5)
   },
   buttons: { 
     position: 'absolute',
@@ -30,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
     left: '50%',
     display: 'inline-block',
     transform: 'translate(-50%, -50%)'
+  },
+  image: { 
+    opacity: '0.9'
   }
 }));
 
@@ -49,7 +52,7 @@ const HomePage: React.FC = () => {
   return (
     <React.Fragment>
       <div className={classes.bannerContainer}>
-        <Image src="/banner.jpg" width="5000" height="1700"/>
+        <Image src="/banner.jpg" width="5000" height="1700" className={classes.image}/>
         <div className={classes.buttons}>
           <Button 
             className={classes.groupButton}
@@ -69,6 +72,7 @@ const HomePage: React.FC = () => {
           </Button>
         </div>
       </div>
+      <GeneralInfo/>
     </React.Fragment>
   );
 };

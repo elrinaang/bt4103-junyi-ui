@@ -3,13 +3,12 @@ import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import ScheduleIcon from '@material-ui/icons/Schedule';
-import { useStores } from '../../../stores/StoreProvider';
+import { useStores } from '../../stores/StoreProvider';
 import Paper from '@material-ui/core/Paper';
 import { observer } from 'mobx-react';
 
 const useStyles = makeStyles(theme => ({
   root:{ 
-    padding: theme.spacing(0,5,0),
     marginBottom: theme.spacing(2)
   },
   indivStat: { 

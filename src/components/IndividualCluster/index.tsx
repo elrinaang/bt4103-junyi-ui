@@ -12,7 +12,7 @@ import MainDashboard from './MainDashboard';
 const useStyles = makeStyles(theme => ({
   clusterName: { 
     padding: theme.spacing(0.25,2,0.25),
-    maringTop: theme.spacing(1),
+    marginTop: theme.spacing(1),
     //backgroundColor: theme.palette.info.main,
     //color: 'white'
   },
@@ -22,6 +22,9 @@ const useStyles = makeStyles(theme => ({
   nameHeader: { 
     backgroundColor: theme.palette.primary.main,
     color: 'white'
+  },
+  root:{ 
+    padding: theme.spacing(5)
   }
 }));
 
@@ -37,12 +40,12 @@ const IndividualCluster: React.FC = () => {
   const currentCluster = uiState.currentCluster; 
 
   return (
-    <Grid direction="column" spacing={2}>
+    <Grid direction="column" spacing={2} className={classes.root}>
         <Grid item className={classes.indivGrid}>
           <Button
             variant="outlined"
             color="secondary"
-            onClick={() => redirect('/home')}
+            onClick={() => redirect('/groupList')}
             size="large"
           >
             Back

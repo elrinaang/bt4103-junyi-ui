@@ -7,12 +7,12 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import SelectGroupField from './SelectGroupField';
-import StudentModal from './StudentModal';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
 import RetrievingInfo from '../common/RetrievingInfo';
-import { getStudents, getStudentDetail } from '../../api/studentService';
+import { getStudents, getStudentDetail, getStudentsByGroup } from '../../api/studentService';
 import { getGroups } from '../../api/groupService';
+import redirect from '../../lib/redirect';
 
 const useStyles = makeStyles(theme => ({
   retrievingInfo: { 
@@ -32,10 +32,13 @@ const StudentList: React.FC = () => {
   React.useEffect(() => {
     async function fetchStudents() {
       uiState.setAppStatus('RETRIEVING_INFORMATION');
-      let students = await getStudents();
+
       let groups = await getGroups();
-      appStore.studentList = students;
       appStore.setGroups(groups);
+      //get the first pre-set group 
+      const currentGroup = appStore.groupList.find(group => group.name == uiState.currentGroup); 
+      let students = await getStudentsByGroup(currentGroup.id);
+      appStore.studentList = students;
       uiState.setAppStatus('RETRIEVED_INFORMATION');
     }
 
@@ -46,6 +49,7 @@ const StudentList: React.FC = () => {
     //get the student detail from the backend
     const student = await getStudentDetail(studentId);
     uiState.setCurrentStudent(student);
+    redirect(`/student?id=${student.id}`);
   };
 
   const handleCloseSnackBar = () => {
@@ -98,9 +102,6 @@ const StudentList: React.FC = () => {
             </React.Fragment>
           }
         />
-      }
-      {
-        uiState.currentStudent && <StudentModal/>
       }
     </React.Fragment>
   );

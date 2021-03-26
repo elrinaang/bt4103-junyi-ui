@@ -6,13 +6,12 @@ import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownwardRounded';
 import Avatar from '@material-ui/core/Avatar';
-import { useStores } from '../../../stores/StoreProvider';
+import { useStores } from '../../stores/StoreProvider';
 import Paper from '@material-ui/core/Paper';
 import { observer } from 'mobx-react';
 
 const useStyles = makeStyles(theme => ({
   root:{ 
-    padding: theme.spacing(0,5,0),
     marginBottom: theme.spacing(1.5)
   },
   indivStat: { 
