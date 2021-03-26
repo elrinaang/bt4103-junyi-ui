@@ -40,20 +40,20 @@ const SecondRow: React.FC = () => {
   return (
     <Grid container direction="column" className={classes.root}> 
       <Grid item xs={12} className={classes.headerContainer}>
-        <Paper elevation={0} className={classes.header}>
-          <Typography variant="h6"><b>Average time taken:</b></Typography>
+        <Paper className={classes.header} square>
+          <h2><b>Average time taken:</b></h2>
         </Paper>
       </Grid>
       <Grid container direction="row">
         <Grid item xs={6}>
-        <Paper elevation={0} className={classes.indivStat}>
-          <Typography variant="h3" className={classes.text}>{`${getTimeAsMins(currentStudent.avg_time_per_exercise)} mins`}</Typography>  
+        <Paper className={classes.indivStat} square>
+          <Typography variant="h4" className={classes.text}>{`${getTimeAsMins(currentStudent.avg_time_per_exercise)} mins`}</Typography>  
           <Typography variant="subtitle1" color="secondary"><b>to Solve Each Problem</b></Typography>
         </Paper>
         </Grid> 
         <Grid item xs={6}>
-          <Paper elevation={0} className={classes.indivStat}>
-            <Typography variant="h3" className={classes.text}>{`${getTimeAsMins(currentStudent.avg_time_btw_problem)} mins`}</Typography>  
+          <Paper className={classes.indivStat} square> 
+            <Typography variant="h4" className={classes.text}>{`${getTimeAsMins(currentStudent.avg_time_btw_problem)} mins`}</Typography>  
             <Typography variant="subtitle1" color="secondary"><b>between Each Exercise</b></Typography>
           </Paper>
         </Grid>

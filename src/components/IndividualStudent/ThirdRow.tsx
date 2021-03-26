@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import ShowChartIcon from '@material-ui/icons/ShowChart';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownwardRounded';
 import Avatar from '@material-ui/core/Avatar';
 import { useStores } from '../../stores/StoreProvider';
@@ -24,7 +25,8 @@ const useStyles = makeStyles(theme => ({
   },
   header: { 
     color: theme.palette.primary.main,
-    padding: theme.spacing(1,2,1)
+    padding: theme.spacing(1,2,1),
+    marginBottom: theme.spacing(1)
   },
   avatar: {
     display: 'flex',
@@ -36,6 +38,11 @@ const useStyles = makeStyles(theme => ({
    marginBottom: theme.spacing(1)
  }
 }));
+
+const getAccuracyasPercentage = (rawNumber: number) => { 
+  const percent = rawNumber * 100; 
+  return Math.round(percent * 100)/100; 
+}
 
 
 const ThirdRow: React.FC = () => {
@@ -53,42 +60,51 @@ const ThirdRow: React.FC = () => {
     <Grid container className={classes.root}>
       <Grid container direction="column" className={classes.headerContainer}>
         <Grid item xs={12}>
-          <Paper elevation={0} className={classes.header}>
-            <Typography variant="h6"><b>Past Exercise Statistics:</b></Typography>
-          </Paper>
+          <h2><b>Past Exercise Statistics:</b></h2>
         </Grid>
       </Grid> 
-      <Grid container direction="row" spacing={1}>
-        <Grid item xs={4}>
-          <Paper elevation={0} className={classes.indivStat}>
+      <Grid container direction="row" spacing={2}>
+        <Grid item xs={3}>
+          <Paper className={classes.indivStat} square>
+            <div className={classes.avatar}>
+              <Avatar style={{backgroundColor:'#b19cd9'}}>
+                <ShowChartIcon fontSize="large"/>
+              </Avatar>
+            </div>
+            <Typography variant="h4" className={classes.text}>{`${getAccuracyasPercentage(currentStudent.avg_accuracy)}%`}</Typography>  
+            <Typography variant="subtitle1" color="secondary"><b>Past Average Accuracy</b></Typography>
+          </Paper>
+        </Grid> 
+        <Grid item xs={3}>
+          <Paper className={classes.indivStat} square> 
             <div className={classes.avatar}>
               <Avatar style={{backgroundColor:'#aec6cf'}}>
                 <EmojiObjectsIcon fontSize="large"/>
               </Avatar>
             </div>
-            <Typography variant="h3" className={classes.text}>{noHints()}</Typography>  
+            <Typography variant="h4" className={classes.text}>{noHints()}</Typography>  
             <Typography variant="subtitle1" color="secondary"><b>Average Number of Hints Used</b></Typography>
           </Paper>
         </Grid> 
-        <Grid item xs={4}> 
-          <Paper elevation={0} className={classes.indivStat}>
+        <Grid item xs={3}> 
+          <Paper className={classes.indivStat} square>
             <div className={classes.avatar}>
               <Avatar style={{backgroundColor:'#77dd77'}}>
                 <ArrowUpwardIcon fontSize="large"/>
               </Avatar>
             </div>
-            <Typography variant="h3" className={classes.text}>{currentStudent.no_upgrades}</Typography>  
+            <Typography variant="h4" className={classes.text}>{currentStudent.no_upgrades}</Typography>  
             <Typography variant="subtitle1" color="secondary"><b>No.of Upgrades</b></Typography>
           </Paper>
         </Grid>
-        <Grid item xs={4}>
-          <Paper elevation={0} className={classes.indivStat}>
+        <Grid item xs={3}>
+          <Paper className={classes.indivStat} square>
             <div className={classes.avatar}>
               <Avatar style={{backgroundColor:'#ff6961'}}>
                 <ArrowDownwardIcon fontSize="large"/>
               </Avatar>
             </div>
-            <Typography variant="h3" className={classes.text}>{currentStudent.no_downgrades}</Typography>  
+            <Typography variant="h4" className={classes.text}>{currentStudent.no_downgrades}</Typography>  
             <Typography variant="subtitle1" color="secondary"><b>No.of Downgrades</b></Typography>
           </Paper>
         </Grid> 

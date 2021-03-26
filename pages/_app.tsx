@@ -7,17 +7,20 @@ import StoreProvider from '../src/stores/StoreProvider';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
 
+  const [a,setA] = React.useState();
+
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
-    }
+    };
   }, []);
 
   return(
     <StoreProvider>
       <ThemeProvider theme={theme}>
+        <>{a}</>
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>

@@ -3,6 +3,9 @@ import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
@@ -16,9 +19,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: 'white'
   },
   studentName: { 
-    padding: theme.spacing(2.5,3,2.5),
-    backgroundColor: theme.palette.primary.main,
-    color: 'white'
+    padding: theme.spacing(0.25,2,0.25),
+    marginTop: theme.spacing(1),
   },
   backButton: { 
     marginTop: theme.spacing(1),
@@ -26,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2)
   },
   root: { 
-    padding: theme.spacing(0.25,2,0.25),
+    padding: theme.spacing(2,2,0.25),
   }
 }));
 
@@ -36,27 +38,19 @@ const IndividualStudent: React.FC = () => {
   const { uiState, appStore } = useStores(); 
   const classes = useStyles();
   const currentStudent = uiState.currentStudent;
+
+  React.useEffect(() =>  currentStudent === null && redirect('/studentlist'),[]); 
+
   return (
     <Grid container direction="column" className={classes.root}>
-      <Grid item xs={2}>
-        <Button
-          variant="outlined"
-          color="secondary"
-          onClick={() => redirect('/studentlist')}
-          size="large"
-          className={classes.backButton}
-        >
-          Back
-        </Button>
-      </Grid>
-      <Grid item>
-        <Paper elevation={0} className={classes.studentName} square>
-          <Typography variant="h6"><b>{currentStudent.name}</b></Typography>
-        </Paper>
-      </Grid>
+      <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
+        <Link color="inherit" href="/studentlist">Student List</Link>
+        <Typography color="textPrimary">{currentStudent.name}</Typography>
+      </Breadcrumbs>
+      <h1><b>{currentStudent.name}</b></h1>
       <FirstRow/>
-      <SecondRow/>
       <ThirdRow/>
+      <SecondRow/>
     </Grid>
   );
 };
