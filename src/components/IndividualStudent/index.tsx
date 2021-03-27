@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
 import redirect from '../../lib/redirect';
-import FirstRow from './FirstRow';
+import CurrentStatistics from './CurrentStatistics';
 import SecondRow from './SecondRow';
 import ThirdRow from './ThirdRow';
 
@@ -48,7 +48,7 @@ const IndividualStudent: React.FC = () => {
         <Typography color="textPrimary">{currentStudent.name}</Typography>
       </Breadcrumbs>
       <h1><b>{currentStudent.name}</b></h1>
-      <FirstRow/>
+      <CurrentStatistics/>
       <ThirdRow/>
       <SecondRow/>
     </Grid>
