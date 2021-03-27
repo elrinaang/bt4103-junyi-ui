@@ -4,9 +4,10 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { useStores } from '../../stores/StoreProvider';
-import Button from '@material-ui/core/Button';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import Link from '@material-ui/core/Link';
 import { observer } from 'mobx-react';
-import redirect from '../../lib/redirect';
 import MainDashboard from './MainDashboard';
 
 const useStyles = makeStyles(theme => ({
@@ -41,21 +42,11 @@ const IndividualCluster: React.FC = () => {
 
   return (
     <Grid direction="column" spacing={2} className={classes.root}>
-        <Grid item className={classes.indivGrid}>
-          <Button
-            variant="outlined"
-            color="secondary"
-            onClick={() => redirect('/groupList')}
-            size="large"
-          >
-            Back
-          </Button>
-        </Grid>
-        <Grid item className={classes.indivGrid}>
-          <Paper elevation={0} className={classes.clusterName}>
-            <h1>{currentCluster}</h1>
-          </Paper>
-        </Grid>
+        <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
+          <Link color="inherit" href="/groupList">Group List</Link>
+          <Typography color="textPrimary">{'Cluster 1'}</Typography>
+        </Breadcrumbs>
+        <h1>{currentCluster}</h1>
         <Grid item>
           <MainDashboard/>
         </Grid>
