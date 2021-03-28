@@ -55,7 +55,7 @@ const FirstRow: React.FC = () => {
                 <PersonIcon fontSize="large"/>
               </Avatar>
             </div>
-            <Typography variant="h3" className={classes.text}>35</Typography>  
+            <Typography variant="h4" className={classes.text}>35</Typography>  
             <Typography variant="subtitle1" color="secondary"><b>Number of Students</b></Typography>
           </Paper>
         </Grid> 
@@ -66,7 +66,7 @@ const FirstRow: React.FC = () => {
                 <ShowChartIcon fontSize="large"/>
               </Avatar>
             </div>
-            <Typography variant="h3" className={classes.text}>83.1%</Typography>  
+            <Typography variant="h4" className={classes.text}>83.1%</Typography>  
             <Typography variant="subtitle1" color="secondary"><b>Average Accuracy</b></Typography>
           </Paper>
         </Grid>
@@ -77,7 +77,7 @@ const FirstRow: React.FC = () => {
                 <TrendingDownIcon fontSize="large"/>
               </Avatar>
             </div>
-            <Typography variant="h3" className={classes.text}>5</Typography>  
+            <Typography variant="h4" className={classes.text}>5</Typography>  
             <Typography variant="subtitle1" color="secondary"><b>No.of Underperfoming Students</b></Typography>
           </Paper>
         </Grid> 
@@ -88,7 +88,7 @@ const FirstRow: React.FC = () => {
                 <QueryBuilderIcon fontSize="large"/>
               </Avatar>
             </div>
-            <Typography variant="h3" className={classes.text}>13</Typography>  
+            <Typography variant="h4" className={classes.text}>13</Typography>  
             <Typography variant="subtitle1" color="secondary"><b>Average Time Spent on Platform</b></Typography>
           </Paper>
         </Grid> 

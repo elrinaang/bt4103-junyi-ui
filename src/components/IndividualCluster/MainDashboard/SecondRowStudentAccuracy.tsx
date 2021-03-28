@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     root: { 
         padding: theme.spacing(0,2,0),
         width: '100%',
-        minHeight: '530px'
+        height: '100%'
     },
     headerName: { 
         marginLeft: theme.spacing(2),
