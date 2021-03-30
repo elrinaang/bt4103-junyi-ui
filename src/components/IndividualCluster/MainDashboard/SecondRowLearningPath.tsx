@@ -44,6 +44,9 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(10),
     width: '100%',
     textAlign: 'center'
+  },
+  stepIcon: { 
+    color: '#333366'
   }
 }));
 
@@ -111,7 +114,7 @@ const SecondRowLearningPath: React.FC = () => {
             {currentLearningPath.map((exercise: string) => {
               return (
                 <Step key={exercise}>
-                  <StepLabel>{exercise}</StepLabel>
+                  <StepLabel StepIconProps={{classes:{root: classes.stepIcon}}}>{exercise}</StepLabel>
                 </Step>
               );
             })}

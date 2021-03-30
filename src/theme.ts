@@ -26,6 +26,21 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: ['"Montserrat"', 'Open Sans'].join(',')
+  },
+  overrides: { 
+    MuiStepIcon: {
+      root: {
+        '&$completed': {
+          color: '#333366',
+        },
+        '&$active': {
+          color: '#333366',
+        },
+        "&$disabled": {
+          color: '#333366'
+        }
+      }
+    }
   }
 });
 
