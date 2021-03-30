@@ -54,10 +54,11 @@ const ClusterStudentInfo: React.FC = () => {
         <br/>
         <Typography>Currently, there are a total of <b>5 clusters</b>, with each cluster displaying their own unqiue characteristics.</Typography>
         <Image src="/decisionTree.jpg" width="5000" height="1200" className={classes.decisionTree}/>
+        {/* 
         <Grid container direction="row" className={classes.clusterGroup} spacing={2}>
             <Grid item className={classes.clusterPicture} xs={3} style={{backgroundColor: '#ec9455'}}><Typography variant="h2" className={classes.text}>1</Typography></Grid>
             <Grid item xs={8}>
-              <Form/>
+              <Typography><b>Cluster 1</b></Typography>
               <Typography>Cluster description</Typography>
             </Grid>
         </Grid>
@@ -89,6 +90,7 @@ const ClusterStudentInfo: React.FC = () => {
               <Typography>Cluster description</Typography>
             </Grid>
         </Grid>
+        */}
     </div>
   );
 };

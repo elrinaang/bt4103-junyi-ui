@@ -49,19 +49,18 @@ const ClassDetails: React.FC = () => {
   const { appStore, uiState } = useStores();
 
   const handleClick = async (clusterName: string, groupID: number) => { 
-    //uiState.setCurrentCluster(clusterName);
     /**
-     * Todo: 
+     * Todo: COMMENT OUT FOR DEV PURPOSES AND UNCOMMENT THE REST 
      *  1. Extract out the cluster number from the cluster name 
      *  2. Call a getCluser using the group ID and cluster ID 
      *  3. Set current cluster from the cluster retrieved 
      */
-    const clusterID = clusterName.split(" ")[1];
-    // const newCluster = getCluster(groupID, clusterID);
-    //uiState.setCurrentCluster(newCluster);
-
     //DEV Purposes 
     uiState.setCurrentCluster(testCluster);
+    //const clusterID = clusterName.split(" ")[1];
+    //const newCluster = await getCluster(groupID, clusterID);
+    //uiState.setCurrentCluster(newCluster);
+
     redirect(`/cluster?name=${clusterName}`);
   }
 

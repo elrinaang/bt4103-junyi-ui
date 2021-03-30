@@ -39,6 +39,11 @@ const useStyles = makeStyles(theme => ({
   },
   selectFieldContainer: { 
     marginBottom: theme.spacing(2)
+  },
+  noPath: { 
+    marginTop: theme.spacing(10),
+    width: '100%',
+    textAlign: 'center'
   }
 }));
 
@@ -63,7 +68,7 @@ const SecondRowLearningPath: React.FC = () => {
     const filteredPath: PathType[] = currentClusterLearningPaths.filter(exercise => exercise.policy === filter);
     const finalPath: PathType[] = filteredPath.filter(exercise => exercise.rank === rank.toString());
     console.log(finalPath); 
-    const learningPath: string[] = finalPath.map(exercise => exercise.id);
+    const learningPath: string[] = finalPath.map(exercise => `Exercise ${exercise.id}`);
     console.log(learningPath);
     learningPath && setCurrentLearningPath(learningPath);
     };
@@ -100,34 +105,38 @@ const SecondRowLearningPath: React.FC = () => {
         </div>
         <h3 style={{display: 'inline-block',float:'right'}}>Generate by:</h3>
       </div>
-      <Stepper className={classes.learningPath} alternativeLabel>
-      {currentLearningPath.map((exercise: string) => {
-        return (
-          <Step key={exercise}>
-            <StepLabel>{exercise}</StepLabel>
-          </Step>
-        );
-      })}
-      </Stepper>
-        <MobileStepper
-          variant="dots"
-          position="static"
-          steps={5}
-          activeStep={activeStep}
-          className={classes.mobileStepper}
-          nextButton={
-            <Button size="small" onClick={handleNext} disabled={activeStep === 5}>
-              Next
-              {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-            </Button>
-          }
-          backButton={
-            <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-              {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-              Back
-            </Button>
-          }
-        />
+      {
+        currentLearningPath.length > 0 
+        ? <Stepper className={classes.learningPath} alternativeLabel>
+            {currentLearningPath.map((exercise: string) => {
+              return (
+                <Step key={exercise}>
+                  <StepLabel>{exercise}</StepLabel>
+                </Step>
+              );
+            })}
+          </Stepper>
+        : <div className={classes.noPath}><h4 style={{color: 'grey'}}>No Learning Path Generated</h4></div>
+      }
+      <MobileStepper
+        variant="dots"
+        position="static"
+        steps={5}
+        activeStep={activeStep}
+        className={classes.mobileStepper}
+        nextButton={
+          <Button size="small" onClick={handleNext} disabled={activeStep === 5}>
+            Next
+            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+          </Button>
+        }
+        backButton={
+          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+            Back
+          </Button>
+        }
+      />
     </Paper>
   );
 };
