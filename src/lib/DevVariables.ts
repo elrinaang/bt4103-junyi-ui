@@ -132,12 +132,12 @@ const weakStudents: StudentType[] = [
 
 const normalStudents: StudentType[] = [
     {
-        name: 'Angel',
-        accuracy: 'normal'
+      name: 'Angel',
+      accuracy: 'normal'
     },
     {
-        name: 'Billy',
-        accuracy: 'normal'
+      name: 'Billy',
+      accuracy: 'normal'
     },
     {
         name: 'Cheryl',
@@ -170,41 +170,41 @@ const normalStudents: StudentType[] = [
 ]
 
 const strongStudents: StudentType[] = [
-    {
-        name: 'Archie',
-        accuracy: 'strong'
-    },
-    {
-        name: 'Beverly',
-        accuracy: 'strong'
-    },
-    {
-        name: 'Charmaine',
-        accuracy: 'strong'
-    },
-    {
-        name: 'Daniel',
-        accuracy: 'strong'
-    },
-    {
-      name: 'Edwin',
-      accuracy: 'strong'
-    },
-    {
-      name: 'Fion',
-      accuracy: 'strong'
-    }
+  {
+    name: 'Archie',
+    accuracy: 'strong'
+  },
+  {
+    name: 'Beverly',
+    accuracy: 'strong'
+  },
+  {
+    name: 'Charmaine',
+    accuracy: 'strong'
+  },
+  {
+    name: 'Daniel',
+    accuracy: 'strong'
+  },
+  {
+    name: 'Edwin',
+    accuracy: 'strong'
+  },
+  {
+    name: 'Fion',
+    accuracy: 'strong'
+  }
 ]
 
 export const testCluster: ClusterType = { 
-    no_students: '48',
-    avg_accuracy: '69.9%',
-    avg_exercises_attempted: '6',
-    avg_problems_attempted: '20',
-    prediction: { 
-      weak: weakStudents,
-      normal: normalStudents,
-      strong: strongStudents
-    },
-    paths: testPaths
-  }
+  no_students: '48',
+  avg_accuracy: '69.9%',
+  avg_exercises_attempted: '6',
+  avg_problems_attempted: '20',
+  prediction: { 
+    weak: weakStudents,
+    normal: normalStudents,
+    strong: strongStudents
+  },
+  paths: testPaths
+}

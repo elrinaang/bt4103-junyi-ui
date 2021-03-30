@@ -58,7 +58,7 @@ const ClassDetails: React.FC = () => {
     //DEV Purposes 
     uiState.setCurrentCluster(testCluster);
     //const clusterID = clusterName.split(" ")[1];
-    //const newCluster = await getCluster(groupID, clusterID);
+    //const newCluster: ClusterType = await getCluster(groupID, clusterID);
     //uiState.setCurrentCluster(newCluster);
 
     redirect(`/cluster?name=${clusterName}`);
