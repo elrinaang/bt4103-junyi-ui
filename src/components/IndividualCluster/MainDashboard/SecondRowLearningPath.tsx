@@ -16,11 +16,11 @@ import { observer } from 'mobx-react';
 import { PathType } from '../../../lib/Types';
 
 const useStyles = makeStyles(theme => ({
-  root: { 
+  root: {
     padding: theme.spacing(0,2,2),
     height: '100%'
   },
-  headerName: { 
+  headerName: {
     marginLeft: theme.spacing(2),
     paddingTop: theme.spacing(3)
   },
@@ -28,24 +28,24 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1.5,1,0),
     minWidth: 120,
   },
-  mobileStepper: { 
+  mobileStepper: {
     flexGrow: 1,
     width: '100%',
     backgroundColor: 'white'
   },
-  learningPath: { 
+  learningPath: {
     width: '100%',
     margin: theme.spacing(0,0,3)
   },
-  selectFieldContainer: { 
+  selectFieldContainer: {
     marginBottom: theme.spacing(2)
   },
-  noPath: { 
+  noPath: {
     marginTop: theme.spacing(10),
     width: '100%',
     textAlign: 'center'
   },
-  stepIcon: { 
+  stepIcon: {
     color: '#333366'
   }
 }));
@@ -54,7 +54,7 @@ const steps = ['Addition', 'Substraction','Multiplication','Division', 'Area','P
 
 const SecondRowLearningPath: React.FC = () => {
 
-  const { uiState, appStore } = useStores(); 
+  const { uiState, appStore } = useStores();
   const classes = useStyles();
   const theme = useTheme();
   const currentClusterLearningPaths = uiState.currentCluster.paths;
@@ -65,13 +65,13 @@ const SecondRowLearningPath: React.FC = () => {
 
   React.useEffect(() => getCurrentLearningPath('popularity',1),[]);
 
-  const getCurrentLearningPath = (filter: string, rank: number) => { 
-    //filter by filter - popularity and performance 
+  const getCurrentLearningPath = (filter: string, rank: number) => {
+    //filter by filter - popularity and performance
     console.log(filter,rank);
     const filteredPath: PathType[] = currentClusterLearningPaths.filter(exercise => exercise.policy === filter);
     const finalPath: PathType[] = filteredPath.filter(exercise => exercise.rank === rank.toString());
-    console.log(finalPath); 
-    const learningPath: string[] = finalPath.map(exercise => `Exercise ${exercise.id}`);
+    console.log(finalPath);
+    const learningPath: string[] = finalPath.map(exercise => `Exercise ${exercise.content_id}`);
     console.log(learningPath);
     learningPath && setCurrentLearningPath(learningPath);
     };
@@ -109,7 +109,7 @@ const SecondRowLearningPath: React.FC = () => {
         <h3 style={{display: 'inline-block',float:'right'}}>Generate by:</h3>
       </div>
       {
-        currentLearningPath.length > 0 
+        currentLearningPath.length > 0
         ? <Stepper className={classes.learningPath} alternativeLabel>
             {currentLearningPath.map((exercise: string) => {
               return (

@@ -11,6 +11,8 @@ import redirect from '../../lib/redirect';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import { ClusterType, PathType, StudentType } from '../../lib/Types';
 import { testCluster } from '../../lib/DevVariables';
+import { getGroupCluster } from "../../api/groupService";
+
 
 const useStyles = makeStyles((theme) => ({
   paper:{
@@ -31,12 +33,12 @@ const useStyles = makeStyles((theme) => ({
   cards:{
     marginTop: theme.spacing(2)
   },
-  cardContent: { 
+  cardContent: {
     display: 'flex',
     alignItem: 'center',
     justifyContent: 'center'
   },
-  indivGroup: { 
+  indivGroup: {
     marginBottom: theme.spacing(4)
   },
 }));
@@ -48,19 +50,19 @@ const ClassDetails: React.FC = () => {
   const classes = useStyles();
   const { appStore, uiState } = useStores();
 
-  const handleClick = async (clusterName: string, groupID: number) => { 
+  const handleClick = async(clusterName: string, groupID: number) => {
     /**
-     * Todo: COMMENT OUT FOR DEV PURPOSES AND UNCOMMENT THE REST 
-     *  1. Extract out the cluster number from the cluster name 
-     *  2. Call a getCluser using the group ID and cluster ID 
-     *  3. Set current cluster from the cluster retrieved 
+     * Todo: COMMENT OUT FOR DEV PURPOSES AND UNCOMMENT THE REST
+     *  1. Extract out the cluster number from the cluster name
+     *  2. Call a getCluser using the group ID and cluster ID
+     *  3. Set current cluster from the cluster retrieved
      */
-    //DEV Purposes 
-    uiState.setCurrentCluster(testCluster);
-    //const clusterID = clusterName.split(" ")[1];
-    //const newCluster: ClusterType = await getCluster(groupID, clusterID);
-    //uiState.setCurrentCluster(newCluster);
+    //DEV Purposes
+    // uiState.setCurrentCluster(testCluster);
 
+    const clusterID = clusterName.split(" ")[1];
+    const newCluster: ClusterType = await getGroupCluster("60", "3");
+    uiState.setCurrentCluster(newCluster);
     redirect(`/cluster?name=${clusterName}`);
   }
 
@@ -70,13 +72,13 @@ const ClassDetails: React.FC = () => {
         appStore.groupList.map((newGroup: IndivGroup) =>
         <div className={classes.indivGroup} key={newGroup.id}>
           <Typography variant="h6"><b>{newGroup.name}</b></Typography>
-          <Grid container direction="row" spacing={5}> 
+          <Grid container direction="row" spacing={5}>
           {
-            clusters.map((cluster: string) => 
+            clusters.map((cluster: string) =>
               <Grid item xs={2} xl={2} key={cluster}>
-                <Card 
-                  className={classes.root} 
-                  square 
+                <Card
+                  className={classes.root}
+                  square
                   variant="outlined"
                 >
                   <CardActionArea onClick={() => handleClick(cluster,newGroup.id)}>
@@ -90,10 +92,10 @@ const ClassDetails: React.FC = () => {
               </Grid>
           )}
           </Grid>
-        </div>) 
+        </div>)
         }
     </React.Fragment>
   );
 };
 
-export default observer(ClassDetails); 
+export default observer(ClassDetails);

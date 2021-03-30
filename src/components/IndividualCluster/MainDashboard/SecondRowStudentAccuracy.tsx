@@ -11,12 +11,12 @@ import { observer } from 'mobx-react';
 import { StudentType } from '../../../lib/Types';
 
 const useStyles = makeStyles(theme => ({
-    root: { 
+    root: {
         padding: theme.spacing(0,2,0),
         width: '100%',
         height: '100%'
     },
-    headerName: { 
+    headerName: {
         marginLeft: theme.spacing(2),
         paddingTop: theme.spacing(3)
     },
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 
 const SecondRowStudentAccuarcy: React.FC = () => {
 
-  const { uiState, appStore } = useStores(); 
+  const { uiState, appStore } = useStores();
   const classes = useStyles();
   const currentCluster = uiState.currentCluster;
   const weakStudents = currentCluster.prediction.weak;
