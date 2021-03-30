@@ -29,24 +29,19 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-
 const IndividualCluster: React.FC = () => {
-
-    //FOR DEV PURPOSES 
-    React.useEffect(() => { uiState.setCurrentCluster('Cluster 1')}, []);
-    
 
   const { uiState, appStore } = useStores(); 
   const classes = useStyles();
-  const currentCluster = uiState.currentCluster; 
+  const currentClusterName = uiState.currentCluster.paths[0].cluster; 
 
   return (
     <Grid direction="column" spacing={2} className={classes.root}>
         <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
           <Link color="inherit" href="/groupList">Group List</Link>
-          <Typography color="textPrimary">{'Cluster 1'}</Typography>
+          <Typography color="textPrimary">{`Cluster ${currentClusterName}`}</Typography>
         </Breadcrumbs>
-        <h1>{currentCluster}</h1>
+        <h1>{`Cluster ${currentClusterName}`}</h1>
         <Grid item>
           <MainDashboard/>
         </Grid>

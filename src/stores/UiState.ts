@@ -1,5 +1,6 @@
 import { observable, action, computed, makeObservable} from 'mobx';
 import { IndivGroup } from './AppStore';
+import { ClusterType } from '../lib/Types';
 
 export type AppStatus = 'RETRIEVING_INFORMATION' | 'RETRIEVED_INFORMATION' | 'NOT_APPLICABLE'
 
@@ -7,7 +8,7 @@ class UiState {
 
   errorMessage: string;  
   currentGroup: string;
-  currentCluster: string; 
+  currentCluster: ClusterType; 
   currentStudent: any;
   appStatus: AppStatus;
 
@@ -27,7 +28,7 @@ class UiState {
     
     this.errorMessage = '';
     this.currentGroup = 'test group 1';
-    this.currentCluster = '';
+    this.currentCluster = null;
     this.appStatus = 'RETRIEVING_INFORMATION';
     this.currentStudent = null; 
   }
@@ -45,8 +46,8 @@ class UiState {
     console.log(this.currentStudent);
   };
 
-  setCurrentCluster = (clusterName: string) => { 
-    this.currentCluster = clusterName;
+  setCurrentCluster = (selectedCluster: ClusterType) => { 
+    this.currentCluster = selectedCluster;
     console.log(this.currentCluster);
   }
 

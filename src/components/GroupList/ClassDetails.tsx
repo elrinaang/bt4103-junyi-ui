@@ -9,6 +9,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import redirect from '../../lib/redirect';
 import CardActionArea from '@material-ui/core/CardActionArea';
+import { ClusterType, PathType, StudentType } from '../../lib/Types';
+import { testCluster } from '../../lib/DevVariables';
 
 const useStyles = makeStyles((theme) => ({
   paper:{
@@ -39,16 +41,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const clusters = ['cluster 1', 'cluster 2', 'cluster 3', 'cluster 4', 'cluster 5', 'cluster 6'];
+const clusters = ['cluster 1', 'cluster 2', 'cluster 3', 'cluster 4', 'cluster 5'];
 
 const ClassDetails: React.FC = () => {
 
   const classes = useStyles();
   const { appStore, uiState } = useStores();
 
-  const handleClick = (clusterName: string) => { 
-    console.log(clusterName); 
-    uiState.setCurrentCluster(clusterName);
+  const handleClick = async (clusterName: string, groupID: number) => { 
+    //uiState.setCurrentCluster(clusterName);
+    /**
+     * Todo: 
+     *  1. Extract out the cluster number from the cluster name 
+     *  2. Call a getCluser using the group ID and cluster ID 
+     *  3. Set current cluster from the cluster retrieved 
+     */
+    const clusterID = clusterName.split(" ")[1];
+    // const newCluster = getCluster(groupID, clusterID);
+    //uiState.setCurrentCluster(newCluster);
+
+    //DEV Purposes 
+    uiState.setCurrentCluster(testCluster);
     redirect(`/cluster?name=${clusterName}`);
   }
 
@@ -58,16 +71,16 @@ const ClassDetails: React.FC = () => {
         appStore.groupList.map((newGroup: IndivGroup) =>
         <div className={classes.indivGroup} key={newGroup.id}>
           <Typography variant="h6"><b>{newGroup.name}</b></Typography>
-          <Grid container direction="row"> 
+          <Grid container direction="row" spacing={5}> 
           {
             clusters.map((cluster: string) => 
-              <Grid item xs={3} xl={2} key={cluster}>
+              <Grid item xs={2} xl={2} key={cluster}>
                 <Card 
                   className={classes.root} 
                   square 
                   variant="outlined"
                 >
-                  <CardActionArea onClick={() => handleClick(cluster)}>
+                  <CardActionArea onClick={() => handleClick(cluster,newGroup.id)}>
                     <CardContent className={classes.cardContent}>
                       <Typography variant="h6">
                         {cluster}
