@@ -7,7 +7,9 @@ import Divider from '@material-ui/core/Divider';
 import { useStores } from '../../../stores/StoreProvider';
 import Paper from '@material-ui/core/Paper';
 import { observer } from 'mobx-react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from 'recharts';
+import {BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, ResponsiveContainer, PieChart, Pie, Label } from 'recharts';
+
+const COLORS = ['#FF9933', '#62727b','#333366'];
 
 const useStyles = makeStyles(theme => ({
   predAccuracyTitle: { 
@@ -47,20 +49,11 @@ const getTimeAsMins = (seconds: number) => {
   return Math.floor(seconds / 60);
 }
 
-const data = [
-  {
-    name: 'Basic',
-    count: 50
-  },
-  {
-    name: 'Intermediate',
-    count: 20
-  },
-  {
-    name: 'Advanced',
-    count: 10 
-  },
-  ];
+const problemData = [
+  { name: 'Basic', value: 40 },
+  { name: 'Intermediate', value: 50},
+  { name: 'Advanced', value: 30}
+]
 
 const ExerciseStatistics: React.FC = () => {
 
@@ -72,65 +65,58 @@ const ExerciseStatistics: React.FC = () => {
     <div className={classes.root}>
     <Grid container direction="row" spacing={2}>
       <Grid item xs={6}>
-        <Paper style={{height: '100%'}} square>
+        <Paper square>
           <div>
             <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>Exercises Attempted</b></Typography> 
-            <Typography variant="h4" className={classes.predAccuracyValue}>Strong</Typography>  
           </div>
           <Divider/>
-          <div className={classes.indivStat}>
-            <Typography variant="h4">{`${currentStudent.exercises_attempted} exercises`}</Typography>
-          </div>
-          <div className={classes.problemTypes}>
-            <BarChart width={500} height={300} data={data} style={{margin: '0 auto'}}>
-              <Bar dataKey="count" fill="#FF9933" />
-              <XAxis dataKey="name">
-                <Label value="Types of problems" offset={0} position="insideBottom" />
-              </XAxis>
-              <YAxis label={{ value: 'No.of problems', angle: -90, position: 'insideLeft' }} />
-            </BarChart>
-          </div>
+          <Grid container direction="row">
+            <Grid item xs={6}>
+              <div className={classes.indivStat}>
+                <Typography variant="subtitle1" color="secondary"><b>No.of Exercises</b></Typography>
+                <Typography variant="h4" className={classes.text}>{currentStudent.exercises_attempted}</Typography> 
+              </div> 
+            </Grid>
+            <Grid item xs={6}>
+              <div className={classes.indivStat}>
+                <Typography variant="subtitle1" color="secondary"><b>Time taken Per Exercise</b></Typography>
+                <Typography variant="h4" className={classes.text}>{`${getTimeAsMins(currentStudent.avg_time_per_exercise)} mins`}</Typography>  
+              </div>
+            </Grid>
+          </Grid>
         </Paper>
       </Grid> 
-      <Grid item xs={6} style={{height: '100%'}}>
+      <Grid item xs={6}>
         <Grid container direction="column">
           <Grid item>
             <Paper style={{height: '100%'}} square>
             <div>
-              <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>No.of Exercises and Problems Attempted</b></Typography> 
+              <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>Problems Attempted</b></Typography> 
+              <Typography variant="h4" className={classes.predAccuracyValue}>{currentStudent.problems_attempted}</Typography>  
             </div>
             <Divider/> 
-            <Typography variant="h4">{`${currentStudent.exercises_attempted} exercises`}</Typography>
-            <Typography variant="h4">{`${currentStudent.problems_attempted} problems`}</Typography>
+            <PieChart width={280} height={300} style={{margin: '0 auto'}}>
+              <Pie
+                data={problemData}
+                labelLine={false}
+                innerRadius="60%"
+                outerRadius="80%"
+                startAngle={90}
+                endAngle={-270}
+                fill="#8884d8"
+                dataKey="value"
+              >
+                {problemData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                ))}
+                <Label position="center" style={{ fontSize: '120%', fill: '#FF9933'}}>{`${currentStudent.problems_attempted} Problems`}</Label>
+              </Pie>
+              <Tooltip />
+              <Legend verticalAlign="top" align="center" width={480}/>
+            </PieChart>
             </Paper>
-          </Grid>
-          <br/>
-          <Grid item>
-            <Paper>
-              <div>
-                <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>Time Taken</b></Typography> 
-              </div>
-            </Paper>
-            <Divider/> 
           </Grid>
         </Grid>
-        {/*<Paper style={{height: '100%'}} square> 
-          <div>
-            <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>Time taken</b></Typography> 
-          </div>
-          <Divider/>
-          <div className={classes.timeContent}>
-            <div className={classes.indivStat}>
-              <Typography variant="h4" className={classes.text}>{`${getTimeAsMins(currentStudent.avg_time_per_exercise)} mins`}</Typography>  
-              <Typography variant="subtitle1" color="secondary"><b>To Solve Each Problem</b></Typography>
-            </div>
-            <Divider/>
-            <div className={classes.indivStat}>
-              <Typography variant="h4" className={classes.text}>{`${getTimeAsMins(currentStudent.avg_time_btw_problem)} mins`}</Typography>  
-              <Typography variant="subtitle1" color="secondary"><b>Between Each Exercise</b></Typography>
-            </div>
-          </div>
-          </Paper>*/}
       </Grid>
     </Grid>
 

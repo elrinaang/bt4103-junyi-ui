@@ -20,7 +20,6 @@ const SelectModulesField: React.FC = () => {
 
   const handleChange = (event: React.ChangeEvent<{ value: string[] }>) => {
     //get the list of module from the module ID 
-    //const listOfModules = event.target.value.map((id: string) => appStore.listOfModules.find(moduleId => moduleId.id = id)); 
     appStore.setNewGroupModules(event.target.value as string[]);
   };
 
