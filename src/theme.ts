@@ -39,6 +39,11 @@ const theme = createMuiTheme({
         "&$disabled": {
           color: '#333366'
         }
+      },
+    },
+    MuiStepLabel: {
+      label:{
+        color: 'black'
       }
     }
   }

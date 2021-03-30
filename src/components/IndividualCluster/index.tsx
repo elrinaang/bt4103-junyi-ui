@@ -36,7 +36,7 @@ const IndividualCluster: React.FC = () => {
   const currentClusterName = uiState.currentCluster.paths[0].cluster; 
 
   return (
-    <Grid direction="column" spacing={2} className={classes.root}>
+    <Grid container direction="column" spacing={2} className={classes.root}>
         <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
           <Link color="inherit" href="/groupList">Group List</Link>
           <Typography color="textPrimary">{`Cluster ${currentClusterName}`}</Typography>
