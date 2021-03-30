@@ -47,6 +47,11 @@ const FirstRow: React.FC = () => {
   const classes = useStyles();
   const currentCluster = uiState.currentCluster;
 
+  const getAccuracyasPercentage = (rawNumber: number) => { 
+    const percent = rawNumber * 100; 
+    return Math.round(percent * 100)/100; 
+  }
+
   return (
       <Grid container direction="row" spacing={1}>
         <Grid item xs={3}>
@@ -67,7 +72,7 @@ const FirstRow: React.FC = () => {
                 <ShowChartIcon fontSize="large" style={{color:'white'}}/>
               </Avatar>
             </div>
-            <Typography variant="h4" className={classes.text}>{currentCluster.avg_accuracy}</Typography>  
+            <Typography variant="h4" className={classes.text}>{`${getAccuracyasPercentage(parseFloat(currentCluster.avg_accuracy))}%`}</Typography>  
             <Typography variant="subtitle1" color="secondary"><b>Average Accuracy</b></Typography>
           </Paper>
         </Grid>
@@ -78,7 +83,7 @@ const FirstRow: React.FC = () => {
                 <AssessmentIcon fontSize="large" style={{color:'white'}}/>
               </Avatar>
             </div>
-            <Typography variant="h4" className={classes.text}>{currentCluster.avg_exercises_attempted}</Typography>  
+            <Typography variant="h4" className={classes.text}>{Math.round(parseInt(currentCluster.avg_exercises_attempted))}</Typography>  
             <Typography variant="subtitle1" color="secondary"><b>Avg No.of Exercises Attempted</b></Typography>
           </Paper>
         </Grid> 
@@ -89,7 +94,7 @@ const FirstRow: React.FC = () => {
                 <MenuBookIcon fontSize="large" style={{color:'white'}}/>
               </Avatar>
             </div>
-            <Typography variant="h4" className={classes.text}>{currentCluster.avg_problems_attempted}</Typography>  
+            <Typography variant="h4" className={classes.text}>{Math.round(parseInt(currentCluster.avg_problems_attempted))}</Typography>  
             <Typography variant="subtitle1" color="secondary"><b>Avg No.of Problems Attempted</b></Typography>
           </Paper>
         </Grid> 

@@ -9,6 +9,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Link from '@material-ui/core/Link';
 import { observer } from 'mobx-react';
 import MainDashboard from './MainDashboard';
+import redirect from '../../lib/redirect';
 
 const useStyles = makeStyles(theme => ({
   clusterName: { 
@@ -33,10 +34,16 @@ const IndividualCluster: React.FC = () => {
 
   const { uiState, appStore } = useStores(); 
   const classes = useStyles();
-  const currentClusterName = uiState.currentCluster.paths[0].cluster; 
+  const currentClusterName = uiState.currentCluster && uiState.currentCluster.paths[0].cluster; 
+
+  React.useEffect(() => !uiState.currentCluster && redirect('/groupList'),[]);
 
   return (
     <Grid container direction="column" spacing={2} className={classes.root}>
+      {
+        uiState.currentCluster 
+        ?
+        <>
         <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
           <Link color="inherit" href="/groupList">Group List</Link>
           <Typography color="textPrimary">{`Cluster ${currentClusterName}`}</Typography>
@@ -45,6 +52,10 @@ const IndividualCluster: React.FC = () => {
         <Grid item>
           <MainDashboard/>
         </Grid>
+        </>
+        :
+        <h3>Redirecting back to group list...</h3>
+      }
     </Grid>
   );
 };

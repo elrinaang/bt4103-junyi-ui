@@ -198,9 +198,9 @@ const strongStudents: StudentType[] = [
 
 export const testCluster: ClusterType = { 
   no_students: '48',
-  avg_accuracy: '69.9%',
-  avg_exercises_attempted: '6',
-  avg_problems_attempted: '20',
+  avg_accuracy: '0.83519214700000000000',
+  avg_exercises_attempted: '5.7500000000000000',
+  avg_problems_attempted: '37.7500000000000000',
   prediction: { 
     weak: weakStudents,
     normal: normalStudents,

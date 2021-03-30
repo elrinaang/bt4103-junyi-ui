@@ -34,12 +34,16 @@ const IndividualStudent: React.FC = () => {
 
   const { uiState, appStore } = useStores(); 
   const classes = useStyles();
-  const currentStudent = uiState.currentStudent;
+  const currentStudent = uiState.currentStudent && uiState.currentStudent;
 
-  React.useEffect(() =>  currentStudent === null && redirect('/studentlist'),[]); 
+  React.useEffect(() =>  !uiState.currentStudent && redirect('/studentlist'),[]); 
 
   return (
     <Grid container direction="column" className={classes.root}>
+      {
+      uiState.currentStudent 
+      ?
+      <>
       <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
         <Link color="inherit" href="/studentlist">Student List</Link>
         <Typography color="textPrimary">{currentStudent.name}</Typography>
@@ -47,6 +51,10 @@ const IndividualStudent: React.FC = () => {
       <h1><b>{currentStudent.name}</b></h1>
       <CurrentStatistics/>
       <PastStatistics/>
+      </>
+      :
+      <h3>Redirecting back to student list...</h3>
+    }
     </Grid>
   );
 };
