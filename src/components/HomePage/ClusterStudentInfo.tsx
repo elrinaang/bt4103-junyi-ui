@@ -3,6 +3,7 @@ import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
 import redirect from '../../lib/redirect';
@@ -24,10 +25,21 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ClusterInfo: React.FC = () => {
+const ClusterStudentInfo: React.FC = () => {
 
   const { uiState, appStore } = useStores(); 
   const classes = useStyles();
+
+  const Form = () => 
+    <form noValidate autoComplete="off">
+      <TextField
+        label="Group Name"
+        InputLabelProps={{
+          shrink: true,
+        }}
+        variant="standard"
+      />
+    </form>
 
   return (
     <div className={classes.root}>
@@ -39,40 +51,40 @@ const ClusterInfo: React.FC = () => {
         <Grid container direction="row" className={classes.clusterGroup} spacing={2}>
             <Grid item className={classes.clusterPicture} xs={3} style={{backgroundColor: '#D8F793'}}><Typography variant="h2" className={classes.text}>1</Typography></Grid>
             <Grid item xs={8}>
-                <Typography><b>Cluster 1</b></Typography>
-                <Typography>Cluster description</Typography>
+              <Form/>
+              <Typography>Cluster description</Typography>
             </Grid>
         </Grid>
         <Grid container direction="row" className={classes.clusterGroup} spacing={2}>
             <Grid item className={classes.clusterPicture} xs={3} style={{backgroundColor: '#A0CA92'}}><Typography variant="h2" className={classes.text}>2</Typography></Grid>
             <Grid item xs={8}>
-                <Typography><b>Cluster 2</b></Typography>
-                <Typography>Cluster description</Typography>
+              <Typography><b>Cluster 2</b></Typography>
+              <Typography>Cluster description</Typography>
             </Grid>
         </Grid>
         <Grid container direction="row" className={classes.clusterGroup} spacing={2}>
             <Grid item className={classes.clusterPicture} xs={3} style={{backgroundColor: '#75B09C'}}><Typography variant="h2" className={classes.text}>3</Typography></Grid>
             <Grid item xs={8}>
-                <Typography><b>Cluster 3</b></Typography>
-                <Typography>Cluster description</Typography>
+              <Typography><b>Cluster 3</b></Typography>
+              <Typography>Cluster description</Typography>
             </Grid>
         </Grid>
         <Grid container direction="row" className={classes.clusterGroup} spacing={2}> 
             <Grid item className={classes.clusterPicture} xs={3} style={{backgroundColor: '#998650'}}><Typography variant="h2" className={classes.text}>4</Typography></Grid>
             <Grid item xs={8}>
-                <Typography><b>Cluster 4</b></Typography>
-                <Typography>Cluster description</Typography>
+              <Typography><b>Cluster 4</b></Typography>
+              <Typography>Cluster description</Typography>
             </Grid>
         </Grid>
         <Grid container direction="row" className={classes.clusterGroup} spacing={2}> 
             <Grid item className={classes.clusterPicture} xs={3} style={{backgroundColor: '#e0be36'}}><Typography variant="h2" className={classes.text}>5</Typography></Grid>
             <Grid item xs={8}>
-                <Typography><b>Cluster 5</b></Typography>
-                <Typography>Cluster description</Typography>
+              <Typography><b>Cluster 5</b></Typography>
+              <Typography>Cluster description</Typography>
             </Grid>
         </Grid>
     </div>
   );
 };
 
-export default observer(ClusterInfo); 
+export default observer(ClusterStudentInfo); 

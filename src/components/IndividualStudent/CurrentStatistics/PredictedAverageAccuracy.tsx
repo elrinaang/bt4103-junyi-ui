@@ -9,45 +9,32 @@ import {BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Refer
 const data = [
   {
     name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
+    shap: 2400,
   },
   {
     name: 'Page B',
     uv: -3000,
-    pv: 1398,
-    amt: 2210,
+    shap: 1398,
   },
   {
     name: 'Page C',
-    uv: -2000,
-    pv: -9800,
-    amt: 2290,
+    shap: -9800,
   },
   {
     name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
+    shap: 3908,
   },
   {
     name: 'Page E',
-    uv: -1890,
-    pv: 4800,
-    amt: 2181,
+    shap: 4800,
   },
   {
     name: 'Page F',
-    uv: 2390,
-    pv: -3800,
-    amt: 2500,
+    shap: -3800,
   },
   {
     name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
+    shap: 4300,
   },
 ];
 
@@ -82,18 +69,18 @@ const PredictedAverageAccuracy: React.FC = () => {
   return (
     <React.Fragment>
         <div>
-          <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>Predicted Average Accuracy</b></Typography>
-          <Typography variant="h4" className={classes.predAccuracyValue}>{`${getAccuracyasPercentage(currentStudent.avg_accuracy)}%`}</Typography>  
+          <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>Predicted Average Performance</b></Typography>
+          <Typography variant="h4" className={classes.predAccuracyValue}>Strong</Typography>  
         </div>
         <Divider/>
         <ResponsiveContainer width='100%'>
         <div className={classes.barChart}>
-            <BarChart
+          <BarChart
             width={500}
             height={300}
             data={data}
             style={{margin: '0 auto'}}
-            >
+          >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
@@ -101,9 +88,8 @@ const PredictedAverageAccuracy: React.FC = () => {
             <Legend />
             <ReferenceLine y={0} stroke="#000" />
             <br/>
-            <Bar dataKey="pv" fill='#FF9933' />
-            <Bar dataKey="uv" fill='#333366' />
-            </BarChart>
+            <Bar dataKey="shap" fill='#FF9933' />
+          </BarChart>
         </div>
         </ResponsiveContainer>
     </React.Fragment>

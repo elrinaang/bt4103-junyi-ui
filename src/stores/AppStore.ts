@@ -9,13 +9,18 @@ export type IndivGroup = {
   groupStudents?: any;
 };
 
+export type ModuleType = {
+  name: string; 
+  id: string; 
+}
+
 class AppStore {
 
   studentList: RowsProp;
   filteredStudentList: RowsProp;
   studentTableColumns: ColDef[];
   groupList: IndivGroup[];
-  listOfModules: string[];
+  listOfModules: ModuleType[];
 
   //attributes needed to add new class
   newGroup: IndivGroup;
@@ -67,15 +72,16 @@ class AppStore {
     this.groupList = [];
 
     this.listOfModules = [
-      'area',
-      'perimeter',
-      'division',
-      'subtraction',
-      'addition',
-      'multiplication',
-      'fractions',
-      'percentage',
-      'decimals'
+      {name: 'area', id: '0'},
+      {name: 'perimeter', id: '1'},
+      {name: 'divison', id: '2'},
+      {name: 'addition', id: '3'},
+      {name: 'subtraction', id: '4'},
+      {name: 'percentage', id: '5'},
+      {name: 'ratio', id: '6'},
+      {name: 'decimals', id: '7'},
+      {name: 'fraction', id: '8'},
+      {name: 'geometry', id: '9'}
     ];
 
     this.newGroup = null;

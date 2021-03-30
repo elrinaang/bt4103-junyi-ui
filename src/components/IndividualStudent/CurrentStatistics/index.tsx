@@ -29,12 +29,12 @@ const CurrentStatistics: React.FC = () => {
 
   return (
     <Grid container spacing={1} className={classes.root}>
-      <Grid item xs={6}>
+      <Grid item xs={12}>
         <Paper style={{height: '100%'}} square>
           <PredictedAverageAccuracy/>
         </Paper>
       </Grid> 
-      <Grid item xs={3}> 
+      {/*<Grid item xs={3}> 
         <Paper style={{height: '100%'}} square>
           <ExercisesAttempted/>
         </Paper>
@@ -43,7 +43,7 @@ const CurrentStatistics: React.FC = () => {
         <Paper style={{height: '100%'}} square>
           <ProblemsAttempted/>
         </Paper>
-      </Grid> 
+      </Grid>*/} 
     </Grid>
   );
 };

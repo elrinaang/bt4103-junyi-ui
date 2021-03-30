@@ -55,7 +55,9 @@ const CreateGroup: React.FC = () => {
           const res = results.data.map((item) => {
             return item.id
           });
-          createGroup(appStore.newGroupName,res, ["1", "2"]); 
+          //find the correct ids of the group and send back 
+          const listOfModules = appStore.newGroupModules.map((name: string) => appStore.listOfModules.find(module => module.name == name).id); 
+          createGroup(appStore.newGroupName,res, listOfModules); 
         }
     })
   }

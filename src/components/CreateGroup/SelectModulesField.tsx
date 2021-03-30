@@ -8,6 +8,7 @@ import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 import useStyles from './useStyles';
 import { useStores } from '../../stores/StoreProvider';
+import { ModuleType } from '../../stores/AppStore';
 import { observer } from 'mobx-react';
 
 const SelectModulesField: React.FC = () => {
@@ -17,7 +18,9 @@ const SelectModulesField: React.FC = () => {
 
   React.useEffect(() => appStore.setNewGroupModules([]),[]); 
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChange = (event: React.ChangeEvent<{ value: string[] }>) => {
+    //get the list of module from the module ID 
+    //const listOfModules = event.target.value.map((id: string) => appStore.listOfModules.find(moduleId => moduleId.id = id)); 
     appStore.setNewGroupModules(event.target.value as string[]);
   };
 
@@ -37,10 +40,10 @@ const SelectModulesField: React.FC = () => {
             getContentAnchorEl: () => null,
           }}
         >
-          {appStore.listOfModules.map((module) => (
-            <MenuItem key={module} value={module}>
-              <Checkbox checked={selectedModules.indexOf(module) > -1} color="primary"/>
-              <ListItemText primary={module} />
+          {appStore.listOfModules.map((module: ModuleType) => (
+            <MenuItem key={module.id} value={module.name}>
+              <Checkbox checked={selectedModules.indexOf(module.name) > -1} color="primary"/>
+              <ListItemText primary={module.name} />
             </MenuItem>
           ))}
         </Select>

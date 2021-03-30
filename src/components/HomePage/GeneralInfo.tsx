@@ -10,7 +10,7 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 import TimelineIcon from '@material-ui/icons/Timeline';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
-import ClusterInfo from './ClusterInfo';
+import ClusterStudentInfo from './ClusterStudentInfo';
 import StudentDataInfo from './StudentDataInfo';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   iconGroup: { 
     backgroundColor: 'white',
-    padding: theme.spacing(6,0,0)
+    //padding: theme.spacing(6,0,0)
   },
   indivIcon: { 
     textAlign: 'center',
@@ -31,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
   },
   tab: { 
     paddingBottom: theme.spacing(4)
+  },
+  iconGroupTitle: { 
+    padding: theme.spacing(1,3,2),
+    backgroundColor: 'white'
   }
 }));
 
@@ -82,6 +86,9 @@ const GeneralInfo: React.FC = () => {
         <br/>
         <Typography>With Learning Analytics, trainers can benefit from learning more about how students learn and <b>tailor their curriculum to fit students' needs</b>. At the same time, students are also able to benefit from having a more <b>personalised learning experience</b>.</Typography>
       </Grid> 
+      <Grid item className={classes.iconGroupTitle}>
+        <h1>What can you do?</h1>
+      </Grid>
       <Tabs
         value={value}
         onChange={handleChange}
@@ -95,7 +102,7 @@ const GeneralInfo: React.FC = () => {
         <Tab icon={<TimelineIcon fontSize="large"/>} label="Generate Learning Paths" className={classes.tab}/>
       </Tabs>
       <TabPanel value={value} index={0}>
-        <ClusterInfo/>
+        <ClusterStudentInfo/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <StudentDataInfo/>

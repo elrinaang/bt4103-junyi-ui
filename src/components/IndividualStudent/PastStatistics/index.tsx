@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import { useStores } from '../../../stores/StoreProvider';
 import { observer } from 'mobx-react';
 import GeneralStatistics from './GeneralStatistics';
-import SecondaryStatistics from './SecondaryStatistics';
+import ExerciseStatistics from './ExerciseStatistics';
 
 const useStyles = makeStyles(theme => ({
   root:{ 
@@ -50,7 +50,7 @@ const PastStatistics: React.FC = () => {
             <GeneralStatistics/>
         </Grid>
         <Grid item xs={12}>
-            <SecondaryStatistics/>
+            <ExerciseStatistics/>
         </Grid>
     </Grid>
   );

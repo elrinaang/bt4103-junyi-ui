@@ -14,6 +14,12 @@ const useStyles = makeStyles(theme => ({
     display: 'inline-block',
     margin: theme.spacing(3,2,3)
   },
+  predAccuracyValue: { 
+    display: 'inline-block',
+    float: 'right',
+    margin: theme.spacing(2,2,2),
+    color: theme.palette.info.main
+  },
   root: { 
     marginTop: theme.spacing(2)
   },
@@ -56,7 +62,7 @@ const data = [
   },
   ];
 
-const SecondaryStatistics: React.FC = () => {
+const ExerciseStatistics: React.FC = () => {
 
   const { uiState, appStore } = useStores(); 
   const classes = useStyles();
@@ -68,9 +74,13 @@ const SecondaryStatistics: React.FC = () => {
       <Grid item xs={6}>
         <Paper style={{height: '100%'}} square>
           <div>
-            <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>Types of Problems Attempted</b></Typography> 
+            <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>Exercises Attempted</b></Typography> 
+            <Typography variant="h4" className={classes.predAccuracyValue}>Strong</Typography>  
           </div>
           <Divider/>
+          <div className={classes.indivStat}>
+            <Typography variant="h4">{`${currentStudent.exercises_attempted} exercises`}</Typography>
+          </div>
           <div className={classes.problemTypes}>
             <BarChart width={500} height={300} data={data} style={{margin: '0 auto'}}>
               <Bar dataKey="count" fill="#FF9933" />
@@ -82,24 +92,45 @@ const SecondaryStatistics: React.FC = () => {
           </div>
         </Paper>
       </Grid> 
-      <Grid item xs={6}>
-        <Paper style={{height: '100%'}} square> 
+      <Grid item xs={6} style={{height: '100%'}}>
+        <Grid container direction="column">
+          <Grid item>
+            <Paper style={{height: '100%'}} square>
+            <div>
+              <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>No.of Exercises and Problems Attempted</b></Typography> 
+            </div>
+            <Divider/> 
+            <Typography variant="h4">{`${currentStudent.exercises_attempted} exercises`}</Typography>
+            <Typography variant="h4">{`${currentStudent.problems_attempted} problems`}</Typography>
+            </Paper>
+          </Grid>
+          <br/>
+          <Grid item>
+            <Paper>
+              <div>
+                <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>Time Taken</b></Typography> 
+              </div>
+            </Paper>
+            <Divider/> 
+          </Grid>
+        </Grid>
+        {/*<Paper style={{height: '100%'}} square> 
           <div>
             <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>Time taken</b></Typography> 
           </div>
           <Divider/>
           <div className={classes.timeContent}>
             <div className={classes.indivStat}>
-              <Typography variant="h3" className={classes.text}>{`${getTimeAsMins(currentStudent.avg_time_per_exercise)} mins`}</Typography>  
+              <Typography variant="h4" className={classes.text}>{`${getTimeAsMins(currentStudent.avg_time_per_exercise)} mins`}</Typography>  
               <Typography variant="subtitle1" color="secondary"><b>To Solve Each Problem</b></Typography>
             </div>
             <Divider/>
             <div className={classes.indivStat}>
-              <Typography variant="h3" className={classes.text}>{`${getTimeAsMins(currentStudent.avg_time_btw_problem)} mins`}</Typography>  
+              <Typography variant="h4" className={classes.text}>{`${getTimeAsMins(currentStudent.avg_time_btw_problem)} mins`}</Typography>  
               <Typography variant="subtitle1" color="secondary"><b>Between Each Exercise</b></Typography>
             </div>
           </div>
-        </Paper>
+          </Paper>*/}
       </Grid>
     </Grid>
 
@@ -107,4 +138,4 @@ const SecondaryStatistics: React.FC = () => {
   );
 };
 
-export default observer(SecondaryStatistics); 
+export default observer(ExerciseStatistics); 
