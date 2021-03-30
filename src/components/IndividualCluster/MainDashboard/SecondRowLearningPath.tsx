@@ -3,7 +3,6 @@ import { createStyles, Theme, makeStyles, useTheme } from '@material-ui/core/sty
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import StepButton from '@material-ui/core/StepButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -14,32 +13,33 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import { useStores } from '../../../stores/StoreProvider';
 import { observer } from 'mobx-react';
+import { PathType } from '../../../lib/Types';
 
 const useStyles = makeStyles(theme => ({
-    root: { 
-      padding: theme.spacing(0,2,2),
-      height: '100%'
-    },
-    headerName: { 
-      marginLeft: theme.spacing(2),
-      paddingTop: theme.spacing(3)
-    },
-    formControl: {
-      margin: theme.spacing(1.5,1,0),
-      minWidth: 120,
-    },
-    mobileStepper: { 
-      flexGrow: 1,
-      width: '100%',
-      backgroundColor: 'white'
-    },
-    learningPath: { 
-      width: '100%',
-      margin: theme.spacing(0,0,3)
-    },
-    selectFieldContainer: { 
-      marginBottom: theme.spacing(2)
-    }
+  root: { 
+    padding: theme.spacing(0,2,2),
+    height: '100%'
+  },
+  headerName: { 
+    marginLeft: theme.spacing(2),
+    paddingTop: theme.spacing(3)
+  },
+  formControl: {
+    margin: theme.spacing(1.5,1,0),
+    minWidth: 120,
+  },
+  mobileStepper: { 
+    flexGrow: 1,
+    width: '100%',
+    backgroundColor: 'white'
+  },
+  learningPath: { 
+    width: '100%',
+    margin: theme.spacing(0,0,3)
+  },
+  selectFieldContainer: { 
+    marginBottom: theme.spacing(2)
+  }
 }));
 
 const steps = ['Addition', 'Substraction','Multiplication','Division', 'Area','Perimeter'];
@@ -49,20 +49,38 @@ const SecondRowLearningPath: React.FC = () => {
   const { uiState, appStore } = useStores(); 
   const classes = useStyles();
   const theme = useTheme();
+  const currentClusterLearningPaths = uiState.currentCluster.paths;
 
-  const [age, setAge] = React.useState('');
+  const [filter, setFilter] = React.useState('popularity');
   const [activeStep, setActiveStep] = React.useState(0);
+  const [currentLearningPath, setCurrentLearningPath] = React.useState([]);
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setAge(event.target.value as string);
+  React.useEffect(() => getCurrentLearningPath('popularity',1),[]);
+
+  const getCurrentLearningPath = (filter: string, rank: number) => { 
+    //filter by filter - popularity and performance 
+    console.log(filter,rank);
+    const filteredPath: PathType[] = currentClusterLearningPaths.filter(exercise => exercise.policy === filter);
+    const finalPath: PathType[] = filteredPath.filter(exercise => exercise.rank === rank.toString());
+    console.log(finalPath); 
+    const learningPath: string[] = finalPath.map(exercise => exercise.id);
+    console.log(learningPath);
+    learningPath && setCurrentLearningPath(learningPath);
+    };
+
+  const handleChange = (event: React.ChangeEvent<{ value: string }>) => {
+    setFilter(event.target.value as string);
+    getCurrentLearningPath(event.target.value,activeStep+1);
   };
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    getCurrentLearningPath(filter, activeStep + 2 );
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    getCurrentLearningPath(filter,activeStep);
   };
 
   return (
@@ -71,25 +89,22 @@ const SecondRowLearningPath: React.FC = () => {
       <div className={classes.selectFieldContainer}>
         <div style={{display: 'inline-block',float:'right'}}>
             <FormControl className={classes.formControl}>
-                <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={age}
-                onChange={handleChange}
-                >
-                  <MenuItem value={10}>Popularity</MenuItem>
-                  <MenuItem value={20}>Option 2</MenuItem>
-                  <MenuItem value={30}>Option 3</MenuItem>
-                </Select>
+              <Select
+              value={filter}
+              onChange={handleChange}
+              >
+                <MenuItem value={'popularity'}>popularity</MenuItem>
+                <MenuItem value={'performance'}>performance</MenuItem>
+              </Select>
             </FormControl>
         </div>
         <h3 style={{display: 'inline-block',float:'right'}}>Generate by:</h3>
       </div>
       <Stepper className={classes.learningPath} alternativeLabel>
-      {steps.map((label: string) => {
+      {currentLearningPath.map((exercise: string) => {
         return (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
+          <Step key={exercise}>
+            <StepLabel>{exercise}</StepLabel>
           </Step>
         );
       })}
