@@ -36,6 +36,7 @@ const StudentList: React.FC = () => {
       let groups = await getGroups();
       appStore.setGroups(groups);
       //get the first pre-set group 
+      uiState.setCurrentGroup(appStore.groupList[0].name);
       const currentGroup = appStore.groupList.find(group => group.name == uiState.currentGroup); 
       let students = await getStudentsByGroup(currentGroup.id);
       appStore.studentList = students;

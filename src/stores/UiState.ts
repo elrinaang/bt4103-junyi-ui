@@ -27,7 +27,7 @@ class UiState {
     })
     
     this.errorMessage = '';
-    this.currentGroup = 'test group 1';
+    this.currentGroup = '';
     this.currentCluster = null;
     this.appStatus = 'RETRIEVING_INFORMATION';
     this.currentStudent = null; 
