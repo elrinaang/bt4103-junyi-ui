@@ -29,7 +29,7 @@ const StudentList: React.FC = () => {
   const { appStore, uiState } = useStores();
   const [openSnackBar, handleOpenSnackBar] = React.useState(true);
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     async function fetchStudents() {
       uiState.setAppStatus('RETRIEVING_INFORMATION');
 
@@ -44,13 +44,14 @@ const StudentList: React.FC = () => {
     }
 
     fetchStudents();
-  }, []);
+  }, []);*/
 
   const onSelectStudent = async (studentId: any) => {
     //get the student detail from the backend
-    const student = await getStudentDetail(studentId);
-    uiState.setCurrentStudent(student);
-    redirect(`/student?id=${student.id}`);
+    //const student = await getStudentDetail(studentId);
+    //uiState.setCurrentStudent(student);
+    //redirect(`/student?id=${student.id}`);
+    redirect(`/student?id=${uiState.currentStudent.id}`);
   };
 
   const handleCloseSnackBar = () => {

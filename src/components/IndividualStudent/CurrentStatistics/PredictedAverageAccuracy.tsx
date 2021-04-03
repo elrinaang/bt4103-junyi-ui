@@ -5,6 +5,7 @@ import { useStores } from '../../../stores/StoreProvider';
 import { observer } from 'mobx-react';
 import Divider from '@material-ui/core/Divider';
 import {BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, ResponsiveContainer, PieChart, Pie, Label } from 'recharts';
+import parse from 'html-react-parser';
 
 const data = [
   {
@@ -75,21 +76,7 @@ const PredictedAverageAccuracy: React.FC = () => {
         <Divider/>
         <ResponsiveContainer width='100%'>
         <div className={classes.barChart}>
-          <BarChart
-            width={500}
-            height={300}
-            data={data}
-            style={{margin: '0 auto'}}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <ReferenceLine y={0} stroke="#000" />
-            <br/>
-            <Bar dataKey="shap" fill='#FF9933' />
-          </BarChart>
+          {parse(currentStudent.html)}
         </div>
         </ResponsiveContainer>
     </React.Fragment>

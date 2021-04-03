@@ -7,11 +7,7 @@ export type ClusterType = {
     avg_accuracy: string, 
     avg_exercises_attempted: string, 
     avg_problems_attempted: string,
-    prediction: { 
-        weak: StudentType[], 
-        normal: StudentType[],
-        strong: StudentType[]
-    },
+    predictions: PredictionType[],
     paths: PathType[]
 }
 
@@ -33,3 +29,9 @@ export type StudentType = {
     name: string, 
     accuracy: string 
 }
+
+export type PredictionType = { 
+    uuid: string, 
+    name: string, 
+    bin: string 
+};

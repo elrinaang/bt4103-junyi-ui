@@ -1,15 +1,9 @@
 import * as React from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableRow from '@material-ui/core/TableRow';
 import { useStores } from '../../../stores/StoreProvider';
 import { observer } from 'mobx-react';
-import { StudentType } from '../../../lib/Types';
-import {BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, ResponsiveContainer, PieChart, Pie, Label } from 'recharts';
+import { Cell, Tooltip, Legend, ReferenceLine, ResponsiveContainer, PieChart, Pie, Label } from 'recharts';
 
 
 const COLORS = ['#FF9933', '#62727b','#333366'];
@@ -34,10 +28,13 @@ const SecondRowStudentPieChart: React.FC = () => {
   const classes = useStyles();
   const { uiState } = useStores();
   const currentCluster = uiState.currentCluster; 
+  const weakStudents = currentCluster.predictions.filter(student => student.bin == '1');
+  const normalStudents = currentCluster.predictions.filter(student => student.bin == '2');
+  const strongStudents = currentCluster.predictions.filter(student => student.bin == '3');
   const pieChartData = [ 
-    {name: 'weak', value: currentCluster.prediction.weak.length},
-    {name: 'normal', value: currentCluster.prediction.normal.length},
-    {name: 'strong', value: currentCluster.prediction.strong.length}
+    {name: 'weak', value: weakStudents.length},
+    {name: 'normal', value: normalStudents.length},
+    {name: 'strong', value: strongStudents.length}
   ]
 
   return (

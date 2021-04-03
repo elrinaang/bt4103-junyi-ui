@@ -20,8 +20,8 @@ const GroupList: React.FC = () => {
   const { uiState, appStore } = useStores(); 
   const classes = useStyles();
 
-  //Retrieve groups; TODO: set an awaiting circle when the groups are still retrieving 
-  React.useEffect(() => {
+  //Retrieve groups; 
+  /*React.useEffect(() => {
     async function fetchGroups() {
       let groups = await getGroups();
       appStore.setGroups(groups);
@@ -29,7 +29,7 @@ const GroupList: React.FC = () => {
     }
 
     fetchGroups();
-  }, []);
+  }, []);*/
 
   return (
     <Grid container direction="column" spacing={3} className={classes.root}> 

@@ -1,12 +1,15 @@
 import { observable, action, computed, makeObservable} from 'mobx';
 import { DataGrid, ColDef, RowsProp } from '@material-ui/data-grid';
+import { groupListData } from '../groupListData';
+import { studentListData } from '../studentListData';
 
 export type IndivGroup = {
-  id: number;
-  name: string;
-  nominalRoll?: Blob;
-  groupModules?: string[];
-  groupStudents?: any;
+  id: number,
+  name: string,
+  no_students: string, 
+  avg_accuracy: string, 
+  avg_exercises_attempted: string, 
+  avg_problems_attempted: string
 };
 
 export type ModuleType = {
@@ -23,11 +26,9 @@ class AppStore {
   listOfModules: ModuleType[];
 
   //attributes needed to add new class
-  newGroup: IndivGroup;
   newGroupName: string;
   newGroupModules: string[];
   newGroupRoll: Blob;
-  newGroupStudents: any;
 
   constructor() {
     makeObservable(this, {
@@ -35,21 +36,18 @@ class AppStore {
       filteredStudentList: observable,
       studentTableColumns: observable,
       groupList: observable,
-      newGroup: observable,
       newGroupName: observable,
       newGroupModules: observable,
       newGroupRoll: observable,
-      newGroupStudents: observable,
       listOfModules: observable,
       setGroups: action,
       setNewGroupName: action,
       setNewGroupModules: action,
       setNewGroupRoll: action,
-      setNewGroupStudents: action,
       setFilteredStudentList: action
     })
 
-    this.studentList = [];
+    this.studentList = studentListData;
 
     this.filteredStudentList = this.studentList;
 
@@ -69,7 +67,7 @@ class AppStore {
       { field: 'user_city', headerName: 'City', width: 100 }
     ];
 
-    this.groupList = [];
+    this.groupList = groupListData;
 
     this.listOfModules = [
       {name: 'area', id: '0'},
@@ -84,15 +82,11 @@ class AppStore {
       {name: 'geometry', id: '9'}
     ];
 
-    this.newGroup = null;
-
     this.newGroupName = '';
 
     this.newGroupModules = [];
 
     this.newGroupRoll = null;
-
-    this.newGroupStudents = [];
   }
 
   setGroups = (retrievedGroup: IndivGroup[]) => {
@@ -109,10 +103,6 @@ class AppStore {
 
   setNewGroupRoll = (roll:Blob) => {
     this.newGroupRoll = roll;
-  };
-
-  setNewGroupStudents = (students: any) => {
-    this.newGroupStudents = students;
   };
 
   setFilteredStudentList = (selectedGroup: any) => {
