@@ -92,7 +92,7 @@ const SecondRowLearningPath: React.FC = () => {
   };
 
   return (
-    <Paper elevation={0} className={classes.root}>
+    <Paper className={classes.root}>
       <h2 className={classes.headerName}><b>Possible Learning Paths</b></h2>
       <div className={classes.selectFieldContainer}>
         <div style={{display: 'inline-block',float:'right'}}>

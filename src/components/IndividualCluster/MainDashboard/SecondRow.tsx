@@ -7,20 +7,28 @@ import SecondRowLearningPath from './SecondRowLearningPath';
 import SecondRowStudentAccuarcy from './SecondRowStudentAccuracy';
 import SecondRowStudentPieChart from './SecondRowStudentPieChart';
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    marginTop: theme.spacing(1)
+  }
+}));
+
 const SecondRow: React.FC = () => {
 
+  const classes = useStyles();
+
   return (
-      <Grid container direction="row" spacing={1}>
-        <Grid item xs={6} xl={3}>
-          <SecondRowStudentAccuarcy/>
-        </Grid>
-        <Grid item xs={6} xl={3}>
-          <SecondRowStudentPieChart/>
-        </Grid>
-        <Grid item xs={12} xl={6}>
-          <SecondRowLearningPath/>
-        </Grid>
+    <Grid container direction="row" spacing={1} className={classes.root}>
+      <Grid item xs={6} xl={3}>
+        <SecondRowStudentAccuarcy/>
       </Grid>
+      <Grid item xs={6} xl={3}>
+        <SecondRowStudentPieChart/>
+      </Grid>
+      <Grid item xs={12} xl={6}>
+        <SecondRowLearningPath/>
+      </Grid>
+    </Grid>
   );
 };
 

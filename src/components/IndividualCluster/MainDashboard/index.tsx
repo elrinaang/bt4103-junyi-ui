@@ -5,6 +5,7 @@ import { useStores } from '../../../stores/StoreProvider';
 import { observer } from 'mobx-react';
 import FirstRow from './FirstRow';
 import SecondRow from './SecondRow';
+import GroupComparison from './GroupComparison';
 
 const MainDashboard: React.FC = () => {
 
@@ -13,6 +14,7 @@ const MainDashboard: React.FC = () => {
   return (
     <Grid container direction="column">
       <FirstRow/>
+      <GroupComparison/>
       <SecondRow/>
     </Grid>
   );

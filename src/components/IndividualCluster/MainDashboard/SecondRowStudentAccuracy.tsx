@@ -47,7 +47,7 @@ const SecondRowStudentAccuarcy: React.FC = () => {
   }
 
   return (
-  <Paper elevation={0} className={classes.root}>
+  <Paper className={classes.root}>
     <h2 className={classes.headerName}>Individual Student Scores</h2>
     <TableContainer style={{maxHeight: 400}}>
       <Table>

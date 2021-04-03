@@ -55,7 +55,7 @@ const FirstRow: React.FC = () => {
   return (
       <Grid container direction="row" spacing={1}>
         <Grid item xs={3}>
-          <Paper elevation={0} className={classes.indivStat}>
+          <Paper className={classes.indivStat}>
             <div className={classes.avatar}>
               <Avatar style={{backgroundColor:'#b19cd9'}}>
                 <PersonIcon fontSize="large" style={{color:'white'}}/>
@@ -66,7 +66,7 @@ const FirstRow: React.FC = () => {
           </Paper>
         </Grid> 
         <Grid item xs={3}> 
-          <Paper elevation={0} className={classes.indivStat}>
+          <Paper className={classes.indivStat}>
             <div className={classes.avatar}>
               <Avatar style={{backgroundColor:'#77dd77'}}>
                 <ShowChartIcon fontSize="large" style={{color:'white'}}/>
@@ -77,7 +77,7 @@ const FirstRow: React.FC = () => {
           </Paper>
         </Grid>
         <Grid item xs={3}>
-          <Paper elevation={0} className={classes.indivStat}>
+          <Paper className={classes.indivStat}>
             <div className={classes.avatar}>
               <Avatar style={{backgroundColor:'#ff9fb6'}}>
                 <AssessmentIcon fontSize="large" style={{color:'white'}}/>
@@ -88,7 +88,7 @@ const FirstRow: React.FC = () => {
           </Paper>
         </Grid> 
         <Grid item xs={3}>
-          <Paper elevation={0} className={classes.indivStat}>
+          <Paper className={classes.indivStat}>
             <div className={classes.avatar}>
               <Avatar style={{backgroundColor:'#aec6cf'}}>
                 <MenuBookIcon fontSize="large" style={{color:'white'}}/>

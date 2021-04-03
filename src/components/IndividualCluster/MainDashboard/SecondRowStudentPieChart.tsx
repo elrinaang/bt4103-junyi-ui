@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   root: { 
     padding: theme.spacing(0,2,0),
     width: '100%',
-    height: '100%'
+    height: '100%',
   },
   headerName: { 
     marginLeft: theme.spacing(2),
@@ -38,7 +38,7 @@ const SecondRowStudentPieChart: React.FC = () => {
   ]
 
   return (
-    <Paper elevation={0} className={classes.root}>
+    <Paper className={classes.root}>
       <h2 className={classes.headerName}>Distribution of Students</h2>
       <PieChart width={280} height={300} style={{margin: '0 auto'}}>
             <Pie
