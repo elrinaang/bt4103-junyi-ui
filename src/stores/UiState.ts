@@ -8,11 +8,11 @@ export type AppStatus = 'RETRIEVING_INFORMATION' | 'RETRIEVED_INFORMATION' | 'NO
 
 class UiState {
 
-  errorMessage: string;  
+  errorMessage: string;
   currentGroup: string;
-  currentCluster: ClusterType; 
-  currentGroupName: string; 
-  currentClusterID: string; 
+  currentCluster: ClusterType;
+  currentGroupName: string;
+  currentClusterID: string;
   currentStudent: any;
   appStatus: AppStatus;
 
@@ -21,7 +21,7 @@ class UiState {
       errorMessage: observable,
       currentGroup: observable,
       currentCluster: observable,
-      currentStudent: observable,  
+      currentStudent: observable,
       appStatus: observable,
       currentGroupName: observable,
       currentClusterID: observable,
@@ -29,40 +29,40 @@ class UiState {
       setCurrentGroup: action,
       setCurrentStudent: action,
       setCurrentCluster: action,
-      setAppStatus: action 
+      setAppStatus: action
     })
-    
+
     this.errorMessage = '';
     this.currentGroup = '';
     this.currentCluster = individualClusterData;
 
     ////FOR CONNECTION WITH BE CHANGE TO 'RETRIEVING_INFORMATION'
-    this.appStatus = 'RETRIEVED_INFORMATION';
-    this.currentStudent = individualStudentData; 
-    this.currentClusterID = '3',
-    this.currentGroupName = 'Group 1'
+    this.appStatus = 'RETRIEVING_INFORMATION';
+    this.currentStudent = null;
+    this.currentClusterID = '',
+    this.currentGroupName = ''
   }
 
-  setErrorMessage = (message: string) => { 
-    this.errorMessage = message; 
+  setErrorMessage = (message: string) => {
+    this.errorMessage = message;
   };
 
-  setCurrentGroup = (groupName: string) => { 
-    this.currentGroup = groupName; 
+  setCurrentGroup = (groupName: string) => {
+    this.currentGroup = groupName;
   };
 
-  setCurrentStudent = (student: any) => { 
-    this.currentStudent = student; 
+  setCurrentStudent = (student: any) => {
+    this.currentStudent = student;
     console.log(this.currentStudent);
   };
 
-  setCurrentCluster = (selectedCluster: ClusterType) => { 
+  setCurrentCluster = (selectedCluster: ClusterType) => {
     this.currentCluster = selectedCluster;
     console.log(this.currentCluster);
   }
 
-  setAppStatus = (status: AppStatus) => { 
-    this.appStatus = status; 
+  setAppStatus = (status: AppStatus) => {
+    this.appStatus = status;
     console.log(this.appStatus);
   }
 }

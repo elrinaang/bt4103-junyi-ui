@@ -15,7 +15,7 @@ import { getGroups } from '../../api/groupService';
 import redirect from '../../lib/redirect';
 
 const useStyles = makeStyles(theme => ({
-  retrievingInfo: { 
+  retrievingInfo: {
     marginTop: theme.spacing(2)
   },
   circularInfo: {
@@ -30,23 +30,23 @@ const StudentList: React.FC = () => {
   const [openSnackBar, handleOpenSnackBar] = React.useState(true);
 
 
-  //UNCOMMENT FOR CONNECTION WITH BE 
-  /*React.useEffect(() => {
+  //UNCOMMENT FOR CONNECTION WITH BE
+  React.useEffect(() => {
     async function fetchStudents() {
       uiState.setAppStatus('RETRIEVING_INFORMATION');
 
       let groups = await getGroups();
       appStore.setGroups(groups);
-      //get the first pre-set group 
+      //get the first pre-set group
       uiState.setCurrentGroup(appStore.groupList[0].name);
-      const currentGroup = appStore.groupList.find(group => group.name == uiState.currentGroup); 
+      const currentGroup = appStore.groupList.find(group => group.name == uiState.currentGroup);
       let students = await getStudentsByGroup(currentGroup.id);
       appStore.studentList = students;
       uiState.setAppStatus('RETRIEVED_INFORMATION');
     }
 
     fetchStudents();
-  }, []);*/
+  }, []);
 
   const onSelectStudent = async (studentId: any) => {
     //get the student detail from the backend

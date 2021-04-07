@@ -50,25 +50,25 @@ const useStyles = makeStyles(theme => ({
 
 const GroupComparison: React.FC = () => {
 
-  const { uiState, appStore } = useStores(); 
+  const { uiState, appStore } = useStores();
   const classes = useStyles();
-  const currentCluster = uiState.currentCluster;
+  //const currentCluster = uiState.currentCluster;
   const currentGroup = appStore.groupList.find(group => group.name == uiState.currentGroupName);
   const [filter, setFilter] = React.useState('average accuracy');
 
-  const accuracyData = [{name: `Cluster ${uiState.currentClusterID}`, value: parseFloat(currentCluster.avg_accuracy)},{name: uiState.currentGroupName,value: parseFloat(currentGroup.avg_accuracy)}];
-  const exerciseData = [{name: `Cluster ${uiState.currentClusterID}`, value: parseFloat(currentCluster.avg_exercises_attempted)},{name: uiState.currentGroupName,value: parseFloat(currentGroup.avg_exercises_attempted)}];
-  const problemData = [{name: `Cluster ${uiState.currentClusterID}`, value: parseFloat(currentCluster.avg_problems_attempted)},{name: uiState.currentGroupName,value: parseFloat(currentGroup.avg_problems_attempted)}];
+  const accuracyData = [{name: `Cluster ${uiState.currentClusterID}`, value: parseFloat(uiState.currentCluster.avg_accuracy)},{name: uiState.currentGroupName,value: parseFloat(currentGroup.avg_accuracy)}];
+  const exerciseData = [{name: `Cluster ${uiState.currentClusterID}`, value: parseFloat(uiState.currentCluster.avg_exercises_attempted)},{name: uiState.currentGroupName,value: parseFloat(currentGroup.avg_exercises_attempted)}];
+  const problemData = [{name: `Cluster ${uiState.currentClusterID}`, value: parseFloat(uiState.currentCluster.avg_problems_attempted)},{name: uiState.currentGroupName,value: parseFloat(currentGroup.avg_problems_attempted)}];
 
-  const switchData = () => { 
-      switch(filter){ 
-            case('average accuracy'): 
+  const switchData = () => {
+      switch(filter){
+            case('average accuracy'):
                 return accuracyData
             case('exercises attempted'):
                 return exerciseData
             case('problems attempted'):
-                return problemData 
-      } 
+                return problemData
+      }
   };
 
   const handleChange = (event: React.ChangeEvent<{ value: string }>) => {
@@ -76,7 +76,7 @@ const GroupComparison: React.FC = () => {
   };
 
   return (
-      <Grid container direction="row" spacing={1}> 
+      <Grid container direction="row" spacing={1}>
         <Grid item xs={12}>
             <Paper className={classes.root}>
                 <h2 className={classes.headerName}>{`Compare with Group: ${filter}`}</h2>

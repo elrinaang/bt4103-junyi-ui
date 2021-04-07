@@ -9,12 +9,12 @@ import GroupComparison from './GroupComparison';
 
 const MainDashboard: React.FC = () => {
 
-  const { uiState, appStore } = useStores(); 
+  const { uiState, appStore } = useStores();
 
   return (
     <Grid container direction="column">
       <FirstRow/>
-      <GroupComparison/>
+        {/*<GroupComparison/>*/}
       <SecondRow/>
     </Grid>
   );

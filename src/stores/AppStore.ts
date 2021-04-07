@@ -6,15 +6,15 @@ import { studentListData } from '../studentListData';
 export type IndivGroup = {
   id: number,
   name: string,
-  no_students: string, 
-  avg_accuracy: string, 
-  avg_exercises_attempted: string, 
+  no_students: string,
+  avg_accuracy: string,
+  avg_exercises_attempted: string,
   avg_problems_attempted: string
 };
 
 export type ModuleType = {
-  name: string; 
-  id: string; 
+  name: string;
+  id: string;
 }
 
 class AppStore {
@@ -47,7 +47,7 @@ class AppStore {
       setFilteredStudentList: action
     })
 
-    this.studentList = studentListData;
+    this.studentList = null;
 
     this.filteredStudentList = this.studentList;
 
@@ -67,7 +67,7 @@ class AppStore {
       { field: 'user_city', headerName: 'City', width: 100 }
     ];
 
-    this.groupList = groupListData;
+    this.groupList = null;
 
     this.listOfModules = [
       {name: 'area', id: '0'},

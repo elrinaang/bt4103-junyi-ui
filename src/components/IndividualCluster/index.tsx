@@ -12,34 +12,34 @@ import MainDashboard from './MainDashboard';
 import redirect from '../../lib/redirect';
 
 const useStyles = makeStyles(theme => ({
-  clusterName: { 
+  clusterName: {
     padding: theme.spacing(0.25,2,0.25),
     marginTop: theme.spacing(1),
   },
-  indivGrid: { 
+  indivGrid: {
     marginBottom: theme.spacing(2)
   },
-  nameHeader: { 
+  nameHeader: {
     backgroundColor: theme.palette.primary.main,
     color: 'white'
   },
-  root:{ 
+  root:{
     padding: theme.spacing(5)
   }
 }));
 
 const IndividualCluster: React.FC = () => {
 
-  const { uiState, appStore } = useStores(); 
+  const { uiState, appStore } = useStores();
   const classes = useStyles();
-  const currentClusterName = uiState.currentCluster && uiState.currentCluster.paths[0].cluster; 
+  const currentClusterName = uiState.currentCluster && uiState.currentClusterID;
 
   React.useEffect(() => !uiState.currentCluster && redirect('/groupList'),[]);
 
   return (
     <Grid container direction="column" spacing={2} className={classes.root}>
       {
-        uiState.currentCluster 
+        uiState.currentCluster
         ?
         <>
         <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
@@ -58,4 +58,4 @@ const IndividualCluster: React.FC = () => {
   );
 };
 
-export default observer(IndividualCluster); 
+export default observer(IndividualCluster);

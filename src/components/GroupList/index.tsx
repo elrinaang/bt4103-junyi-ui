@@ -17,11 +17,11 @@ const useStyles = makeStyles((theme) => ({
 
 const GroupList: React.FC = () => {
 
-  const { uiState, appStore } = useStores(); 
+  const { uiState, appStore } = useStores();
   const classes = useStyles();
 
-  //UNCOMMENT FOR CONNECTION WITH BE 
-  /*React.useEffect(() => {
+  //UNCOMMENT FOR CONNECTION WITH BE
+  React.useEffect(() => {
     async function fetchGroups() {
       let groups = await getGroups();
       appStore.setGroups(groups);
@@ -29,26 +29,26 @@ const GroupList: React.FC = () => {
     }
 
     fetchGroups();
-  }, []);*/
+  }, []);
 
   return (
-    <Grid container direction="column" spacing={3} className={classes.root}> 
+    <Grid container direction="column" spacing={3} className={classes.root}>
       <Grid item>
         <SearchGroupField/>
       </Grid>
       {
-        uiState.appStatus == 'RETRIEVING_INFORMATION' 
+        uiState.appStatus == 'RETRIEVING_INFORMATION'
         ? <RetrievingInfo/>
         : <Grid item>
             {
-              appStore.groupList.length > 0 
+              appStore.groupList.length > 0
               ? <ClassDetails/>
               : <Typography variant="body1">No Groups Added</Typography>
             }
-          </Grid> 
+          </Grid>
       }
     </Grid>
   );
 };
 
-export default observer(GroupList); 
+export default observer(GroupList);
