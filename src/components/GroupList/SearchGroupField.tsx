@@ -45,7 +45,6 @@ const SearchGroupField: React.FC = () => {
         <Grid item xs={4}>
           <form noValidate autoComplete="off" className={classes.form}>
             <TextField 
-              //className={classes.textField} 
               id="outlined-basic" 
               label="Enter Group Name" 
               variant="outlined" 

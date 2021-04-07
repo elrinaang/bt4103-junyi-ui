@@ -20,7 +20,7 @@ const GroupList: React.FC = () => {
   const { uiState, appStore } = useStores(); 
   const classes = useStyles();
 
-  //Retrieve groups; 
+  //UNCOMMENT FOR CONNECTION WITH BE 
   /*React.useEffect(() => {
     async function fetchGroups() {
       let groups = await getGroups();

@@ -37,8 +37,6 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2,0,2)
   },
   timeContent: { 
-    //margin: 0,
-    //position: 'absolute',
     top: '50%',
     msTransform: 'translateY(50%)',
     transform: 'translateY(20%)'

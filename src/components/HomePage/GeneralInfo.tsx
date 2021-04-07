@@ -18,8 +18,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1,3,6)
   },
   iconGroup: { 
-    backgroundColor: 'white',
-    //padding: theme.spacing(6,0,0)
+    backgroundColor: 'white'
   },
   indivIcon: { 
     textAlign: 'center',

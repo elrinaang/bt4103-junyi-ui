@@ -57,9 +57,7 @@ const ClassDetails: React.FC = () => {
      *  2. Call a getCluser using the group ID and cluster ID
      *  3. Set current cluster from the cluster retrieved
      */
-    //DEV Purposes
-    //uiState.setCurrentCluster(testCluster);
-
+    //UNCOMMENT FOR CONNECTION WITH BE 
     //const clusterID = clusterName.split(" ")[1];
     //const newCluster: ClusterType = await getGroupCluster("60", "3");
     //uiState.setCurrentCluster(newCluster);

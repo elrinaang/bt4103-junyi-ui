@@ -15,8 +15,6 @@ const useStyles = makeStyles(theme => ({
   clusterName: { 
     padding: theme.spacing(0.25,2,0.25),
     marginTop: theme.spacing(1),
-    //backgroundColor: theme.palette.info.main,
-    //color: 'white'
   },
   indivGrid: { 
     marginBottom: theme.spacing(2)

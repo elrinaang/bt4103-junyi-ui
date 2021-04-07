@@ -29,6 +29,8 @@ const StudentList: React.FC = () => {
   const { appStore, uiState } = useStores();
   const [openSnackBar, handleOpenSnackBar] = React.useState(true);
 
+
+  //UNCOMMENT FOR CONNECTION WITH BE 
   /*React.useEffect(() => {
     async function fetchStudents() {
       uiState.setAppStatus('RETRIEVING_INFORMATION');

@@ -13,8 +13,7 @@ import { getStudentsByGroup } from '../../api/studentService';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     formControl: {
-      marginLeft: theme.spacing(1),
-      //marginTop: theme.spacing(0.5),
+      marginLeft: theme.spacing(1)
       minWidth: '20%',
     },
     root: {

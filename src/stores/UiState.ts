@@ -35,6 +35,8 @@ class UiState {
     this.errorMessage = '';
     this.currentGroup = '';
     this.currentCluster = individualClusterData;
+
+    ////FOR CONNECTION WITH BE CHANGE TO 'RETRIEVING_INFORMATION'
     this.appStatus = 'RETRIEVED_INFORMATION';
     this.currentStudent = individualStudentData; 
     this.currentClusterID = '3',

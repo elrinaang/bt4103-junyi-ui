@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { useStores } from '../../../stores/StoreProvider';
 import { observer } from 'mobx-react';
-import { Cell, Tooltip, Legend, ReferenceLine, ResponsiveContainer, PieChart, Pie, Label } from 'recharts';
+import { Cell, Tooltip, Legend,PieChart, Pie, Label } from 'recharts';
 
 
 const COLORS = ['#FF9933', '#62727b','#333366'];

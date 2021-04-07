@@ -20,8 +20,8 @@ export type PathType = {
     group_id: string, 
     cluster: string, 
     content_id: string, 
-    rank: string, //top x path 
-    position: string, //position of exercise within the path 
+    rank: string,  
+    position: string, 
     policy: string
 }
 
