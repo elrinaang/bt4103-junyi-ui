@@ -36,6 +36,7 @@ const StudentList: React.FC = () => {
       uiState.setAppStatus('RETRIEVING_INFORMATION');
 
       let groups = await getGroups();
+      console.log(groups);
       appStore.setGroups(groups);
       //get the first pre-set group 
       uiState.setCurrentGroup(appStore.groupList[0].name);
@@ -50,10 +51,10 @@ const StudentList: React.FC = () => {
 
   const onSelectStudent = async (studentId: any) => {
     //get the student detail from the backend
-    //const student = await getStudentDetail(studentId);
-    //uiState.setCurrentStudent(student);
-    //redirect(`/student?id=${student.id}`);
-    redirect(`/student?id=${uiState.currentStudent.id}`);
+    const student = await getStudentDetail(studentId);
+    uiState.setCurrentStudent(student);
+    redirect(`/student?id=${student.id}`);
+    // redirect(`/student?id=${uiState.currentStudent.id}`);
   };
 
   const handleCloseSnackBar = () => {
@@ -83,7 +84,7 @@ const StudentList: React.FC = () => {
         }
       </Grid>
       {
-        appStore.groupList.length > 0 &&
+        appStore.groupList?.length > 0 &&
         <Snackbar
           anchorOrigin={{
             vertical: 'top',

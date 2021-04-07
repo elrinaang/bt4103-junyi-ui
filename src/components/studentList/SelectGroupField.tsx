@@ -27,7 +27,7 @@ const SelectGroupField: React.FC = () => {
   const { appStore, uiState } = useStores();
 
   const handleChange =  async(event: React.ChangeEvent<{ value: string }>) => {
-    const currentGroup = appStore.groupList.find(group => group.name == event.target.value); 
+    const currentGroup = appStore.groupList.find(group => group.name == event.target.value);
     console.log(currentGroup);
     const currentGroupStudents = await getStudentsByGroup(currentGroup.id);
     uiState.setCurrentGroup(currentGroup.name);
@@ -46,7 +46,7 @@ const SelectGroupField: React.FC = () => {
           variant="outlined"
         >
           {
-            appStore.groupList.map((group) =>
+            appStore.groupList?.map((group) =>
             <MenuItem key={group.id} value={group.name}>
               {group.name}
             </MenuItem>)
