@@ -5,8 +5,6 @@ import { useStores } from '../../../stores/StoreProvider';
 import Paper from '@material-ui/core/Paper';
 import { observer } from 'mobx-react';
 import PredictedAverageAccuracy from './PredictedAverageAccuracy';
-import ExercisesAttempted from './ExercisesAttempted';
-import ProblemsAttempted from './ProblemsAttempted';
 
 const useStyles = makeStyles(theme => ({
   root:{ 
