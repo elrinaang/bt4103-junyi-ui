@@ -47,7 +47,7 @@ class AppStore {
       setFilteredStudentList: action
     })
 
-    this.studentList = studentListData;
+    this.studentList = [];
 
     this.filteredStudentList = this.studentList;
 
@@ -67,7 +67,7 @@ class AppStore {
       { field: 'user_city', headerName: 'City', width: 100 }
     ];
 
-    this.groupList = groupListData;
+    this.groupList = [];
 
     this.listOfModules = [
       {name: 'area', id: '0'},

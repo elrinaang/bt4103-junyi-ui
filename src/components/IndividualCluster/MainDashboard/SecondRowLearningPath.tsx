@@ -50,8 +50,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const steps = ['Addition', 'Substraction','Multiplication','Division', 'Area','Perimeter'];
-
 const SecondRowLearningPath: React.FC = () => {
 
   const { uiState, appStore } = useStores();
@@ -59,11 +57,11 @@ const SecondRowLearningPath: React.FC = () => {
   const theme = useTheme();
   const currentClusterLearningPaths = uiState.currentCluster.paths;
 
-  const [filter, setFilter] = React.useState('popularity');
+  const [filter, setFilter] = React.useState('number_of_individual_students');
   const [activeStep, setActiveStep] = React.useState(0);
   const [currentLearningPath, setCurrentLearningPath] = React.useState([]);
 
-  React.useEffect(() => getCurrentLearningPath('popularity',1),[]);
+  React.useEffect(() => getCurrentLearningPath('number_of_individual_students',1),[]);
 
   const getCurrentLearningPath = (filter: string, rank: number) => {
     //filter by filter - popularity and performance
@@ -96,15 +94,16 @@ const SecondRowLearningPath: React.FC = () => {
       <h2 className={classes.headerName}><b>Possible Learning Paths</b></h2>
       <div className={classes.selectFieldContainer}>
         <div style={{display: 'inline-block',float:'right'}}>
-            <FormControl className={classes.formControl}>
-              <Select
+          <FormControl className={classes.formControl}>
+            <Select
               value={filter}
               onChange={handleChange}
-              >
-                <MenuItem value={'popularity'}>popularity</MenuItem>
-                <MenuItem value={'performance'}>performance</MenuItem>
-              </Select>
-            </FormControl>
+            >
+              <MenuItem value={'number_of_individual_students'}>popularity</MenuItem>
+              <MenuItem value={'final_average_performance'}>performance</MenuItem>
+              <MenuItem value={'shortest_path'}>shortest path</MenuItem>
+            </Select>
+          </FormControl>
         </div>
         <h3 style={{display: 'inline-block',float:'right'}}>Generate by:</h3>
       </div>

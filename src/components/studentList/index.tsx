@@ -31,7 +31,7 @@ const StudentList: React.FC = () => {
 
 
   //UNCOMMENT FOR CONNECTION WITH BE 
-  /*React.useEffect(() => {
+  React.useEffect(() => {
     async function fetchStudents() {
       uiState.setAppStatus('RETRIEVING_INFORMATION');
 
@@ -47,11 +47,12 @@ const StudentList: React.FC = () => {
     }
 
     fetchStudents();
-  }, []);*/
+  }, []);
 
   const onSelectStudent = async (studentId: any) => {
     //get the student detail from the backend
     const student = await getStudentDetail(studentId);
+    console.log(student);
     uiState.setCurrentStudent(student);
     redirect(`/student?id=${student.id}`);
     // redirect(`/student?id=${uiState.currentStudent.id}`);

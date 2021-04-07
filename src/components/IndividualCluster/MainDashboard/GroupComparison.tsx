@@ -53,21 +53,23 @@ const GroupComparison: React.FC = () => {
   const { uiState, appStore } = useStores(); 
   const classes = useStyles();
   const currentCluster = uiState.currentCluster;
-  const currentGroup = appStore.groupList.find(group => group.name == uiState.currentGroupName);
+  const currentGroup = appStore.groupList.find(group => group.id.toString() == uiState.currentGroupID);
   const [filter, setFilter] = React.useState('average accuracy');
 
-  const accuracyData = [{name: `Cluster ${uiState.currentClusterID}`, value: parseFloat(currentCluster.avg_accuracy)},{name: uiState.currentGroupName,value: parseFloat(currentGroup.avg_accuracy)}];
-  const exerciseData = [{name: `Cluster ${uiState.currentClusterID}`, value: parseFloat(currentCluster.avg_exercises_attempted)},{name: uiState.currentGroupName,value: parseFloat(currentGroup.avg_exercises_attempted)}];
-  const problemData = [{name: `Cluster ${uiState.currentClusterID}`, value: parseFloat(currentCluster.avg_problems_attempted)},{name: uiState.currentGroupName,value: parseFloat(currentGroup.avg_problems_attempted)}];
+  React.useEffect(() => console.log(appStore.groupList),[]);
+
+  const accuracyData = [{name: `Cluster ${uiState.currentClusterID}`, value: parseFloat(currentCluster?.avg_accuracy)},{name: currentGroup?.name,value: parseFloat(currentGroup?.avg_accuracy)}];
+  const exerciseData = [{name: `Cluster ${uiState.currentClusterID}`, value: parseFloat(currentCluster?.avg_exercises_attempted)},{name: currentGroup?.name,value: parseFloat(currentGroup?.avg_exercises_attempted)}];
+  const problemData = [{name: `Cluster ${uiState.currentClusterID}`, value: parseFloat(currentCluster?.avg_problems_attempted)},{name: currentGroup?.name,value: parseFloat(currentGroup?.avg_problems_attempted)}];
 
   const switchData = () => { 
       switch(filter){ 
-            case('average accuracy'): 
-                return accuracyData
-            case('exercises attempted'):
-                return exerciseData
-            case('problems attempted'):
-                return problemData 
+        case('average accuracy'): 
+          return accuracyData
+        case('exercises attempted'):
+          return exerciseData
+        case('problems attempted'):
+          return problemData 
       } 
   };
 
@@ -84,33 +86,33 @@ const GroupComparison: React.FC = () => {
                     <div style={{display: 'inline-block',float:'right'}}>
                         <FormControl className={classes.formControl}>
                         <Select
-                            value={filter}
-                            onChange={handleChange}
+                          value={filter}
+                          onChange={handleChange}
                         >
-                            <MenuItem value={'average accuracy'}>Average Accuracy</MenuItem>
-                            <MenuItem value={'exercises attempted'}>Exercises attempted</MenuItem>
-                            <MenuItem value={'problems attempted'}>Problems Attempted</MenuItem>
+                          <MenuItem value={'average accuracy'}>Average Accuracy</MenuItem>
+                          <MenuItem value={'exercises attempted'}>Exercises attempted</MenuItem>
+                          <MenuItem value={'problems attempted'}>Problems Attempted</MenuItem>
                         </Select>
                         </FormControl>
                     </div>
                     <h3 style={{display: 'inline-block',float:'right'}}>Compare by:</h3>
-                        <BarChart
-                        width={1000}
-                        height={360}
-                        data={switchData()}
-                        margin={{
-                            top: 5,
-                            right: 30,
-                            left: 20,
-                            bottom: 5,
-                        }}
-                        >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" />
-                        <YAxis />
-                        <Tooltip />
-                        <Bar dataKey="value" fill='#FF9933' />
-                        </BarChart>
+                      <BarChart
+                      width={1000}
+                      height={360}
+                      data={uiState.currentCluster && switchData()}
+                      margin={{
+                        top: 5,
+                        right: 30,
+                        left: 20,
+                        bottom: 5,
+                      }}
+                      >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Bar dataKey="value" fill='#FF9933' />
+                      </BarChart>
                 </div>
             </Paper>
         </Grid>

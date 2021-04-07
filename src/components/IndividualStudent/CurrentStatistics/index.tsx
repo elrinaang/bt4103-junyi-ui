@@ -5,6 +5,7 @@ import { useStores } from '../../../stores/StoreProvider';
 import Paper from '@material-ui/core/Paper';
 import { observer } from 'mobx-react';
 import PredictedAverageAccuracy from './PredictedAverageAccuracy';
+import DemographicData from './DemographicData';
 
 const useStyles = makeStyles(theme => ({
   root:{ 
@@ -27,21 +28,16 @@ const CurrentStatistics: React.FC = () => {
 
   return (
     <Grid container spacing={1} className={classes.root}>
-      <Grid item xs={12}>
+      <Grid item xs={6}>
+        <Paper style={{height: '100%'}} square>
+          <DemographicData/>
+        </Paper>
+      </Grid> 
+      <Grid item xs={6}>
         <Paper style={{height: '100%'}} square>
           <PredictedAverageAccuracy/>
         </Paper>
       </Grid> 
-      {/*<Grid item xs={3}> 
-        <Paper style={{height: '100%'}} square>
-          <ExercisesAttempted/>
-        </Paper>
-      </Grid>
-      <Grid item xs={3}>
-        <Paper style={{height: '100%'}} square>
-          <ProblemsAttempted/>
-        </Paper>
-      </Grid>*/} 
     </Grid>
   );
 };

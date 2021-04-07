@@ -21,7 +21,7 @@ const GroupList: React.FC = () => {
   const classes = useStyles();
 
   //UNCOMMENT FOR CONNECTION WITH BE 
-  /*React.useEffect(() => {
+  React.useEffect(() => {
     async function fetchGroups() {
       let groups = await getGroups();
       appStore.setGroups(groups);
@@ -29,7 +29,7 @@ const GroupList: React.FC = () => {
     }
 
     fetchGroups();
-  }, []);*/
+  }, []);
 
   return (
     <Grid container direction="column" spacing={3} className={classes.root}> 

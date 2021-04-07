@@ -10,7 +10,6 @@ import { observer } from 'mobx-react';
 import redirect from '../../lib/redirect';
 import CurrentStatistics from './CurrentStatistics';
 import PastStatistics from './PastStatistics';
-import DemographicData from './DemographicData';
 
 const useStyles = makeStyles(theme => ({
   indivStat: { 
@@ -50,15 +49,6 @@ const IndividualStudent: React.FC = () => {
         <Typography color="textPrimary">{currentStudent.name}</Typography>
       </Breadcrumbs>
       <h1><b>{currentStudent.name}</b></h1>
-      <DemographicData/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
       <CurrentStatistics/>
       <PastStatistics/>
       </>

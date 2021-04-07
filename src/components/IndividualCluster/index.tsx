@@ -32,7 +32,7 @@ const IndividualCluster: React.FC = () => {
 
   const { uiState, appStore } = useStores(); 
   const classes = useStyles();
-  const currentClusterName = uiState.currentCluster && uiState.currentCluster.paths[0].cluster; 
+  const currentClusterName = uiState.currentCluster && uiState.currentClusterID; 
 
   React.useEffect(() => !uiState.currentCluster && redirect('/groupList'),[]);
 

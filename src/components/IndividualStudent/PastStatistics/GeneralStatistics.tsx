@@ -3,9 +3,9 @@ import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import PollIcon from '@material-ui/icons/Poll';
 import ShowChartIcon from '@material-ui/icons/ShowChart';
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownwardRounded';
+import StarIcon from '@material-ui/icons/Star';
 import Avatar from '@material-ui/core/Avatar';
 import { useStores } from '../../../stores/StoreProvider';
 import Paper from '@material-ui/core/Paper';
@@ -65,29 +65,29 @@ const GeneralStatistics: React.FC = () => {
             </Avatar>
         </div>
         <Typography variant="h4" className={classes.text}>{noHints()}</Typography>  
-        <Typography variant="subtitle1" color="secondary"><b>Average Number of Hints Used</b></Typography>
+        <Typography variant="subtitle1" color="secondary"><b>Avg Number of Hints Used</b></Typography>
         </Paper>
     </Grid> 
     <Grid item xs={3}> 
         <Paper className={classes.indivStat} square>
         <div className={classes.avatar}>
             <Avatar style={{backgroundColor:'#77dd77'}}>
-            <ArrowUpwardIcon fontSize="large"/>
+            <PollIcon fontSize="large"/>
             </Avatar>
         </div>
-        <Typography variant="h4" className={classes.text}>{currentStudent.no_upgrades}</Typography>  
-        <Typography variant="subtitle1" color="secondary"><b>No.of Upgrades</b></Typography>
+        <Typography variant="h4" className={classes.text}>{currentStudent.points}</Typography>  
+        <Typography variant="subtitle1" color="secondary"><b>No.of Points</b></Typography>
         </Paper>
     </Grid>
     <Grid item xs={3}>
         <Paper className={classes.indivStat} square>
         <div className={classes.avatar}>
             <Avatar style={{backgroundColor:'#ff6961'}}>
-            <ArrowDownwardIcon fontSize="large"/>
+            <StarIcon fontSize="large"/>
             </Avatar>
         </div>
-        <Typography variant="h4" className={classes.text}>{currentStudent.no_downgrades}</Typography>  
-        <Typography variant="subtitle1" color="secondary"><b>No.of Downgrades</b></Typography>
+        <Typography variant="h4" className={classes.text}>{currentStudent.badges_cnt}</Typography>  
+        <Typography variant="subtitle1" color="secondary"><b>No.of Badges</b></Typography>
         </Paper>
     </Grid> 
     </Grid>

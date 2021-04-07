@@ -34,12 +34,23 @@ const useStyles = makeStyles(theme => ({
   },
   indivStat: { 
     textAlign: 'center',
-    padding: theme.spacing(2,0,2)
+    padding: theme.spacing(2,0,0)
   },
   timeContent: { 
     top: '50%',
     msTransform: 'translateY(50%)',
     transform: 'translateY(20%)'
+  },
+  square: { 
+    padding: theme.spacing(0,0,4)
+  },
+  secondSquare:{
+    padding: theme.spacing(2,0,-1),
+    marginTop: theme.spacing(1)
+  },
+  exerciseStat: { 
+    textAlign: 'center',
+    padding: theme.spacing(3,0,0)
   }
 }));
 
@@ -63,24 +74,42 @@ const ExerciseStatistics: React.FC = () => {
     <div className={classes.root}>
     <Grid container direction="row" spacing={2}>
       <Grid item xs={6}>
-        <Paper square>
+        <Paper square className={classes.square}>
           <div>
             <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>Exercises Attempted</b></Typography> 
           </div>
           <Divider/>
           <Grid container direction="row">
             <Grid item xs={6}>
-              <div className={classes.indivStat}>
+              <div className={classes.exerciseStat}>
                 <Typography variant="subtitle1" color="secondary"><b>No.of Exercises</b></Typography>
                 <Typography variant="h4" className={classes.text}>{currentStudent.exercises_attempted}</Typography> 
               </div> 
             </Grid>
             <Grid item xs={6}>
-              <div className={classes.indivStat}>
+              <div className={classes.exerciseStat}>
                 <Typography variant="subtitle1" color="secondary"><b>Time taken Per Exercise</b></Typography>
                 <Typography variant="h4" className={classes.text}>{`${getTimeAsMins(currentStudent.avg_time_per_exercise)} mins`}</Typography>  
               </div>
             </Grid>
+          </Grid>
+        </Paper>
+        <Paper square className={classes.secondSquare}>
+          <Grid container direction="row" style={{paddingTop: 4}}>
+            <Grid item xs={6}>
+              <div className={classes.indivStat}>
+                <Typography variant="subtitle1" color="secondary"><b>No.of Upgrades*</b></Typography>
+                <Typography variant="h4" className={classes.text}>{currentStudent.no_upgrades}</Typography> 
+              </div> 
+            </Grid>
+            <Grid item xs={6}>
+              <div className={classes.indivStat}>
+                <Typography variant="subtitle1" color="secondary"><b>No.of Downgrades**</b></Typography>
+                <Typography variant="h4" className={classes.text}>{currentStudent.no_downgrades}</Typography>  
+              </div>
+            </Grid>
+            <h6 style={{marginBottom: 0, marginTop: 30, marginLeft: 10}}>* Upgrade happens when a student answers 2 problems in an exercise correctly</h6>
+            <h6 style={{marginTop: 0, marginLeft: 10}}>** Downgrade happens when a student answers 2 problems in an exercise incorrectly</h6>
           </Grid>
         </Paper>
       </Grid> 

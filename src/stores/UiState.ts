@@ -11,7 +11,7 @@ class UiState {
   errorMessage: string;  
   currentGroup: string;
   currentCluster: ClusterType; 
-  currentGroupName: string; 
+  currentGroupID: string; 
   currentClusterID: string; 
   currentStudent: any;
   appStatus: AppStatus;
@@ -23,7 +23,7 @@ class UiState {
       currentCluster: observable,
       currentStudent: observable,  
       appStatus: observable,
-      currentGroupName: observable,
+      currentGroupID: observable,
       currentClusterID: observable,
       setErrorMessage: action,
       setCurrentGroup: action,
@@ -37,10 +37,10 @@ class UiState {
     this.currentCluster = individualClusterData;
 
     ////FOR CONNECTION WITH BE CHANGE TO 'RETRIEVING_INFORMATION'
-    this.appStatus = 'RETRIEVED_INFORMATION';
+    this.appStatus = 'RETRIEVING_INFORMATION';
     this.currentStudent = individualStudentData; 
-    this.currentClusterID = '3',
-    this.currentGroupName = 'Group 1'
+    this.currentClusterID = '',
+    this.currentGroupID = ''
   }
 
   setErrorMessage = (message: string) => { 
