@@ -12,6 +12,7 @@ import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
 import ClusterStudentInfo from './ClusterStudentInfo';
 import StudentDataInfo from './StudentDataInfo';
+import LearningPathInfo from './LearningPathInfo';
 
 const useStyles = makeStyles((theme) => ({
   learningAnalytics: { 
@@ -107,7 +108,7 @@ const GeneralInfo: React.FC = () => {
         <StudentDataInfo/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <LearningPathInfo/>
       </TabPanel>
     </Grid>
   );

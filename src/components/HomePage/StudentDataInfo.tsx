@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   indivData:{
     textAlign: 'center',
-    alignSelf: 'center',
+    //alignSelf: 'center',
   },
   text:{
     padding:theme.spacing(3,0,3)
@@ -38,17 +38,37 @@ const StudentDataInfo: React.FC = () => {
     <div className={classes.root}>
         <Typography variant="h5">What Kinds of Student Data are Used?</Typography>
         <br/>
-        <Typography>To group students into their respective clusters, we used both <b>demographic</b> and <b>behavioural</b> data.</Typography>
+        <Typography>To group students into their respective clusters, we used both <b>demographic</b> and <b>behavioural</b> data. Information on individual student can also be accessed by selecting individual students in the student list.</Typography>
         <Grid container direction="row" className={classes.iconGrid} spacing={2}>
           <Grid item xs={6} className={classes.indivData}>
             <Paper elevation={0}>
               <PersonIcon fontSize="large"/>
               <Typography><b>Demographic Data</b></Typography>
+              <div style={{textAlign: 'center'}}>
+                <ul style={{display: 'inline-block', paddingLeft:0}}>
+                  <li>Gender</li>
+                  <li>City</li>
+                  <li>Grade</li>
+                </ul>
+              </div>
             </Paper>
           </Grid>
           <Grid item xs={6} className={classes.indivData}>
             <HistoryIcon fontSize="large"/>
             <Typography><b>Behavioral Data</b></Typography>
+            <div style={{textAlign: 'center'}}>
+              <ul style={{display: 'inline-block', paddingLeft:0}}>
+                <li>Past Average Accuracy</li>
+                <li>Average No. of Hints Used</li>
+                <li>No. of Points</li>
+                <li>No. of Badges</li>
+                <li>No. of Exercises Attempted</li>
+                <li>No. of Problems Attempted</li>
+                <li>Types of Problems Attempted</li>
+                <li>No. of Upgrades</li>
+                <li>No. of Downgrades</li>
+              </ul>
+            </div>
           </Grid>
         </Grid>
     </div>
