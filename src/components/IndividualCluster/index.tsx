@@ -44,7 +44,7 @@ const IndividualCluster: React.FC = () => {
         <>
         <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
           <Link color="inherit" href="/groupList">Group List</Link>
-          <Typography color="textPrimary">{`Cluster ${currentClusterName}`}</Typography>
+          <Typography color="textPrimary">{currentClusterName}</Typography>
         </Breadcrumbs>
         <h1>{currentClusterName}</h1>
         <Grid item>

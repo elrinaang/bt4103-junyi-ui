@@ -70,7 +70,7 @@ const ClassDetails: React.FC = () => {
     uiState.setCurrentCluster(newCluster);
     uiState.currentClusterName = clusterName; 
     uiState.currentGroupID = groupID.toString();
-    redirect(`/cluster?name=${clusterID}`);
+    redirect(`/cluster?name=${clusterName}`);
   }
 
   return (

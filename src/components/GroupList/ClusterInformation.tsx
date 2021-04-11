@@ -95,7 +95,7 @@ const ClusterInformation: React.FC = () => {
     <Paper elevation={0}>
       <div className={classes.root}>
         <h1>Groups and Clusters</h1>
-        <h4>Students within each group are divided into 5 clusters, based on their demopgrahic information and learning behaviour.</h4>
+        <h4>Students within each group are divided into 5 clusters, based on their demographic information and learning behaviour.</h4>
         <Table className={classes.table}>
           <TableHead style={{backgroundColor: '#FF9933'}}> 
             <TableRow>
