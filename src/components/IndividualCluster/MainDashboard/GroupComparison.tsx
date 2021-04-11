@@ -58,9 +58,9 @@ const GroupComparison: React.FC = () => {
 
   React.useEffect(() => console.log(appStore.groupList),[]);
 
-  const accuracyData = [{name: `Cluster ${uiState.currentClusterID}`, value: parseFloat(currentCluster?.avg_accuracy)},{name: currentGroup?.name,value: parseFloat(currentGroup?.avg_accuracy)}];
-  const exerciseData = [{name: `Cluster ${uiState.currentClusterID}`, value: parseFloat(currentCluster?.avg_exercises_attempted)},{name: currentGroup?.name,value: parseFloat(currentGroup?.avg_exercises_attempted)}];
-  const problemData = [{name: `Cluster ${uiState.currentClusterID}`, value: parseFloat(currentCluster?.avg_problems_attempted)},{name: currentGroup?.name,value: parseFloat(currentGroup?.avg_problems_attempted)}];
+  const accuracyData = [{name: `Cluster ${uiState.currentClusterName}`, value: parseFloat(currentCluster?.avg_accuracy)},{name: currentGroup?.name,value: parseFloat(currentGroup?.avg_accuracy)}];
+  const exerciseData = [{name: `Cluster ${uiState.currentClusterName}`, value: parseFloat(currentCluster?.avg_exercises_attempted)},{name: currentGroup?.name,value: parseFloat(currentGroup?.avg_exercises_attempted)}];
+  const problemData = [{name: `Cluster ${uiState.currentClusterName}`, value: parseFloat(currentCluster?.avg_problems_attempted)},{name: currentGroup?.name,value: parseFloat(currentGroup?.avg_problems_attempted)}];
 
   const switchData = () => { 
       switch(filter){ 

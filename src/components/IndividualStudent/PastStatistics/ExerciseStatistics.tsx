@@ -2,14 +2,13 @@ import * as React from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import ScheduleIcon from '@material-ui/icons/Schedule';
 import Divider from '@material-ui/core/Divider';
 import { useStores } from '../../../stores/StoreProvider';
 import Paper from '@material-ui/core/Paper';
 import { observer } from 'mobx-react';
 import {BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, ResponsiveContainer, PieChart, Pie, Label } from 'recharts';
 
-const COLORS = ['#FF9933', '#62727b','#333366'];
+const COLORS = ['#FF9933', '#8caec2','#333366'];
 
 const useStyles = makeStyles(theme => ({
   predAccuracyTitle: { 

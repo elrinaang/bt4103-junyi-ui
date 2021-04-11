@@ -9,6 +9,13 @@ export type ClusterType = {
     avg_problems_attempted: string,
     predictions: PredictionType[],
     paths: PathType[]
+};
+
+export type ClusterInformationType = { 
+    id: string, 
+    name: string, 
+    description: string,
+    isEditMode?: boolean
 }
 
 /**

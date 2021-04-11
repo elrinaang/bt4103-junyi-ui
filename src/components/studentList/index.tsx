@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import SelectGroupField from './SelectGroupField';
+import SelectGroupField from '../common/SelectGroupField';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
 import RetrievingInfo from '../common/RetrievingInfo';
@@ -51,10 +51,12 @@ const StudentList: React.FC = () => {
 
   const onSelectStudent = async (studentId: any) => {
     //get the student detail from the backend
+    uiState.setAppStatus('RETRIEVING_INFORMATION');
     const student = await getStudentDetail(studentId);
     console.log(student);
     uiState.setCurrentStudent(student);
     redirect(`/student?id=${student.id}`);
+    uiState.setAppStatus('RETRIEVED_INFORMATION');
     // redirect(`/student?id=${uiState.currentStudent.id}`);
   };
 

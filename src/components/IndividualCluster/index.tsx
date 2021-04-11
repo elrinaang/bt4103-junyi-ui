@@ -32,7 +32,7 @@ const IndividualCluster: React.FC = () => {
 
   const { uiState, appStore } = useStores(); 
   const classes = useStyles();
-  const currentClusterName = uiState.currentCluster && uiState.currentClusterID; 
+  const currentClusterName = uiState.currentCluster && uiState.currentClusterName; 
 
   React.useEffect(() => !uiState.currentCluster && redirect('/groupList'),[]);
 
@@ -46,7 +46,7 @@ const IndividualCluster: React.FC = () => {
           <Link color="inherit" href="/groupList">Group List</Link>
           <Typography color="textPrimary">{`Cluster ${currentClusterName}`}</Typography>
         </Breadcrumbs>
-        <h1>{`Cluster ${currentClusterName}`}</h1>
+        <h1>{currentClusterName}</h1>
         <Grid item>
           <MainDashboard/>
         </Grid>

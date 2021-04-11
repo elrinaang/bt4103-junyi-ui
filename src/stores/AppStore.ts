@@ -2,6 +2,7 @@ import { observable, action, computed, makeObservable} from 'mobx';
 import { DataGrid, ColDef, RowsProp } from '@material-ui/data-grid';
 import { groupListData } from '../groupListData';
 import { studentListData } from '../studentListData';
+import { ClusterInformationType } from '../lib/Types';
 
 export type IndivGroup = {
   id: number,
@@ -24,7 +25,7 @@ class AppStore {
   studentTableColumns: ColDef[];
   groupList: IndivGroup[];
   listOfModules: ModuleType[];
-
+  listOfClusters: ClusterInformationType[];
   //attributes needed to add new class
   newGroupName: string;
   newGroupModules: string[];
@@ -40,16 +41,27 @@ class AppStore {
       newGroupModules: observable,
       newGroupRoll: observable,
       listOfModules: observable,
+      listOfClusters: observable,
       setGroups: action,
       setNewGroupName: action,
       setNewGroupModules: action,
       setNewGroupRoll: action,
-      setFilteredStudentList: action
+      setFilteredStudentList: action,
+      setListOfClusters: action,
+      updateClusterInformation: action
     })
 
     this.studentList = [];
 
     this.filteredStudentList = this.studentList;
+
+    this.listOfClusters = [
+      {id: '1', name: 'Cluster 1', description: 'description 1'},
+      {id: '2', name: 'Cluster 2', description: 'description 2'},
+      {id: '3', name: 'Cluster 3', description: 'description 3'},
+      {id: '4', name: 'Cluster 4', description: 'description 4'},
+      {id: '5', name: 'Cluster 5', description: 'description 5'}
+    ]; 
 
     this.studentTableColumns = [
       { field: 'id', headerName: 'ID', type: 'number', width: 70 },
@@ -111,6 +123,16 @@ class AppStore {
     this.filteredStudentList = selectedGroup;
     console.log(this.filteredStudentList)
   };
+
+  setListOfClusters = (clusters: ClusterInformationType[]) => { 
+    this.listOfClusters = clusters; 
+  }; 
+
+  updateClusterInformation = (id: string, name: string, value: string) => { 
+    const selectedCluster = this.listOfClusters.find(cluster => cluster.id == id); 
+    selectedCluster[name] = value; 
+    console.log(selectedCluster[name]);
+  }
 }
 
 export default AppStore;

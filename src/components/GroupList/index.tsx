@@ -4,10 +4,11 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import RetrievingInfo from '../common/RetrievingInfo';
 import ClassDetails from './ClassDetails';
-import SearchGroupField from './SearchGroupField';
 import { useStores } from '../../stores/StoreProvider';
 import { observer } from 'mobx-react';
-import { getGroups } from '../../api/groupService';
+import { getGroups, getClusterInfo } from '../../api/groupService';
+import SelectGroupField from '../common/SelectGroupField';
+import ClusterInformation from './ClusterInformation';
 
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -24,17 +25,24 @@ const GroupList: React.FC = () => {
   React.useEffect(() => {
     async function fetchGroups() {
       let groups = await getGroups();
+      let clusters = await getClusterInfo(); 
       appStore.setGroups(groups);
+      appStore.setListOfClusters(clusters); 
       uiState.setAppStatus('RETRIEVED_INFORMATION');
+      //pre-set first group 
+      uiState.setCurrentGroup(appStore.groupList[0].name);
     }
 
     fetchGroups();
   }, []);
 
   return (
-    <Grid container direction="column" spacing={3} className={classes.root}> 
+    <Grid container direction="column" spacing={3}> 
+      <Grid item style={{backgroundColor: 'white'}}>
+        <ClusterInformation/>
+      </Grid>
       <Grid item>
-        <SearchGroupField/>
+        <SelectGroupField/>
       </Grid>
       {
         uiState.appStatus == 'RETRIEVING_INFORMATION' 

@@ -28,12 +28,12 @@ const CurrentStatistics: React.FC = () => {
 
   return (
     <Grid container spacing={1} className={classes.root}>
-      <Grid item xs={6}>
+      <Grid item xs={4}>
         <Paper style={{height: '100%'}} square>
           <DemographicData/>
         </Paper>
       </Grid> 
-      <Grid item xs={6}>
+      <Grid item xs={8}>
         <Paper style={{height: '100%'}} square>
           <PredictedAverageAccuracy/>
         </Paper>

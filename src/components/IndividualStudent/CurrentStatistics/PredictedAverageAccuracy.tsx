@@ -6,6 +6,7 @@ import { observer } from 'mobx-react';
 import Divider from '@material-ui/core/Divider';
 import {BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, ResponsiveContainer, PieChart, Pie, Label } from 'recharts';
 import parse from 'html-react-parser';
+import Image from 'next/image';
 
 const data = [
   {
@@ -39,6 +40,19 @@ const data = [
   },
 ];
 
+const convertToLabels = (bin: string) => { 
+  switch(bin) { 
+    case '0':
+      return 'insufficient data'
+    case '1':
+      return 'weak'
+    case '2':
+      return 'normal'
+    case '3':
+      return 'strong'
+  }
+}
+
 const useStyles = makeStyles(theme => ({
   predAccuracyTitle: { 
     display: 'inline-block',
@@ -55,12 +69,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const getAccuracyasPercentage = (rawNumber: number) => { 
-  const percent = rawNumber * 100; 
-  return Math.round(percent * 100)/100; 
-};
-
-
 const PredictedAverageAccuracy: React.FC = () => {
 
   const { uiState, appStore } = useStores(); 
@@ -71,14 +79,10 @@ const PredictedAverageAccuracy: React.FC = () => {
     <React.Fragment>
         <div>
           <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>Predicted Average Performance</b></Typography>
-          <Typography variant="h4" className={classes.predAccuracyValue}>Strong</Typography>  
+          <Typography variant="h4" className={classes.predAccuracyValue}>{convertToLabels(currentStudent.bin)}</Typography>  
         </div>
         <Divider/>
-        <ResponsiveContainer width='100%'>
-        <div className={classes.barChart}>
-          {parse(currentStudent.html)}
-        </div>
-        </ResponsiveContainer>
+        <Image src="/shapValues.jpg" width="800" height="200"/>
     </React.Fragment>
   );
 };

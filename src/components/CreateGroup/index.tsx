@@ -69,7 +69,7 @@ const CreateGroup: React.FC = () => {
     let groups = await getGroups();
     appStore.setGroups(groups);
     //redirect to home page 
-    redirect('/home');
+    redirect('/groupList');
   }
 
   const NextButton = () => 

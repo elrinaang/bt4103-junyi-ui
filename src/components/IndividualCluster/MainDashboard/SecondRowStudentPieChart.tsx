@@ -6,7 +6,7 @@ import { observer } from 'mobx-react';
 import { Cell, Tooltip, Legend,PieChart, Pie, Label } from 'recharts';
 
 
-const COLORS = ['#FF9933', '#62727b','#333366'];
+const COLORS = ['#FF9933', '#8caec2','#333366'];
 
 const useStyles = makeStyles(theme => ({
   root: { 

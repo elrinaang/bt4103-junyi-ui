@@ -12,7 +12,7 @@ class UiState {
   currentGroup: string;
   currentCluster: ClusterType; 
   currentGroupID: string; 
-  currentClusterID: string; 
+  currentClusterName: string; 
   currentStudent: any;
   appStatus: AppStatus;
 
@@ -24,7 +24,7 @@ class UiState {
       currentStudent: observable,  
       appStatus: observable,
       currentGroupID: observable,
-      currentClusterID: observable,
+      currentClusterName: observable,
       setErrorMessage: action,
       setCurrentGroup: action,
       setCurrentStudent: action,
@@ -39,7 +39,7 @@ class UiState {
     ////FOR CONNECTION WITH BE CHANGE TO 'RETRIEVING_INFORMATION'
     this.appStatus = 'RETRIEVING_INFORMATION';
     this.currentStudent = individualStudentData; 
-    this.currentClusterID = '',
+    this.currentClusterName = '',
     this.currentGroupID = ''
   }
 
