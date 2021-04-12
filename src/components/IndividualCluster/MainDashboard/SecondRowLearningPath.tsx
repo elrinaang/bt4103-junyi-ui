@@ -68,14 +68,13 @@ const SecondRowLearningPath: React.FC = () => {
     console.log(filter,rank);
     const filteredPath: PathType[] = currentClusterLearningPaths.filter(exercise => exercise.policy === filter);
     const finalPath: PathType[] = filteredPath.filter(exercise => exercise.rank === rank.toString());
-    console.log(finalPath);
     const learningPath: string[] = finalPath.map(exercise => `Exercise ${exercise.content_id}`);
-    console.log(learningPath);
     learningPath && setCurrentLearningPath(learningPath);
-    };
+  };
 
   const handleChange = (event: React.ChangeEvent<{ value: string }>) => {
     setFilter(event.target.value as string);
+    setActiveStep(0);
     getCurrentLearningPath(event.target.value,activeStep+1);
   };
 
@@ -127,7 +126,7 @@ const SecondRowLearningPath: React.FC = () => {
         activeStep={activeStep}
         className={classes.mobileStepper}
         nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeStep === 5}>
+          <Button size="small" onClick={handleNext} disabled={activeStep === 4}>
             Next
             {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
           </Button>

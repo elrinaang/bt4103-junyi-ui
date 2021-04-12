@@ -58,9 +58,9 @@ const GroupComparison: React.FC = () => {
 
   React.useEffect(() => console.log(appStore.groupList),[]);
 
-  const accuracyData = [{name: `Cluster ${uiState.currentClusterName}`, value: parseFloat(currentCluster?.avg_accuracy)},{name: currentGroup?.name,value: parseFloat(currentGroup?.avg_accuracy)}];
-  const exerciseData = [{name: `Cluster ${uiState.currentClusterName}`, value: parseFloat(currentCluster?.avg_exercises_attempted)},{name: currentGroup?.name,value: parseFloat(currentGroup?.avg_exercises_attempted)}];
-  const problemData = [{name: `Cluster ${uiState.currentClusterName}`, value: parseFloat(currentCluster?.avg_problems_attempted)},{name: currentGroup?.name,value: parseFloat(currentGroup?.avg_problems_attempted)}];
+  const accuracyData = [{name: uiState.currentClusterName, value: parseFloat(currentCluster?.avg_accuracy)},{name: currentGroup?.name,value: parseFloat(currentGroup?.avg_accuracy)}];
+  const exerciseData = [{name: uiState.currentClusterName, value: parseFloat(currentCluster?.avg_exercises_attempted)},{name: currentGroup?.name,value: parseFloat(currentGroup?.avg_exercises_attempted)}];
+  const problemData = [{name: uiState.currentClusterName, value: parseFloat(currentCluster?.avg_problems_attempted)},{name: currentGroup?.name,value: parseFloat(currentGroup?.avg_problems_attempted)}];
 
   const switchData = () => { 
       switch(filter){ 
@@ -84,7 +84,7 @@ const GroupComparison: React.FC = () => {
                 <h2 className={classes.headerName}>{`Compare with Group: ${filter}`}</h2>
                 <div className={classes.selectFieldContainer}>
                     <div style={{display: 'inline-block',float:'right'}}>
-                        <FormControl className={classes.formControl}>
+                      <FormControl className={classes.formControl}>
                         <Select
                           value={filter}
                           onChange={handleChange}
@@ -93,7 +93,7 @@ const GroupComparison: React.FC = () => {
                           <MenuItem value={'exercises attempted'}>Exercises attempted</MenuItem>
                           <MenuItem value={'problems attempted'}>Problems Attempted</MenuItem>
                         </Select>
-                        </FormControl>
+                      </FormControl>
                     </div>
                     <h3 style={{display: 'inline-block',float:'right'}}>Compare by:</h3>
                       <BarChart

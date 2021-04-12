@@ -56,11 +56,11 @@ class AppStore {
     this.filteredStudentList = this.studentList;
 
     this.listOfClusters = [
-      {id: '1', name: 'Cluster 1', description: 'description 1'},
-      {id: '2', name: 'Cluster 2', description: 'description 2'},
-      {id: '3', name: 'Cluster 3', description: 'description 3'},
-      {id: '4', name: 'Cluster 4', description: 'description 4'},
-      {id: '5', name: 'Cluster 5', description: 'description 5'}
+      {id: '0', name: 'Cluster 1', description: 'description 1'},
+      {id: '1', name: 'Cluster 2', description: 'description 2'},
+      {id: '2', name: 'Cluster 3', description: 'description 3'},
+      {id: '3', name: 'Cluster 4', description: 'description 4'},
+      {id: '4', name: 'Cluster 5', description: 'description 5'}
     ]; 
 
     this.studentTableColumns = [

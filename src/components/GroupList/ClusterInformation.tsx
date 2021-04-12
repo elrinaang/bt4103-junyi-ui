@@ -30,10 +30,11 @@ const useStyles = makeStyles((theme) => ({
     overflowX: "auto"
   },
   table: {
-    maxWidth: 1000
+    maxWidth: "100%",
+    paddingRight: theme.spacing(1)
   },
   selectTableCell: {
-    width: 30
+    width: 10
   },
   tableCell: {
     width: 100,
@@ -50,7 +51,6 @@ const ClusterInformation: React.FC = () => {
   const classes = useStyles();
   const { appStore, uiState } = useStores();
   const rows = appStore.listOfClusters; 
-  const [previous, setPrevious] = React.useState({});
   
   const CustomTableCell = observer(({ row, name, onChange }) => {
     const { isEditMode } = row;

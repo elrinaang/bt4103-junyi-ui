@@ -12,6 +12,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import { ClusterType, PathType, StudentType } from '../../lib/Types';
 import { getGroupCluster } from "../../api/groupService";
 import { ClusterInformationType } from '../../lib/Types';
+import clsx from 'clsx'; 
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,10 +29,6 @@ const useStyles = makeStyles((theme) => ({
     //backgroundColor:'#cefaaa',
     padding: theme.spacing(1,0,1),
     marginTop: theme.spacing(1),
-    '&:hover': {
-      background: lighten(theme.palette.info.main,0.35),
-      padding: theme.spacing(1,0,1)
-    }
   },
   cards:{
     marginTop: theme.spacing(2)
@@ -44,9 +41,37 @@ const useStyles = makeStyles((theme) => ({
   indivGroup: {
     marginBottom: theme.spacing(4)
   },
+  card0: { 
+    '&:hover': {
+      background: lighten('#ec9455',0.45),
+      padding: theme.spacing(1,0,1)
+    }
+  },
+  card1: { 
+    '&:hover': {
+      background: lighten('#91e755',0.45),
+      padding: theme.spacing(1,0,1)
+    }
+  },
+  card2: { 
+    '&:hover': {
+      background: lighten('#31e6c7',0.45),
+      padding: theme.spacing(1,0,1)
+    }
+  },
+  card3: { 
+    '&:hover': {
+      background: lighten('#6059e9',0.45),
+      padding: theme.spacing(1,0,1)
+    }
+  },
+  card4: { 
+    '&:hover': {
+      background: lighten('#e135ba',0.45),
+      padding: theme.spacing(1,0,1)
+    }
+  }
 }));
-
-//const clusters = ['cluster 1', 'cluster 2', 'cluster 3', 'cluster 4', 'cluster 5'];
 
 const ClassDetails: React.FC = () => {
 
@@ -63,9 +88,7 @@ const ClassDetails: React.FC = () => {
      *  2. Call a getCluser using the group ID and cluster ID
      *  3. Set current cluster from the cluster retrieved
      */
-    //UNCOMMENT FOR CONNECTION WITH BE 
-    //const clusterID = clusterName.split(" ")[1];
-    console.log(groupID);
+    console.log(clusterID);
     const newCluster: ClusterType = await getGroupCluster(groupID.toString(), clusterID);
     uiState.setCurrentCluster(newCluster);
     uiState.currentClusterName = clusterName; 
@@ -84,10 +107,13 @@ const ClassDetails: React.FC = () => {
             clusters?.map((cluster: ClusterInformationType) =>
               <Grid item xs={2} xl={2} key={cluster.id}>
                 <Card
-                  className={classes.indivCard}
-                  square
-                  variant="outlined"
-                  style={{height: '100%'}}
+                  className={clsx(classes.indivCard, {
+                    [classes.card0]: cluster.id == '0',
+                    [classes.card1]: cluster.id == '1',
+                    [classes.card2]: cluster.id == '2',
+                    [classes.card3]: cluster.id == '3',
+                    [classes.card4]: cluster.id == '4',
+                  })}
                 >
                   <CardActionArea onClick={() => handleClick(cluster.id,cluster.name,newGroup.id)}>
                     <CardContent className={classes.cardContent}>
