@@ -15,194 +15,81 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## File Structure 
 
 ### pages 
-This folder contains the files that define the root of the application. Please do not edit existing files but feel free to add new files to define new routes. 
+This folder contains the routes of the application. 
 ```
 pages (Add the main routes here)
-    |
-    |_ _app.tsx **DO NOT EDIT** 
-    |
-    |_ _document.tsx **DO NOT EDIT** 
-    |
-    |_ index.tsx (first page that renders the components)
-    |
-    |_ home.tsx
-    |
-    |_ dashboard.tsx
-    |
-    |_ studentlist.tsx 
+  |
+  |_ _app.tsx **DO NOT EDIT** 
+  |
+  |_ _document.tsx **DO NOT EDIT** 
+  |
+  |_ index.tsx (first page that renders the components)
+  |
+  |_ cluster.tsx (individual cluster dashboard)
+  |
+  |_ createGroup.tsx (to create group)
+  |
+  |_ groupList.tsx (list of groups)
+  |
+  |_ home.tsx (homepage) 
+  |
+  |_ student.tsx (individual student dashboard)
+  |
+  |_ studentList.tsx (list of students)
 
 ``` 
+
+### public 
+This folder contains the images that are used in the application. 
 
 ### src 
 This folder contains multiple sub-folders that contains the main components, functions, theme and API calls for the app 
 
 ```
 components (folder that contains main components)
-    |
-    |_ Layout (contains overall navbar layout)
-    |
-    |_ LandingPage (acts as the 'router' to display the various pages based on props)
-    |
-    |_ HomePage
-    |
-    |_ Dashboard
-    |
-    |_ StudentList 
+  |
+  |_ common (contains common files that are shared across multiple components)
+  |
+  |_ CreateGroup (contains componenets used in creating a group)
+  |
+  |_ GroupList (contains components used in page that displays all the groups)
+  |
+  |_ HomePage (contains components in HomePage)
+  |
+  |_ IndividualCluster (contains components in each individual cluster dashboard)
+  |
+  |_ IndividualStudent (contains components in each individual student dashboard)
+  |
+  |_ StudentList (contains components in page that displays all the students)
+  |
+  |_ Layout (contains overall navbar layout)
+  |
+  |_ LandingPage (acts as the 'router' to display the various pages based on props)
+
 
 lib (folder that contains the common functions that span across multipled components)
-    |
-    |_ redirect (directs the routes)
+  |
+  |_ redirect (directs the routes)
+  |
+  |_ types (defines types used in this application)
+
 
 api (folder that contains the api calls)
-    |
-    |_ 
+  |
+  |_ groupService 
+  |
+  |_ studentService 
+
+environment (folder that defines the environment of the application)
+
+stores (contains file for state management) 
+  |
+  |_ AppStore (domain store)
+  |
+  |_ UiState (information about UI)
+  |
+  |_ StoreProvider (creates stores and provides function to use storess)
+
 
 theme (file that defines main theme for the app e.g. colour scheme)
 ```
-
-### Objects 
-#### Student: 
-avg_accuracy 
-avg_hint_per_attempt
-avg_time_btw_problem
-avg_time_per_exercise
-badges_cnt
-belongs_to_class_cnt
-exercises_attempted
-first_login_date_TW
-gender
-has_class_cnt
-has_student_cnt
-has_teacher_cnt 
-id
-is_self_coach 
-name
-no_downgrades
-no_upgrades
-points
-prolems_attempted 
-user_city 
-user_grade 
-
-
-{
-  "no_students": "4",
-  "avg_accuracy": "0.83519214700000000000",
-  "avg_exercises_attempted": "5.7500000000000000",
-  "avg_problems_attempted": "37.7500000000000000",
-  "prediction": {
-    "weak": null,
-    "normal": null,
-    "strong": null
-  },
-  "paths": [
-    {
-      "id": "41",
-      "group_id": "60",
-      "cluster": "3",
-      "content_id": "437",
-      "rank": "1",
-      "position": "1",
-      "policy": "popularity"
-    },
-    {
-      "id": "42",
-      "group_id": "60",
-      "cluster": "3",
-      "content_id": "238",
-      "rank": "1",
-      "position": "2",
-      "policy": "popularity"
-    },
-    {
-      "id": "43",
-      "group_id": "60",
-      "cluster": "3",
-      "content_id": "239",
-      "rank": "1",
-      "position": "3",
-      "policy": "popularity"
-    },
-    {
-      "id": "44",
-      "group_id": "60",
-      "cluster": "3",
-      "content_id": "245",
-      "rank": "1",
-      "position": "4",
-      "policy": "popularity"
-    },
-    {
-      "id": "45",
-      "group_id": "60",
-      "cluster": "3",
-      "content_id": "437",
-      "rank": "2",
-      "position": "1",
-      "policy": "popularity"
-    },
-    {
-      "id": "46",
-      "group_id": "60",
-      "cluster": "3",
-      "content_id": "238",
-      "rank": "2",
-      "position": "2",
-      "policy": "popularity"
-    },
-    {
-      "id": "47",
-      "group_id": "60",
-      "cluster": "3",
-      "content_id": "241",
-      "rank": "2",
-      "position": "3",
-      "policy": "popularity"
-    },
-    {
-      "id": "48",
-      "group_id": "60",
-      "cluster": "3",
-      "content_id": "242",
-      "rank": "2",
-      "position": "4",
-      "policy": "popularity"
-    },
-    {
-      "id": "49",
-      "group_id": "60",
-      "cluster": "3",
-      "content_id": "437",
-      "rank": "3",
-      "position": "1",
-      "policy": "popularity"
-    },
-    {
-      "id": "50",
-      "group_id": "60",
-      "cluster": "3",
-      "content_id": "238",
-      "rank": "3",
-      "position": "2",
-      "policy": "popularity"
-    },
-    {
-      "id": "51",
-      "group_id": "60",
-      "cluster": "3",
-      "content_id": "244",
-      "rank": "3",
-      "position": "3",
-      "policy": "popularity"
-    },
-    {
-      "id": "52",
-      "group_id": "60",
-      "cluster": "3",
-      "content_id": "242",
-      "rank": "3",
-      "position": "4",
-      "policy": "popularity"
-    }
-  ]
-}
