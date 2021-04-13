@@ -11,51 +11,52 @@ import {BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Refer
 const COLORS = ['#FF9933', '#8caec2','#333366'];
 
 const useStyles = makeStyles(theme => ({
-  predAccuracyTitle: { 
+  predAccuracyTitle: {
     display: 'inline-block',
     margin: theme.spacing(3,2,3)
   },
-  predAccuracyValue: { 
+  predAccuracyValue: {
     display: 'inline-block',
     float: 'right',
     margin: theme.spacing(2,2,2),
     color: theme.palette.info.main
   },
-  root: { 
+  root: {
     marginTop: theme.spacing(2)
   },
-  problemTypes: { 
+  problemTypes: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2)
   },
-  text: { 
+  text: {
     color: theme.palette.info.main
   },
-  indivStat: { 
+  indivStat: {
     textAlign: 'center',
     padding: theme.spacing(2,0,0)
   },
-  timeContent: { 
+  timeContent: {
     top: '50%',
     msTransform: 'translateY(50%)',
     transform: 'translateY(20%)'
   },
-  square: { 
+  square: {
     padding: theme.spacing(0,0,4)
   },
   secondSquare:{
     padding: theme.spacing(2,0,-1),
     marginTop: theme.spacing(1)
   },
-  exerciseStat: { 
+  exerciseStat: {
     textAlign: 'center',
     padding: theme.spacing(3,0,0)
   }
 }));
 
-const getTimeAsMins = (seconds: number) => { 
+const getTimeAsMins = (seconds: number) => {
   return Math.floor(seconds / 60);
 }
+
 
 const problemData = [
   { name: 'Basic', value: 40 },
@@ -65,30 +66,30 @@ const problemData = [
 
 const ExerciseStatistics: React.FC = () => {
 
-  const { uiState, appStore } = useStores(); 
+  const { uiState, appStore } = useStores();
   const classes = useStyles();
   const currentStudent = uiState.currentStudent;
-  
+
   return (
     <div className={classes.root}>
     <Grid container direction="row" spacing={2}>
       <Grid item xs={6}>
         <Paper square className={classes.square}>
           <div>
-            <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>Exercises Attempted</b></Typography> 
+            <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>Exercises Attempted</b></Typography>
           </div>
           <Divider/>
           <Grid container direction="row">
             <Grid item xs={6}>
               <div className={classes.exerciseStat}>
                 <Typography variant="subtitle1" color="secondary"><b>No.of Exercises</b></Typography>
-                <Typography variant="h4" className={classes.text}>{currentStudent.exercises_attempted}</Typography> 
-              </div> 
+                <Typography variant="h4" className={classes.text}>{currentStudent.exercises_attempted}</Typography>
+              </div>
             </Grid>
             <Grid item xs={6}>
               <div className={classes.exerciseStat}>
                 <Typography variant="subtitle1" color="secondary"><b>Time taken Per Exercise</b></Typography>
-                <Typography variant="h4" className={classes.text}>{`${getTimeAsMins(currentStudent.avg_time_per_exercise)} mins`}</Typography>  
+                <Typography variant="h4" className={classes.text}>{`${Math.round(currentStudent.avg_time_per_exercise)} mins`}</Typography>
               </div>
             </Grid>
           </Grid>
@@ -98,29 +99,29 @@ const ExerciseStatistics: React.FC = () => {
             <Grid item xs={6}>
               <div className={classes.indivStat}>
                 <Typography variant="subtitle1" color="secondary"><b>No.of Upgrades*</b></Typography>
-                <Typography variant="h4" className={classes.text}>{currentStudent.no_upgrades}</Typography> 
-              </div> 
+                <Typography variant="h4" className={classes.text}>{currentStudent.no_upgrades}</Typography>
+              </div>
             </Grid>
             <Grid item xs={6}>
               <div className={classes.indivStat}>
                 <Typography variant="subtitle1" color="secondary"><b>No.of Downgrades**</b></Typography>
-                <Typography variant="h4" className={classes.text}>{currentStudent.no_downgrades}</Typography>  
+                <Typography variant="h4" className={classes.text}>{currentStudent.no_downgrades}</Typography>
               </div>
             </Grid>
             <h6 style={{marginBottom: 0, marginTop: 30, marginLeft: 10}}>* Upgrade happens when a student answers 2 problems in an exercise correctly</h6>
             <h6 style={{marginTop: 0, marginLeft: 10}}>** Downgrade happens when a student answers 2 problems in an exercise incorrectly</h6>
           </Grid>
         </Paper>
-      </Grid> 
+      </Grid>
       <Grid item xs={6}>
         <Grid container direction="column">
           <Grid item>
             <Paper style={{height: '100%'}} square>
             <div>
-              <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>Problems Attempted</b></Typography> 
-              <Typography variant="h4" className={classes.predAccuracyValue}>{currentStudent.problems_attempted}</Typography>  
+              <Typography variant="subtitle1" color="secondary" className={classes.predAccuracyTitle}><b>Problems Attempted</b></Typography>
+              <Typography variant="h4" className={classes.predAccuracyValue}>{currentStudent.problems_attempted}</Typography>
             </div>
-            <Divider/> 
+            <Divider/>
             <PieChart width={280} height={300} style={{margin: '0 auto'}}>
               <Pie
                 data={problemData}
@@ -150,4 +151,4 @@ const ExerciseStatistics: React.FC = () => {
   );
 };
 
-export default observer(ExerciseStatistics); 
+export default observer(ExerciseStatistics);
