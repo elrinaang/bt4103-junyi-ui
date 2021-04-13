@@ -1,9 +1,10 @@
 import Router from 'next/router'
 
-const redirect = (target: string) => {    
+const redirect = (target: string) => {
     if (target.length > 0) {
-        Router.replace(target);
-    }  
+        Router.push(target);
+        // Router.replace(target);
+    }
 }
 
 export default redirect;
