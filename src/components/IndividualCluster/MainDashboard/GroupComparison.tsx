@@ -96,7 +96,8 @@ const GroupComparison: React.FC = () => {
                       </FormControl>
                     </div>
                     <h3 style={{display: 'inline-block',float:'right'}}>Compare by:</h3>
-                      <BarChart
+                    <div style={{textAlign: 'center'}}>
+                    <BarChart
                       width={1000}
                       height={360}
                       data={uiState.currentCluster && switchData()}
@@ -106,13 +107,14 @@ const GroupComparison: React.FC = () => {
                         left: 20,
                         bottom: 5,
                       }}
-                      >
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" />
-                      <YAxis />
-                      <Tooltip />
-                      <Bar dataKey="value" fill='#FF9933' />
-                      </BarChart>
+                    >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Bar dataKey="value" fill='#FF9933' />
+                    </BarChart>
+                    </div>
                 </div>
             </Paper>
         </Grid>
