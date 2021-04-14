@@ -82,7 +82,9 @@ const PredictedAverageAccuracy: React.FC = () => {
           <Typography variant="h4" className={classes.predAccuracyValue}>{convertToLabels(currentStudent.bin)}</Typography>  
         </div>
         <Divider/>
-        <Image src="/shapValues.jpg" width="800" height="200"/>
+        <div style={{textAlign: 'center'}}>
+          <Image src="/shapValues.jpg" width="800" height="200"/>
+        </div>
     </React.Fragment>
   );
 };
